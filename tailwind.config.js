@@ -1,4 +1,6 @@
-module.exports = {
+import forms from '@tailwindcss/forms'
+
+export default {
 	content: [
 		'./src/**/*.{vue,js,ts}',
 	],

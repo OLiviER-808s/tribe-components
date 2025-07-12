@@ -1,5 +1,4 @@
 <script setup>
-import { router } from '@inertiajs/vue3'
 import { computed } from 'vue'
 import { ref } from 'vue'
 
@@ -38,7 +37,7 @@ const isPressed = ref(false)
 
 const handleClick = (e) => {
     if (href) {
-        router.visit(href)
+        window.open(href)
     }
     onClick(e)
 }

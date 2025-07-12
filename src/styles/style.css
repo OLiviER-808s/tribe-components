@@ -2,65 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-    [type="text"]:focus, [type="password"]:focus, [type="email"]:focus, [type="number"]:focus, textarea:focus {
-        @apply ring-0;
-    }
+[type="text"]:focus, [type="password"]:focus, [type="email"]:focus, [type="number"]:focus, textarea:focus {
+	@apply ring-0;
+}
 
-    /* width */
-    ::-webkit-scrollbar {
-        @apply rounded-md w-2;
+/* width */
+::-webkit-scrollbar {
+	@apply rounded-md w-2;
+}
+/* Track */
+::-webkit-scrollbar-track {
+	@apply bg-dropdown cursor-pointer rounded-md;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+	@apply bg-secondary-text rounded-lg;
+}
+/* Hide on mobile */
+@media screen and (max-width: 800px) {
+    *::-webkit-scrollbar {
+        display: none;
     }
-    /* Track */
-    ::-webkit-scrollbar-track {
-        @apply bg-dropdown cursor-pointer rounded-md;
-    }
-    /* Handle */
-    ::-webkit-scrollbar-thumb {
-        @apply bg-secondary-text rounded-lg;
-    }
-    /* Hide on mobile */
-    @media screen and (max-width: 800px) {
-        *::-webkit-scrollbar {
-            display: none;
-        }
-    }
+}
 
-    .v-dropdown-menu__container {
-        @apply rounded-md bg-dropdown text-dropdown-text !border-none;
-    }
+.v-dropdown-menu__container {
+    @apply rounded-md bg-dropdown text-dropdown-text !border-none;
+}
 
-    .filter {
-        @apply rounded-md duration-300 text-sm font-medium py-1 px-4 bg-quick-filter text-nowrap;
-    }
+.filter {
+    @apply rounded-md duration-300 text-sm font-medium py-1 px-4 bg-quick-filter text-nowrap;
+}
 
-    .selected-filter {
-        @apply bg-quick-filter-selected text-dropdown-text;
-    }
+.selected-filter {
+    @apply bg-quick-filter-selected text-dropdown-text;
+}
 
-    .filter-container {
-        @apply flex items-center gap-2 md:pb-2 overflow-auto;
-    }
-    .filter-container::-webkit-scrollbar {
-        height: 6px;
-    }
+.filter-container {
+    @apply flex items-center gap-2 md:pb-2 overflow-auto;
+}
+.filter-container::-webkit-scrollbar {
+    height: 6px;
+}
 
-    .dropdown-option {
-        @apply py-2 px-6 hover:bg-dropdown-select rounded-md cursor-pointer;
-    }
+.dropdown-option {
+    @apply py-2 px-6 hover:bg-dropdown-select rounded-md cursor-pointer;
+}
 
-    .selected {
-        @apply border-none ring-1 ring-primary;
-    }
-    .error {
-        @apply border-none ring-1 ring-error;
-    }
+.selected {
+    @apply border-none ring-1 ring-primary;
+}
+.error {
+    @apply border-none ring-1 ring-error;
+}
 
-    .success {
-        @apply border-none ring-1 ring-success;
-    }
+.success {
+    @apply border-none ring-1 ring-success;
+}
 
-    .field-sizing-content {
-        field-sizing: content;
-    }
+.field-sizing-content {
+    field-sizing: content;
 }

@@ -2,7 +2,6 @@ import Accordion from './components/Accordion.vue'
 import AttachmentList from './components/AttachmentList.vue'
 import Avatar from './components/Avatar.vue'
 import AvatarGroup from './components/AvatarGroup.vue'
-import AvatarInput from './components/AvatarInput.vue'
 import Badge from './components/Badge.vue'
 import Button from './components/Button.vue'
 import Card from './components/Card.vue'
@@ -40,7 +39,6 @@ export {
     AttachmentList,
     Avatar,
     AvatarGroup,
-    AvatarInput,
     Badge,
     Button,
     Card,
