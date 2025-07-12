@@ -2,63 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-[type="text"]:focus, [type="password"]:focus, [type="email"]:focus, [type="number"]:focus, textarea:focus {
-	@apply ring-0;
-}
-
-/* width */
-::-webkit-scrollbar {
-	@apply rounded-md w-2;
-}
-/* Track */
-::-webkit-scrollbar-track {
-	@apply bg-dropdown cursor-pointer rounded-md;
-}
-/* Handle */
-::-webkit-scrollbar-thumb {
-	@apply bg-secondary-text rounded-lg;
-}
-/* Hide on mobile */
-@media screen and (max-width: 800px) {
-    *::-webkit-scrollbar {
-        display: none;
+@layer components {
+    [type="text"]:focus, [type="password"]:focus, [type="email"]:focus, [type="number"]:focus, textarea:focus {
+        @apply ring-0;
     }
-}
 
-.v-dropdown-menu__container {
-    @apply rounded-md bg-dropdown text-dropdown-text !border-none;
-}
+    /* width */
+    ::-webkit-scrollbar {
+        @apply rounded-md w-2;
+    }
+    /* Track */
+    ::-webkit-scrollbar-track {
+        @apply bg-dropdown cursor-pointer rounded-md;
+    }
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        @apply bg-secondary-text rounded-lg;
+    }
+    /* Hide on mobile */
+    @media screen and (max-width: 800px) {
+        *::-webkit-scrollbar {
+            display: none;
+        }
+    }
 
-.filter {
-    @apply rounded-md duration-300 text-sm font-medium py-1 px-4 bg-quick-filter text-nowrap;
-}
+    .v-dropdown-menu__container {
+        @apply rounded-md bg-dropdown text-dropdown-text !border-none;
+    }
 
-.selected-filter {
-    @apply bg-quick-filter-selected text-dropdown-text;
-}
+    .filter {
+        @apply rounded-md duration-300 text-sm font-medium py-1 px-4 bg-quick-filter text-nowrap;
+    }
 
-.filter-container {
-    @apply flex items-center gap-2 md:pb-2 overflow-auto;
-}
-.filter-container::-webkit-scrollbar {
-    height: 6px;
-}
+    .selected-filter {
+        @apply bg-quick-filter-selected text-dropdown-text;
+    }
 
-.dropdown-option {
-    @apply py-2 px-6 hover:bg-dropdown-select rounded-md cursor-pointer;
-}
+    .filter-container {
+        @apply flex items-center gap-2 md:pb-2 overflow-auto;
+    }
+    .filter-container::-webkit-scrollbar {
+        height: 6px;
+    }
 
-.selected {
-    @apply border-none ring-1 ring-primary;
-}
-.error {
-    @apply border-none ring-1 ring-error;
-}
+    .dropdown-option {
+        @apply py-2 px-6 hover:bg-dropdown-select rounded-md cursor-pointer;
+    }
 
-.success {
-    @apply border-none ring-1 ring-success;
-}
+    .selected {
+        @apply border-none ring-1 ring-primary;
+    }
+    .error {
+        @apply border-none ring-1 ring-error;
+    }
 
-.field-sizing-content {
-    field-sizing: content;
+    .success {
+        @apply border-none ring-1 ring-success;
+    }
+
+    .field-sizing-content {
+        field-sizing: content;
+    }
 }
