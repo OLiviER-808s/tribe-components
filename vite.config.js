@@ -4,10 +4,13 @@ import { resolve } from 'path'
 
 export default defineConfig({
     plugins: [vue()],
+    resolve: {
+        extensions: ['.js', '.vue', '.json']
+    },
     build: {
         lib: {
             entry: resolve(__dirname, 'src/index.js'),
-            name: 'TribeComponents',
+            name: 'ComponentLibrary',
             formats: ['es', 'cjs'],
             fileName: (format) => `index.${format === 'es' ? 'js' : 'cjs'}`
         },
