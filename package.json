@@ -1,8 +1,8 @@
 {
 	"name": "@OLiviER-808s/tribe-components",
-	"version": "1.0.0",
-	"main": "dist/ui-library.umd.js",
-  	"module": "dist/ui-library.es.js",
+	"version": "1.0.2",
+	"main": "dist/tribe-components.umd.js",
+  	"module": "dist/tribe-components.es.js",
 	"files": [
 		"dist"
 	],
