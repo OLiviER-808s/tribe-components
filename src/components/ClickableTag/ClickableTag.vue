@@ -23,11 +23,11 @@ const props = defineProps({
 })
 
 const classes = computed(() => {
-    return `${props.styles} tag rounded-${props.rounded} text-${props.size} text-${props.color} border-${props.color} hover:bg-${props.color}/10`
+    return `${props.styles} py-1 px-3 duration-100 text-center border-2 rounded-${props.rounded} text-${props.size} text-${props.color} border-${props.color} hover:bg-${props.color}/10`
 })
 
 const selectedClasses = computed(() => {
-    return `${props.styles} tag rounded-${props.rounded} text-${props.size} bg-${props.color} border-${props.color} text-black`
+    return `${props.styles} py-1 px-3 duration-100 text-center border-2 rounded-${props.rounded} text-${props.size} bg-${props.color} border-${props.color} text-black`
 })
 </script>
 
@@ -36,9 +36,3 @@ const selectedClasses = computed(() => {
         <slot />
     </button>
 </template>
-
-<style>
-.tag {
-    @apply py-1 px-3 duration-100 text-center border-2;
-}
-</style>
