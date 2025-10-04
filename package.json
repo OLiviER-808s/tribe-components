@@ -1,58 +1,56 @@
 {
-	"name": "@OLiviER-808s/tribe-components",
-	"version": "1.0.4",
-	"main": "dist/tribe-components.umd.js",
-  	"module": "dist/tribe-components.es.js",
-	"exports": {
-		".": {
-			"import": "./dist/tribe-components.es.js",
-			"require": "./dist/tribe-components.umd.js"
-		},
-		"./dist/tribe-components.css": "./dist/tribe-components.css"
-	},
-	"files": [
-		"dist"
-	],
-	"publishConfig": {
-		"registry": "https://npm.pkg.github.com/"
-	},
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"build:theme": "tailwindcss -i ./src/styles/theme.css -o ./dist/theme.css --minify",
-		"build:style": "tailwindcss -i ./src/styles/style.css -o ./dist/style.css --minify",
-		"build:css": "npm run build:theme && npm run build:style",
-		"build": "vite build"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"description": "",
-	"dependencies": {
-		"@fortawesome/fontawesome-svg-core": "^6.5.1",
-		"@fortawesome/free-brands-svg-icons": "^6.5.1",
-		"@fortawesome/free-regular-svg-icons": "^6.5.1",
-		"@fortawesome/free-solid-svg-icons": "^6.5.1",
-		"@fortawesome/vue-fontawesome": "^3.0.6",
-		"@vitejs/plugin-vue": "^6.0.0",
-		"@vuepic/vue-datepicker": "^8.6.0",
-		"@vueup/vue-quill": "^1.2.0",
-		"@vueuse/core": "^10.9.0",
-		"@vueuse/gesture": "^2.0.0",
-		"@vueuse/motion": "^2.2.6",
-		"cropperjs": "^1.6.1",
-		"dompurify": "^3.1.6",
-		"swiper": "^11.1.14",
-		"uuid": "^9.0.1",
-		"v-dropdown-menu": "^2.0.4",
-		"vue-final-modal": "^4.5.4",
-		"vuedraggable": "^4.1.0"
-	},
-	"devDependencies": {
-		"@tailwindcss/forms": "^0.5.3",
-		"autoprefixer": "^10.4.21",
-		"postcss": "^8.5.6",
-		"tailwindcss": "^3.2.1",
-		"vite": "^7.0.4",
-		"vue": "^3.5.17"
-	}
+    "name": "@OLiviER-808s/tribe-components",
+    "version": "1.0.5",
+    "main": "dist/tribe-components.umd.js",
+    "module": "dist/tribe-components.es.js",
+    "exports": {
+        ".": {
+            "import": "./dist/tribe-components.es.js",
+            "require": "./dist/tribe-components.umd.js"
+        },
+        "./style.css": "./dist/style.css"
+    },
+    "files": [
+        "dist"
+    ],
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/"
+    },
+    "scripts": {
+        "build:theme": "tailwindcss -i ./src/styles/theme.css -o ./dist/theme.css --minify",
+        "build:style": "tailwindcss -i ./src/styles/style.css -o ./dist/style.css --minify",
+        "build:css": "npm run build:theme && npm run build:style",
+        "build": "vite build"
+    },
+    "peerDependencies": {
+        "vue": "^3.2.0"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^6.5.1",
+        "@fortawesome/free-brands-svg-icons": "^6.5.1",
+        "@fortawesome/free-regular-svg-icons": "^6.5.1",
+        "@fortawesome/free-solid-svg-icons": "^6.5.1",
+        "@fortawesome/vue-fontawesome": "^3.0.6",
+        "@vuepic/vue-datepicker": "^8.6.0",
+        "@vueup/vue-quill": "^1.2.0",
+        "@vueuse/core": "^10.9.0",
+        "@vueuse/gesture": "^2.0.0",
+        "@vueuse/motion": "^2.2.6",
+        "cropperjs": "^1.6.1",
+        "dompurify": "^3.1.6",
+        "swiper": "^11.1.14",
+        "uuid": "^9.0.1",
+        "v-dropdown-menu": "^2.0.4",
+        "vue-final-modal": "^4.5.4",
+        "vuedraggable": "^4.1.0"
+    },
+    "devDependencies": {
+        "@tailwindcss/forms": "^0.5.3",
+        "autoprefixer": "^10.4.21",
+        "postcss": "^8.5.6",
+        "tailwindcss": "^3.2.1",
+        "vite": "^7.0.4",
+        "vue": "^3.5.17",
+        "@vitejs/plugin-vue": "^6.0.0"
+    }
 }
