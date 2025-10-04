@@ -1,9 +1,9 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 
-export const useIsHandheld = () => {
-    const isHandheld = ref(innerWidth < 800)
+export const useIsHandheld = (threshold = 800) => {
+    const isHandheld = ref(innerWidth < threshold)
 
-    const onResize = () => (isHandheld.value = innerWidth < 800)
+    const onResize = () => (isHandheld.value = innerWidth < threshold)
 
     onMounted(() => addEventListener('resize', onResize))
     onUnmounted(() => removeEventListener('resize', onResize))
