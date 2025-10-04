@@ -13,7 +13,7 @@ const props = defineProps({
     },
 })
 
-const open = ref(props.openByDefault)
+const open = defineModel({ default: props.openByDefault })
 </script>
 
 <template>

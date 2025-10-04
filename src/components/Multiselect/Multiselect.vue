@@ -32,12 +32,10 @@ const props = defineProps({
     },
     styles: String,
     textboxStyles: String,
-    onFocus: Function,
-    onBlur: Function,
     acceptsEmptySelection: Boolean,
     acceptsDuplicates: Boolean
 })
-const emit = defineEmits(['select'])
+const emit = defineEmits(['select', 'focus', 'blur'])
 
 const model = defineModel({ default: [] })
 const searchQuery = defineModel('searchQuery', { default: '' })
@@ -119,8 +117,8 @@ watch(searchQuery, () => {
                     :color="color"
                     :variant="variant"
                     :styles="textboxStyles"
-                    :on-focus="onFocus"
-                    :on-blur="onBlur"
+                    @focus="e => emit('focus', e)"
+                    @blur="e => emit('blur', e)"
                 >
                     <template #left-section>
                         <div v-for="(selectedOption, idx) in model" :key="optionLabel[trackBy]">

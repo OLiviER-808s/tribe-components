@@ -49,11 +49,9 @@ const props = defineProps({
     },
     styles: String,
     textboxStyles: String,
-    onFocus: Function,
-    onBlur: Function,
     acceptsEmptySelection: Boolean
 })
-const emit = defineEmits(['select'])
+const emit = defineEmits(['select', 'blur', 'focus'])
 
 const model = defineModel()
 const searchQuery = defineModel('searchQuery', { default: '' })
@@ -139,8 +137,8 @@ watch(searchQuery, () => {
                     :color="color"
                     :variant="variant"
                     :styles="textboxStyles"
-                    :on-focus="onFocus"
-                    :on-blur="onBlur"
+                    @focus="e => emit('focus', e)"
+                    @blur="e => emit('blur', e)"
                 >
                     <template v-if="lockOnSelect && searchable && model" #right-section>
                         <div class="flex items-center pr-1">

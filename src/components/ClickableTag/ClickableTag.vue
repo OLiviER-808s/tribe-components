@@ -2,8 +2,6 @@
 import { computed } from 'vue'
 
 const props = defineProps({
-    selected: Boolean,
-    onSelect: Function,
     color: {
         type: String,
         default: 'secondary',
@@ -20,7 +18,13 @@ const props = defineProps({
         type: String,
         default: '',
     },
+    selectedByDefault: {
+        type: Boolean,
+        default: false
+    }
 })
+const emit = defineEmits(['select'])
+const selected = defineModel({ default: props.selectedByDefault })
 
 const classes = computed(() => {
     return `${props.styles} py-1 px-3 duration-100 text-center border-2 rounded-${props.rounded} text-${props.size} text-${props.color} border-${props.color} hover:bg-${props.color}/10`
@@ -32,7 +36,7 @@ const selectedClasses = computed(() => {
 </script>
 
 <template>
-    <button @click="onSelect" :class="selected ? selectedClasses : classes">
+    <button @click="emit('select')" :class="selected ? selectedClasses : classes">
         <slot />
     </button>
 </template>

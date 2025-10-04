@@ -28,11 +28,8 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
-    onInput: Function,
-    onFocus: Function,
-    onBlur: Function,
-    onKeyPress: Function,
 })
+const emit = defineEmits(['focus', 'blur', 'keyPress', 'input'])
 
 const modelValue = defineModel()
 const inputElement = defineModel('input')
@@ -46,12 +43,12 @@ const variantStyles = computed(() =>
 
 const handleFocus = (e) => {
     focused.value = true
-    if (props.onFocus) props.onFocus(e)
+    emit('focus', e)
 }
 
 const handleBlur = (e) => {
     focused.value = false
-    if (props.onBlur) props.onBlur(e)
+    emit('blur', e)
 }
 
 const handleInput = (event) => {
@@ -59,7 +56,7 @@ const handleInput = (event) => {
     internalValue.value = target.value
     modelValue.value = target.value
 
-    if (props.onInput) props.onInput(event)
+    emit('input', event)
 }
 
 watch(
@@ -102,7 +99,7 @@ watch(
                 @input="handleInput"
                 @focus="handleFocus"
                 @blur="handleBlur"
-                @keydown="onKeyPress"
+                @keydown="e => emit('keyPress', e)"
                 :maxlength="maxlength"
                 :rows="rows"
                 ref="inputElement"

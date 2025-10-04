@@ -15,6 +15,8 @@ const props = defineProps({
 
 <template>
     <div :class="`text-${size} text-black font-bold bg-${color} rounded-xl px-1 ${styles} min-w-3 min-h-3`">
-        {{ content }}
+        <slot>
+            {{ content }}
+        </slot>
     </div>
 </template>

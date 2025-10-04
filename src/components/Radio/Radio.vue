@@ -7,12 +7,17 @@ const props = defineProps({
     name: String,
     modelValue: String,
 })
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['select'])
+
+const model = defineModel()
 
 const hovering = ref(false)
 const checked = computed(() => props.modelValue === props.value)
 
-const select = () => emit('update:modelValue', props.value)
+const select = (e) => {
+    model.value = props.value
+    emit('select', e)
+}
 </script>
 
 <template>
@@ -27,7 +32,7 @@ const select = () => emit('update:modelValue', props.value)
             :name="name"
             :value="value"
             :checked="checked"
-            @change="select()"
+            @change="e => select(e)"
         />
 
         <span class="rounded-full border-2 border-secondary flex items-center justify-center h-4 w-4">

@@ -14,7 +14,7 @@ const props = defineProps({
     </div>
 </template>
 
-<style>
+<style scoped>
 .spinner {
     @apply border-4 border-base border-t-primary;
     border-radius: 50%;

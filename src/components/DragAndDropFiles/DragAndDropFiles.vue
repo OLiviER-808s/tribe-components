@@ -7,7 +7,6 @@ import FileButton from './FileButton.vue'
 
 const props = defineProps({
     label: String,
-    modelValue: Array,
     dropText: {
         type: String,
         default: 'Drag and drop files here, or click to select files',
@@ -15,9 +14,9 @@ const props = defineProps({
     error: String,
     withIcon: Boolean,
 })
-const emit = defineEmits(['update:modelValue'])
+const model = defineModel()
 
-const handleUpload = (fileList) => emit('update:modelValue', Array.from(fileList))
+const handleUpload = (fileList) => model.value = Array.from(fileList)
 
 const onDrop = (event) => handleUpload(event.dataTransfer.files)
 const onChange = (event) => handleUpload(event.target.files)

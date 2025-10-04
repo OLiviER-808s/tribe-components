@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { ref } from 'vue'
 
-const { color, variant, styles, disabled, type, href, onClick } = defineProps({
+const props = defineProps({
     color: {
         type: String,
         default: 'primary',
@@ -32,31 +32,33 @@ const { color, variant, styles, disabled, type, href, onClick } = defineProps({
         default: (e) => {},
     },
 })
+const emit = defineEmits(['click'])
 
 const isPressed = ref(false)
 
 const handleClick = (e) => {
-    if (href) {
-        window.open(href)
+    if (props.href) {
+        window.open(props.href)
     }
-    onClick(e)
+    
+    emit('click', e)
 }
 
 const btnColor = computed(() => {
-    return color === 'base' ? 'secondary-text' : color
+    return props.color === 'base' ? 'secondary-text' : props.color
 })
 const classes = computed(() => {
     switch (variant) {
         case 'light':
-            return `${styles} btn bg-${btnColor.value}/20 hover:bg-${btnColor.value}/35 text-${btnColor.value}`
+            return `${props.styles} btn bg-${btnColor.value}/20 hover:bg-${btnColor.value}/35 text-${btnColor.value}`
         case 'outline':
-            return `${styles} btn text-${btnColor.value} border-${btnColor.value} hover:bg-${btnColor.value}/10 border-2`
+            return `${props.styles} btn text-${btnColor.value} border-${btnColor.value} hover:bg-${btnColor.value}/10 border-2`
         case 'subtle':
-            return `${styles} btn text-${btnColor.value} hover:bg-${btnColor.value}/10`
+            return `${props.styles} btn text-${btnColor.value} hover:bg-${btnColor.value}/10`
         case 'dashed':
-            return `${styles} btn text-${btnColor.value} border-${btnColor.value} border-2 border-dashed hover:bg-${btnColor.value}/10`
+            return `${props.styles} btn text-${btnColor.value} border-${btnColor.value} border-2 border-dashed hover:bg-${btnColor.value}/10`
         default:
-            return `${styles} btn text-black bg-${btnColor.value}`
+            return `${props.styles} btn text-black bg-${btnColor.value}`
     }
 })
 </script>
@@ -74,7 +76,7 @@ const classes = computed(() => {
     </button>
 </template>
 
-<style>
+<style scoped>
 .pressed {
     transform: translateY(2px);
 }

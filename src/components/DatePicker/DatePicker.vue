@@ -7,7 +7,6 @@ import { formatDate, formatDateRange, formatDateWithTime } from '../utils/dateSe
 import '@vuepic/vue-datepicker/dist/main.css'
 
 const props = defineProps({
-    modelValue: [Date, Array],
     error: String,
     label: {
         type: String,

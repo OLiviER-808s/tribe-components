@@ -27,10 +27,9 @@ const props = defineProps({
     label: String,
     icon: Object,
     placeholder: String,
-    onInput: Function,
-    onFocus: Function,
-    onBlur: Function,
 })
+const emit = defineEmits(['input', 'focus', 'blur'])
+
 const modelValue = defineModel()
 const inputElement = defineModel('input')
 
@@ -40,20 +39,19 @@ const variantStyles = computed(() =>
     props.variant === 'filled' ? `bg-${props.color}` : 'bg-transparent border border-secondary-text'
 )
 
-const handleFocus = () => {
+const handleFocus = (e) => {
     focused.value = true
-    if (props.onFocus) props.onFocus()
+    emit('input', e)
 }
 
-const handleBlur = () => {
+const handleBlur = (e) => {
     focused.value = false
-    if (props.onBlur) props.onBlur()
+    emit('blur', e)
 }
 
 const handleInput = (event) => {
     modelValue.value = event.target.value
-
-    if (props.onInput) props.onInput(event)
+    emit('input', event)
 }
 </script>
 

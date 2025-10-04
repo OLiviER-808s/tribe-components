@@ -35,7 +35,9 @@ const positionStyles = computed(() => {
         <Transition name="fade">
             <div v-if="visible" :class="[positionStyles, 'absolute delay-1000 z-50']">
                 <div class="rounded-md bg-dropdown/80 text-dropdown-text p-1 text-xs text-nowrap">
-                    {{ text }}
+                    <slot name="tooltip-content">
+                        {{ text }}
+                    </slot>
                 </div>
             </div>
         </Transition>

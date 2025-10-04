@@ -13,9 +13,9 @@ const props = defineProps({
     },
     icon: Object
 })
+const emit = defineEmits(['toggle'])
 
 const model = defineModel()
-const emit = defineEmits(['toggle'])
 
 const toggle = () => {
     model.value = !model.value

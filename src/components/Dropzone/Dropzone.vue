@@ -2,8 +2,7 @@
 import { ref } from 'vue'
 
 const emit = defineEmits(['drop'])
-
-const isDragOver = ref(false)
+const isDragOver = defineModel({ default: false })
 
 const onDrop = (event) => {
     isDragOver.value = false
