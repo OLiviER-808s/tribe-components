@@ -1,6 +1,6 @@
 {
     "name": "@OLiviER-808s/tribe-components",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "main": "dist/tribe-components.umd.js",
     "module": "dist/tribe-components.es.js",
     "exports": {
@@ -26,13 +26,6 @@
         "vue": "^3.2.0"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-svg-core": "^6.5.1",
-        "@fortawesome/free-brands-svg-icons": "^6.5.1",
-        "@fortawesome/free-regular-svg-icons": "^6.5.1",
-        "@fortawesome/free-solid-svg-icons": "^6.5.1",
-        "@fortawesome/vue-fontawesome": "^3.0.6",
-        "@vuepic/vue-datepicker": "^8.6.0",
-        "@vueup/vue-quill": "^1.2.0",
         "@vueuse/core": "^10.9.0",
         "@vueuse/gesture": "^2.0.0",
         "@vueuse/motion": "^2.2.6",
@@ -42,15 +35,21 @@
         "uuid": "^9.0.1",
         "v-dropdown-menu": "^2.0.4",
         "vue-final-modal": "^4.5.4",
-        "vuedraggable": "^4.1.0"
+        "vuedraggable": "^4.1.0",
+        "@fortawesome/fontawesome-svg-core": "^6.5.1",
+        "@fortawesome/free-solid-svg-icons": "^6.5.1",
+        "@fortawesome/free-regular-svg-icons": "^6.5.1",
+        "@fortawesome/free-brands-svg-icons": "^6.5.1",
+        "@fortawesome/vue-fontawesome": "^3.0.6",
+        "@vuepic/vue-datepicker": "^8.6.0",
+        "@vueup/vue-quill": "^1.2.0"
     },
     "devDependencies": {
-        "@tailwindcss/forms": "^0.5.3",
-        "autoprefixer": "^10.4.21",
-        "postcss": "^8.5.6",
-        "tailwindcss": "^3.2.1",
         "vite": "^7.0.4",
+        "@vitejs/plugin-vue": "^6.0.0",
         "vue": "^3.5.17",
-        "@vitejs/plugin-vue": "^6.0.0"
+        "tailwindcss": "^3.2.1",
+        "autoprefixer": "^10.4.21",
+        "postcss": "^8.5.6"
     }
 }

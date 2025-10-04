@@ -1,3 +1,4 @@
+// Components
 import Accordion from './components/Accordion.vue'
 import AttachmentList from './components/AttachmentList.vue'
 import Avatar from './components/Avatar.vue'
@@ -31,9 +32,12 @@ import Textarea from './components/Textarea.vue'
 import Textbox from './components/Textbox.vue'
 import Toggle from './components/Toggle.vue'
 import Tooltip from './components/Tooltip.vue'
+
+// Composables
 import { useFiles } from './composables/useFiles'
 import { useIsHandheld } from './composables/useIsHandheld'
 
+// Named exports for tree-shaking
 export {
     Accordion,
     AttachmentList,
@@ -70,4 +74,43 @@ export {
     Tooltip,
     useFiles,
     useIsHandheld
+}
+
+// Default export for Vue.use()
+export default {
+    install(app) {
+        app.component('Accordion', Accordion)
+        app.component('AttachmentList', AttachmentList)
+        app.component('Avatar', Avatar)
+        app.component('AvatarGroup', AvatarGroup)
+        app.component('Badge', Badge)
+        app.component('Button', Button)
+        app.component('Card', Card)
+        app.component('Checkbox', Checkbox)
+        app.component('ClickableTag', ClickableTag)
+        app.component('CurrencyInput', CurrencyInput)
+        app.component('DatePicker', DatePicker)
+        app.component('DragAndDropFiles', DragAndDropFiles)
+        app.component('DropdownOptions', DropdownOptions)
+        app.component('Dropzone', Dropzone)
+        app.component('FileButton', FileButton)
+        app.component('FlashMessage', FlashMessage)
+        app.component('IconButton', IconButton)
+        app.component('Loader', Loader)
+        app.component('MediaCarousel', MediaCarousel)
+        app.component('MediaInput', MediaInput)
+        app.component('NumberInput', NumberInput)
+        app.component('Paragraph', Paragraph)
+        app.component('Radio', Radio)
+        app.component('RichTextEditor', RichTextEditor)
+        app.component('Select', Select)
+        app.component('Stepper', Stepper)
+        app.component('StopPropagation', StopPropagation)
+        app.component('Tabs', Tabs)
+        app.component('Tag', Tag)
+        app.component('Textarea', Textarea)
+        app.component('Textbox', Textbox)
+        app.component('Toggle', Toggle)
+        app.component('Tooltip', Tooltip)
+    }
 }
