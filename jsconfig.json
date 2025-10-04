@@ -5,7 +5,7 @@
         "./src/*"
       ]
     },
-    "checkJs": true
+    "checkJs": false
   },
   "include": [
     "src",
