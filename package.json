@@ -1,13 +1,14 @@
 {
 	"name": "@OLiviER-808s/tribe-components",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"main": "dist/tribe-components.umd.js",
   	"module": "dist/tribe-components.es.js",
 	"exports": {
 		".": {
 			"import": "./dist/tribe-components.es.js",
 			"require": "./dist/tribe-components.umd.js"
-		}
+		},
+		"./dist/tribe-components.css": "./dist/tribe-components.css"
 	},
 	"files": [
 		"dist"
