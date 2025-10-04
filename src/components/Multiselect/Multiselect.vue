@@ -1,26 +1,13 @@
 <script setup>
-import {nextTick, onBeforeUnmount, onMounted, ref, useSlots, watch} from 'vue'
+import {computed, onBeforeUnmount, onMounted, ref, useSlots, watch} from 'vue'
 import Textbox from './Textbox.vue'
-import { faSort, faXmark } from '@fortawesome/free-solid-svg-icons'
-import IconButton from './IconButton.vue'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import DropdownOptions from "./DropdownOptions.vue"
+import DropdownOptions from "./DropdownOptions/DropdownOptions.vue"
 
 const props = defineProps({
     options: Array,
     label: String,
-    optionLabel: {
-        type: String,
-        default: 'label',
-    },
-    trackBy: {
-        type: String,
-        default: 'value',
-    },
-    optionDescription: {
-        type: String,
-        default: 'description',
-    },
+    optionLabel: String,
+    trackBy: String,
     searchable: Boolean,
     icon: Object,
     error: [String, Boolean],
@@ -39,10 +26,6 @@ const props = defineProps({
         type: String,
         default: 'base',
     },
-    lockOnSelect: {
-        type: Boolean,
-        default: true,
-    },
     formatResult: {
         type: Function,
         default: (option) => option,
@@ -51,11 +34,12 @@ const props = defineProps({
     textboxStyles: String,
     onFocus: Function,
     onBlur: Function,
-    acceptsEmptySelection: Boolean
+    acceptsEmptySelection: Boolean,
+    acceptsDuplicates: Boolean
 })
 const emit = defineEmits(['select'])
 
-const model = defineModel()
+const model = defineModel({ default: [] })
 const searchQuery = defineModel('searchQuery', { default: '' })
 const inputElement = defineModel('input')
 
@@ -64,22 +48,21 @@ const slots = useSlots()
 const dropdownOpen = ref(false)
 const dropdownContainer = ref(null)
 
+const filteredOptions = computed(() => {
+    if (props.acceptsDuplicates) return props.options
+
+    return props.options.filter(option => !model.value.includes(props.formatResult(option)))
+})
+
 const select = (option) => {
-    model.value = props.formatResult(option)
+    model.value.push(props.formatResult(option))
 
-    if (props.optionLabel) {
-        searchQuery.value = option[props.optionLabel]
-    }
-
+    searchQuery.value = ''
     emit('select', option)
-
-    nextTick(close)
 }
 
-const deselect = (e) => {
-    e.stopPropagation()
-    model.value = null
-    searchQuery.value = ''
+const deselect = (idx) => {
+    model.value = model.value.filter((o, i) => i !== idx)
 }
 
 const open = () => {
@@ -116,8 +99,6 @@ onBeforeUnmount(() => {
 watch(searchQuery, () => {
     if (props.searchable && searchQuery.value.length > 0) {
         open()
-    } else if (props.searchable) {
-        close()
     }
 })
 </script>
@@ -129,11 +110,10 @@ watch(searchQuery, () => {
                 <Textbox
                     v-model="searchQuery"
                     v-model:input="inputElement"
-                    :value="model ? model[optionLabel] : null"
                     :label="label"
                     :placeholder="placeholder"
-                    :disabled="!searchable || (lockOnSelect && model)"
-                    :icon="model?.icon ?? icon"
+                    :disabled="!searchable"
+                    :icon="icon"
                     :error="!!error"
                     :size="size"
                     :color="color"
@@ -142,20 +122,9 @@ watch(searchQuery, () => {
                     :on-focus="onFocus"
                     :on-blur="onBlur"
                 >
-                    <template v-if="lockOnSelect && searchable && model" #right-section>
-                        <div class="flex items-center pr-1">
-                            <IconButton
-                                :icon="faXmark"
-                                :on-click="deselect"
-                                variant="subtle"
-                                color="base"
-                                :size="size"
-                            />
-                        </div>
-                    </template>
-                    <template v-else-if="!searchable" #right-section>
-                        <div class="flex items-center pr-2 text-secondary-text">
-                            <FontAwesomeIcon :icon="faSort" :size="size" />
+                    <template #left-section>
+                        <div v-for="(selectedOption, idx) in model" :key="optionLabel[trackBy]">
+                            <slot name="selectedTag" :option="selectedOption" :deselect="() => deselect(idx)" />
                         </div>
                     </template>
                 </Textbox>
@@ -163,7 +132,7 @@ watch(searchQuery, () => {
 
             <DropdownOptions
                 :container="dropdownContainer"
-                :options="options"
+                :options="filteredOptions"
                 :option-label="optionLabel"
                 :track-by="trackBy"
                 :open="dropdownOpen"

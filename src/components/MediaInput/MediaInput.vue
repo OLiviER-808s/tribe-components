@@ -3,10 +3,10 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import DragAndDropFiles from './DragAndDropFiles.vue'
 import MediaCarousel from './MediaCarousel.vue'
 import AttachmentList from './AttachmentList.vue'
-import FileButton from './FileButton.vue'
+import FileButton from './FileButton/FileButton.vue'
 import IconButton from './IconButton.vue'
 import { computed, ref } from 'vue'
-import { useFiles } from '../composables/useFiles'
+import { useFiles } from '../../composables/useFiles'
 
 const props = defineProps({
     label: String,
