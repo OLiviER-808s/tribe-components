@@ -1,7 +1,7 @@
 <script setup>
 import {computed, onBeforeUnmount, onMounted, ref, useSlots, watch} from 'vue'
-import Textbox from './Textbox.vue'
-import DropdownOptions from "./DropdownOptions/DropdownOptions.vue"
+import Textbox from '../Textbox/Textbox.vue'
+import DropdownOptions from "../DropdownOptions/DropdownOptions.vue"
 
 const props = defineProps({
     options: Array,

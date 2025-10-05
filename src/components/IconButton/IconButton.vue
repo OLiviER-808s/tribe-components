@@ -1,6 +1,6 @@
 <script setup>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import Button from './Button/Button.vue'
+import Button from '../Button/Button.vue'
 import { computed } from 'vue'
 
 const props = defineProps({

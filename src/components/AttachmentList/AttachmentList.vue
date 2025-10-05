@@ -3,9 +3,9 @@ import { faFile, faHeadphones, faVideoCamera, faXmark } from '@fortawesome/free-
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {computed, ref, watch} from 'vue'
 import Draggable from 'vuedraggable'
-import { useIsHandheld } from '../composables/useIsHandheld'
-import {useFiles} from "../composables/useFiles"
-import {reorderElementInArray} from "../utils/utils"
+import { useIsHandheld } from '../../composables/useIsHandheld'
+import {useFiles} from "../../composables/useFiles"
+import {reorderElementInArray} from "../../utils/utils"
 
 const props = defineProps({
     size: String,

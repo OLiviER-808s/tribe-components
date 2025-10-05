@@ -5,9 +5,8 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons'
 const props = defineProps({
     name: String,
     error: String,
-    checkedByDefualt: Boolean
 })
-const checked = defineModel({ default: props.checkedByDefualt })
+const checked = defineModel({ default: false })
 const emit = defineEmits(['toggle'])
 
 const handleToggle = () => {

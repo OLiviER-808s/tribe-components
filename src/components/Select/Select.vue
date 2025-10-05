@@ -1,10 +1,10 @@
 <script setup>
 import {nextTick, onBeforeUnmount, onMounted, ref, useSlots, watch} from 'vue'
-import Textbox from './Textbox.vue'
+import Textbox from '../Textbox/Textbox.vue'
 import { faSort, faXmark } from '@fortawesome/free-solid-svg-icons'
-import IconButton from './IconButton.vue'
+import IconButton from '../Iconbutton/IconButton.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import DropdownOptions from "./DropdownOptions/DropdownOptions.vue"
+import DropdownOptions from "../DropdownOptions/DropdownOptions.vue"
 
 const props = defineProps({
     options: Array,

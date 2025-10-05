@@ -1,9 +1,9 @@
 <script setup>
 import { ref } from 'vue'
-import Dropzone from './Dropzone.vue'
+import Dropzone from '../Dropzone/Dropzone.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faUpload } from '@fortawesome/free-solid-svg-icons'
-import FileButton from './FileButton.vue'
+import FileButton from '../FileButton/FileButton.vue'
 
 const props = defineProps({
     label: String,

@@ -1,5 +1,5 @@
 <script setup>
-import IconButton from './IconButton.vue'
+import IconButton from '../IconButton/IconButton.vue'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { onMounted, ref } from 'vue'
 

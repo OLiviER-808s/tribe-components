@@ -1,19 +1,18 @@
 <script setup>
-import Card from './Card.vue'
+import Card from '../Card/Card.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { ref } from 'vue'
 
 const props = defineProps({
     title: String,
-    openByDefault: Boolean,
     variant: {
         type: String,
         default: 'card',
     },
 })
 
-const open = defineModel({ default: props.openByDefault })
+const open = defineModel({ default: false })
 </script>
 
 <template>

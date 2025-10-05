@@ -1,7 +1,7 @@
 <script setup>
 import { faFile } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { useIsHandheld } from "../composables/useIsHandheld"
+import { useIsHandheld } from "../../composables/useIsHandheld"
 import { watch } from "vue"
 
 const props = defineProps({

@@ -1,7 +1,7 @@
 <script setup>
-import Textbox from './Textbox.vue'
+import Textbox from '../Textbox/Textbox.vue'
 import { computed } from 'vue'
-import { countDecimals } from '../utils/utils'
+import { countDecimals } from '../../utils/utils'
 
 const props = defineProps({
     currencySymbol: {
