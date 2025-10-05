@@ -1,3 +1,5 @@
+import { createVfm } from 'vue-final-modal'
+
 export { Accordion } from './components/Accordion/index.js'
 export { AttachmentList } from './components/AttachmentList/index.js'
 export { Avatar } from './components/Avatar/index.js'
@@ -34,3 +36,10 @@ export { Toggle } from './components/Toggle/index.js'
 export { Tooltip } from './components/Tooltip/index.js'
 export { useFiles } from './composables/useFiles.js'
 export { useIsHandheld } from './composables/useIsHandheld.js'
+
+export default {
+    install(app) {
+        const vfm = createVfm()
+        app.use(vfm)
+    }
+}

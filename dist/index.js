@@ -1,11 +1,11 @@
-import { createElementBlock as s, openBlock as a, normalizeClass as f, renderSlot as w, mergeModels as h, useModel as $, createBlock as T, createCommentVNode as k, withCtx as z, createElementVNode as c, withDirectives as P, createVNode as x, toDisplayString as g, Transition as U, unref as y, vShow as W, ref as D, onMounted as N, onUnmounted as te, computed as B, watch as O, Fragment as L, renderList as A, normalizeStyle as me, createTextVNode as Z, withModifiers as G, useSlots as R, nextTick as le, resolveComponent as _, onBeforeUnmount as ne, createSlots as K, vModelText as fe } from "vue";
+import { VueFinalModal as me, useModal as fe, ModalsContainer as ve, createVfm as ye } from "vue-final-modal";
+import { createElementBlock as s, openBlock as a, normalizeClass as f, renderSlot as w, mergeModels as h, useModel as $, createBlock as T, createCommentVNode as k, withCtx as z, createElementVNode as c, withDirectives as P, createVNode as x, toDisplayString as g, Transition as U, unref as y, vShow as W, ref as D, onMounted as N, onUnmounted as te, computed as B, watch as O, Fragment as L, renderList as A, normalizeStyle as ge, createTextVNode as Z, withModifiers as G, useSlots as R, nextTick as le, resolveComponent as _, onBeforeUnmount as ne, createSlots as K, vModelText as be } from "vue";
 import { FontAwesomeIcon as F } from "@fortawesome/vue-fontawesome";
-import { faChevronDown as ee, faHeadphones as ve, faVideoCamera as ye, faFile as ae, faXmark as X, faCheck as oe, faCalendar as ge, faUpload as be, faPlus as pe, faSort as he } from "@fortawesome/free-solid-svg-icons";
-import xe from "vuedraggable";
-import { v4 as $e } from "uuid";
-import Se from "@vuepic/vue-datepicker";
+import { faChevronDown as ee, faHeadphones as pe, faVideoCamera as he, faFile as ae, faXmark as X, faCheck as oe, faCalendar as xe, faUpload as $e, faPlus as Se, faSort as ke } from "@fortawesome/free-solid-svg-icons";
+import we from "vuedraggable";
+import { v4 as Ve } from "uuid";
+import Ce from "@vuepic/vue-datepicker";
 import { onKeyStroke as q } from "@vueuse/core";
-import { VueFinalModal as ke, useModal as we, ModalsContainer as Ve } from "vue-final-modal";
 const se = {
   __name: "Card",
   props: {
@@ -25,7 +25,7 @@ const se = {
       w(l.$slots, "default")
     ], 2));
   }
-}, Ce = { class: "text-xl font-medium" }, ze = { class: "pt-4" }, Me = { key: 1 }, Be = { class: "p-2" }, yl = {
+}, ze = { class: "text-xl font-medium" }, Me = { class: "pt-4" }, Be = { key: 1 }, De = { class: "p-2" }, gl = {
   __name: "Accordion",
   props: /* @__PURE__ */ h({
     title: String,
@@ -46,7 +46,7 @@ const se = {
           onClick: o[0] || (o[0] = (n) => l.value = !l.value),
           class: "flex items-center justify-between gap-2 cursor-pointer"
         }, [
-          c("h3", Ce, g(e.title), 1),
+          c("h3", ze, g(e.title), 1),
           x(U, { name: "rotate" }, {
             default: z(() => [
               c("div", {
@@ -61,14 +61,14 @@ const se = {
             _: 1
           })
         ]),
-        P(c("div", ze, [
+        P(c("div", Me, [
           w(t.$slots, "default")
         ], 512), [
           [W, l.value]
         ])
       ]),
       _: 3
-    })) : e.variant === "minimal" ? (a(), s("div", Me, [
+    })) : e.variant === "minimal" ? (a(), s("div", Be, [
       c("div", {
         onClick: o[1] || (o[1] = (n) => l.value = !l.value),
         class: "p-2 border-b-2 border-base-text flex items-center justify-between gap-2 cursor-pointer"
@@ -85,7 +85,7 @@ const se = {
           _: 1
         })
       ]),
-      P(c("div", Be, [
+      P(c("div", De, [
         w(t.$slots, "default")
       ], 512), [
         [W, l.value]
@@ -101,18 +101,18 @@ const se = {
 }, formatFiles: (t) => t?.map((o) => o.uuid ? o : {
   name: o.name,
   size: o.size,
-  uuid: $e(),
+  uuid: Ve(),
   preview: URL.createObjectURL(o),
   type: o.type?.split("/")[0]
-}) }), De = (e, l, t) => {
+}) }), Fe = (e, l, t) => {
   if (l < 0 || l >= e.length || t < 0 || t >= e.length)
     throw new Error("Invalid indices");
   const [o] = e.splice(l, 1);
   return e.splice(t, 0, o), e;
-}, Fe = (e) => Math.floor(e) !== e && e.toString().split(".")[1]?.length || 0, Te = { class: "flex justify-center gap-2 w-full p-4" }, Ie = ["onMouseenter"], je = ["onClick"], Ee = ["src", "alt"], Le = {
+}, Te = (e) => Math.floor(e) !== e && e.toString().split(".")[1]?.length || 0, Ie = { class: "flex justify-center gap-2 w-full p-4" }, je = ["onMouseenter"], Ee = ["onClick"], Le = ["src", "alt"], Ae = {
   key: 1,
   class: "w-full h-full flex items-center justify-center text-secondary-text bg-card rounded-md"
-}, Ae = ["onClick"], Oe = {
+}, Oe = ["onClick"], Ue = {
   __name: "AttachmentList",
   props: /* @__PURE__ */ h({
     size: String
@@ -127,11 +127,11 @@ const se = {
     const l = e, t = $(e, "files"), o = $(e, "selectedIdx"), n = re(), { formatFiles: i } = ie(), r = D(-1), d = D(i(l.files)), u = (v) => {
       t.value = t.value.filter((m, S) => S !== v), o.value > v && (o.value -= 1);
     }, b = ({ moved: { oldIndex: v, newIndex: m } }) => {
-      t.value = De(t.value, v, m), o.value === v ? o.value = m : o.value > v && o.value <= m ? o.value-- : o.value < v && o.value >= m && o.value++;
+      t.value = Fe(t.value, v, m), o.value === v ? o.value = m : o.value > v && o.value <= m ? o.value-- : o.value < v && o.value >= m && o.value++;
     }, p = B(() => l.size === "lg" ? "w-16 h-16" : "w-14 h-14");
-    return O(t, () => d.value = i(l.files)), (v, m) => (a(), s("div", Te, [
+    return O(t, () => d.value = i(l.files)), (v, m) => (a(), s("div", Ie, [
       w(v.$slots, "additional-items-before"),
-      x(y(xe), {
+      x(y(we), {
         modelValue: d.value,
         "onUpdate:modelValue": m[1] || (m[1] = (S) => d.value = S),
         "item-key": "uuid",
@@ -155,14 +155,14 @@ const se = {
                 src: S.preview,
                 alt: S.name,
                 class: "w-full h-full object-cover rounded-md"
-              }, null, 8, Ee)) : (a(), s("span", Le, [
+              }, null, 8, Le)) : (a(), s("span", Ae, [
                 S.type === "audio" ? (a(), T(y(F), {
                   key: 0,
-                  icon: y(ve),
+                  icon: y(pe),
                   size: "lg"
                 }, null, 8, ["icon"])) : S.type === "video" ? (a(), T(y(F), {
                   key: 1,
-                  icon: y(ye),
+                  icon: y(he),
                   size: "lg"
                 }, null, 8, ["icon"])) : (a(), T(y(F), {
                   key: 2,
@@ -170,7 +170,7 @@ const se = {
                   size: "lg"
                 }, null, 8, ["icon"]))
               ]))
-            ], 8, je),
+            ], 8, Ee),
             r.value === M || y(n) ? (a(), s("button", {
               key: 0,
               onClick: (E) => u(M),
@@ -180,15 +180,15 @@ const se = {
                 icon: y(X),
                 size: "xs"
               }, null, 8, ["icon"])
-            ], 8, Ae)) : k("", !0)
-          ], 42, Ie)
+            ], 8, Oe)) : k("", !0)
+          ], 42, je)
         ]),
         _: 1
       }, 8, ["modelValue"]),
       w(v.$slots, "additional-items-after")
     ]));
   }
-}, Ue = ["src"], gl = {
+}, Ne = ["src"], bl = {
   __name: "Avatar",
   props: {
     src: String,
@@ -202,9 +202,9 @@ const se = {
       src: e.src,
       alt: "avatar",
       class: f(`rounded-full ${e.styles}`)
-    }, null, 10, Ue));
+    }, null, 10, Ne));
   }
-}, Ne = { class: "flex items-center" }, Pe = ["src", "alt"], bl = {
+}, Pe = { class: "flex items-center" }, He = ["src", "alt"], pl = {
   __name: "AvatarGroup",
   props: {
     avatars: Array,
@@ -218,17 +218,17 @@ const se = {
     }
   },
   setup(e) {
-    return (l, t) => (a(), s("div", Ne, [
+    return (l, t) => (a(), s("div", Pe, [
       (a(!0), s(L, null, A(e.avatars, (o, n) => (a(), s("img", {
         key: n,
         src: o,
         alt: `avatar ${n + 1}`,
         class: f(`${e.width} rounded-full relative`),
-        style: me({ marginLeft: n === 0 ? "0" : `-${e.overlap}px` })
-      }, null, 14, Pe))), 128))
+        style: ge({ marginLeft: n === 0 ? "0" : `-${e.overlap}px` })
+      }, null, 14, He))), 128))
     ]));
   }
-}, pl = {
+}, hl = {
   __name: "Badge",
   props: {
     content: [String, Number, null],
@@ -251,7 +251,7 @@ const se = {
       ])
     ], 2));
   }
-}, He = ["disabled", "type"], Re = {
+}, Re = ["disabled", "type"], Qe = {
   __name: "Button",
   props: {
     color: {
@@ -311,12 +311,12 @@ const se = {
       type: e.type
     }, [
       w(u.$slots, "default")
-    ], 42, He));
+    ], 42, Re));
   }
-}, Qe = { class: "flex items-center gap-2" }, qe = ["for"], We = {
+}, qe = { class: "flex items-center gap-2" }, We = ["for"], Ge = {
   key: 0,
   class: "text-error text-sm"
-}, hl = {
+}, xl = {
   __name: "Checkbox",
   props: /* @__PURE__ */ h({
     name: String,
@@ -331,7 +331,7 @@ const se = {
       t.value = !t.value, o("toggle", t.value);
     };
     return (i, r) => (a(), s("div", null, [
-      c("div", Qe, [
+      c("div", qe, [
         c("button", {
           onClick: r[0] || (r[0] = (d) => n()),
           type: "button",
@@ -345,12 +345,12 @@ const se = {
         ], 2),
         c("label", { for: e.name }, [
           w(i.$slots, "default")
-        ], 8, qe)
+        ], 8, We)
       ]),
-      e.error ? (a(), s("p", We, g(e.error), 1)) : k("", !0)
+      e.error ? (a(), s("p", Ge, g(e.error), 1)) : k("", !0)
     ]));
   }
-}, xl = {
+}, $l = {
   __name: "ClickableTag",
   props: /* @__PURE__ */ h({
     color: {
@@ -383,16 +383,16 @@ const se = {
       w(d.$slots, "default")
     ], 2));
   }
-}, Ge = ["for"], Ke = {
+}, Ke = ["for"], Ze = {
   key: 0,
   class: "flex justify-center items-center w-10 rounded-l-md"
-}, Ze = { key: 0 }, Xe = { key: 1 }, Je = {
+}, Xe = { key: 0 }, Je = { key: 1 }, Ye = {
   key: 2,
   class: "text-secondary-text"
-}, Ye = ["name", "type", "placeholder", "value", "disabled"], _e = {
+}, _e = ["name", "type", "placeholder", "value", "disabled"], et = {
   key: 0,
   class: "text-error text-sm"
-}, et = {
+}, tt = {
   key: 1,
   class: "text-success text-sm"
 }, Q = {
@@ -443,7 +443,7 @@ const se = {
       c("label", {
         for: e.name,
         class: "font-medium"
-      }, g(e.label), 9, Ge),
+      }, g(e.label), 9, Ke),
       c("div", {
         class: f([
           "rounded-lg flex items-center duration-300",
@@ -458,7 +458,7 @@ const se = {
           }
         ])
       }, [
-        e.icon ? (a(), s("div", Ke, [
+        e.icon ? (a(), s("div", Ze, [
           x(y(F), {
             icon: e.icon,
             size: e.size,
@@ -473,7 +473,7 @@ const se = {
             key: 0,
             class: f([{ "pl-0": e.icon, "text-sm": e.size === "sm" }, "flex-grow"])
           }, [
-            n.value ? (a(), s("span", Ze, g(n.value), 1)) : e.value ? (a(), s("span", Xe, g(e.value), 1)) : e.placeholder ? (a(), s("span", Je, g(e.placeholder), 1)) : k("", !0)
+            n.value ? (a(), s("span", Xe, g(n.value), 1)) : e.value ? (a(), s("span", Je, g(e.value), 1)) : e.placeholder ? (a(), s("span", Ye, g(e.placeholder), 1)) : k("", !0)
           ], 2)) : (a(), s("input", {
             key: 1,
             ref_key: "inputElement",
@@ -487,14 +487,14 @@ const se = {
             onFocus: u,
             onBlur: b,
             class: f([{ "placeholder:text-sm": e.size === "sm" }, "p-0 flex-grow border-none outline-none rounded-lg bg-transparent placeholder:text-secondary-text"])
-          }, null, 42, Ye))
+          }, null, 42, _e))
         ], 2),
         w(v.$slots, "right-section")
       ], 2),
-      e.error && typeof e.error != "boolean" ? (a(), s("p", _e, g(e.error), 1)) : e.success && typeof e.error != "boolean" ? (a(), s("p", et, g(e.success), 1)) : k("", !0)
+      e.error && typeof e.error != "boolean" ? (a(), s("p", et, g(e.error), 1)) : e.success && typeof e.error != "boolean" ? (a(), s("p", tt, g(e.success), 1)) : k("", !0)
     ]));
   }
-}, $l = {
+}, Sl = {
   __name: "CurrencyInput",
   props: /* @__PURE__ */ h({
     currencySymbol: {
@@ -522,7 +522,7 @@ const se = {
   setup(e) {
     const l = e, t = $(e, "modelValue"), o = (i) => {
       let r = parseFloat(i.target.value.replace(/[^\d.-]/g, ""));
-      Fe(r) > 0 && (r = (Math.round(r * 100) / 100).toFixed(2)), t.value = r;
+      Te(r) > 0 && (r = (Math.round(r * 100) / 100).toFixed(2)), t.value = r;
     }, n = B(() => {
       if (t.value)
         return `${l.currencySymbol}${t.value}`;
@@ -545,10 +545,10 @@ const se = {
     day: "2-digit",
     timeZone: t
   }).format(e);
-}, tt = (e) => `${H(e)} ${formatTimestamp24Hour(e)}`, lt = (e) => `${H(e[0])} - ${H(e[1])}`, nt = { class: "font-medium" }, at = {
+}, lt = (e) => `${H(e)} ${formatTimestamp24Hour(e)}`, nt = (e) => `${H(e[0])} - ${H(e[1])}`, at = { class: "font-medium" }, ot = {
   key: 0,
   class: "text-error text-sm"
-}, Sl = {
+}, kl = {
   __name: "DatePicker",
   props: /* @__PURE__ */ h({
     error: String,
@@ -583,12 +583,12 @@ const se = {
   }),
   emits: ["update:modelValue"],
   setup(e) {
-    const l = e, t = $(e, "modelValue"), o = D(null), n = B(() => l.range ? lt : l.includeTime ? tt : H);
+    const l = e, t = $(e, "modelValue"), o = D(null), n = B(() => l.range ? nt : l.includeTime ? lt : H);
     return (i, r) => (a(), s("div", {
       class: f(e.styles)
     }, [
-      c("label", nt, g(e.label), 1),
-      x(y(Se), {
+      c("label", at, g(e.label), 1),
+      x(y(Ce), {
         modelValue: t.value,
         "onUpdate:modelValue": r[0] || (r[0] = (d) => t.value = d),
         ref_key: "dp",
@@ -605,7 +605,7 @@ const se = {
           x(Q, {
             placeholder: e.placeholder,
             value: d,
-            icon: y(ge),
+            icon: y(xe),
             variant: e.variant,
             size: e.size,
             color: e.color,
@@ -614,10 +614,10 @@ const se = {
         ]),
         _: 1
       }, 8, ["modelValue", "format", "disabled", "enable-time-picker", "range", "min-date", "max-date"]),
-      e.error ? (a(), s("p", at, g(e.error), 1)) : k("", !0)
+      e.error ? (a(), s("p", ot, g(e.error), 1)) : k("", !0)
     ], 2));
   }
-}, ot = {
+}, st = {
   __name: "Dropzone",
   props: {
     modelValue: { default: !1 },
@@ -636,7 +636,7 @@ const se = {
       w(i.$slots, "default", { isDragOver: o.value })
     ], 32));
   }
-}, st = ["multiple", "accept"], ue = {
+}, rt = ["multiple", "accept"], ue = {
   __name: "FileButton",
   props: {
     multiple: {
@@ -660,22 +660,22 @@ const se = {
         multiple: e.multiple,
         accept: e.accept,
         hidden: ""
-      }, null, 40, st),
+      }, null, 40, rt),
       c("div", { onClick: i }, [
         w(r.$slots, "default")
       ])
     ]));
   }
-}, rt = {
-  key: 0,
-  class: "font-medium mb-1"
 }, it = {
   key: 0,
+  class: "font-medium mb-1"
+}, ut = {
+  key: 0,
   class: "mb-2"
-}, ut = { class: "font-medium" }, ct = {
+}, ct = { class: "font-medium" }, dt = {
   key: 0,
   class: "text-error text-sm mt-1"
-}, dt = {
+}, mt = {
   __name: "DragAndDropFiles",
   props: /* @__PURE__ */ h({
     label: String,
@@ -693,14 +693,14 @@ const se = {
   setup(e) {
     const l = $(e, "modelValue"), t = (i) => l.value = Array.from(i), o = (i) => t(i.dataTransfer.files), n = (i) => t(i.target.files);
     return (i, r) => (a(), s("div", null, [
-      e.label ? (a(), s("p", rt, g(e.label), 1)) : k("", !0),
+      e.label ? (a(), s("p", it, g(e.label), 1)) : k("", !0),
       c("div", null, [
         x(ue, {
           onChange: n,
           accept: "image/*"
         }, {
           default: z(() => [
-            x(ot, { onDrop: o }, {
+            x(st, { onDrop: o }, {
               default: z(({ isDragOver: d }) => [
                 c("div", {
                   class: f(["cursor-pointer duration-300 text-center border-2 border-dashed py-6 px-4 rounded-lg", {
@@ -709,13 +709,13 @@ const se = {
                     "text-error border-error": e.error
                   }])
                 }, [
-                  e.withIcon ? (a(), s("div", it, [
+                  e.withIcon ? (a(), s("div", ut, [
                     x(y(F), {
-                      icon: y(be),
+                      icon: y($e),
                       size: "lg"
                     }, null, 8, ["icon"])
                   ])) : k("", !0),
-                  c("p", ut, g(e.dropText), 1)
+                  c("p", ct, g(e.dropText), 1)
                 ], 2)
               ]),
               _: 1
@@ -723,7 +723,7 @@ const se = {
           ]),
           _: 1
         }),
-        e.error ? (a(), s("p", ct, g(e.error), 1)) : k("", !0)
+        e.error ? (a(), s("p", dt, g(e.error), 1)) : k("", !0)
       ])
     ]));
   }
@@ -732,10 +732,10 @@ const se = {
   for (const [o, n] of l)
     t[o] = n;
   return t;
-}, mt = ["onClick", "onMouseover"], ft = { key: 1 }, vt = {
+}, ft = ["onClick", "onMouseover"], vt = { key: 1 }, yt = {
   key: 0,
   class: "text-xs text-secondary-text"
-}, yt = {
+}, gt = {
   __name: "DropdownOptions",
   props: /* @__PURE__ */ h({
     container: Object,
@@ -804,17 +804,17 @@ const se = {
             y(n).option ? w(m.$slots, "option", {
               key: 0,
               option: M
-            }, void 0, !0) : (a(), s("div", ft, [
+            }, void 0, !0) : (a(), s("div", vt, [
               Z(g(M[e.optionLabel]) + " ", 1),
-              M[e.optionDescription] ? (a(), s("div", vt, g(M[e.optionDescription]), 1)) : k("", !0)
+              M[e.optionDescription] ? (a(), s("div", yt, g(M[e.optionDescription]), 1)) : k("", !0)
             ]))
-          ], 42, mt))), 128))
+          ], 42, ft))), 128))
         ], 2)) : k("", !0)
       ]),
       _: 3
     }, 8, ["name"]));
   }
-}, ce = /* @__PURE__ */ J(yt, [["__scopeId", "data-v-2cf8e7b1"]]), Y = {
+}, ce = /* @__PURE__ */ J(gt, [["__scopeId", "data-v-2cf8e7b1"]]), Y = {
   __name: "IconButton",
   props: {
     icon: {
@@ -867,7 +867,7 @@ const se = {
           return "w-8 h-8";
       }
     });
-    return (o, n) => (a(), T(Re, {
+    return (o, n) => (a(), T(Qe, {
       styles: `${e.styles} ${t.value} flex justify-center items-center !px-0 !py-0`,
       href: e.href,
       type: e.type,
@@ -885,7 +885,7 @@ const se = {
       _: 1
     }, 8, ["styles", "href", "type", "color", "on-click", "disabled", "variant"]));
   }
-}, gt = { class: "flex-grow" }, bt = { class: "text-md font-medium" }, kl = {
+}, bt = { class: "flex-grow" }, pt = { class: "text-md font-medium" }, wl = {
   __name: "FlashMessage",
   props: {
     content: String,
@@ -910,8 +910,8 @@ const se = {
           key: 0,
           class: f(`w-96 flex items-center gap-2 rounded-md p-2 my-2 bg-${e.color}/${e.opacity}`)
         }, [
-          c("div", gt, [
-            c("p", bt, g(e.content), 1)
+          c("div", bt, [
+            c("p", pt, g(e.content), 1)
           ]),
           x(Y, {
             icon: y(X),
@@ -924,26 +924,26 @@ const se = {
       _: 1
     }));
   }
-}, pt = { class: "flex items-center justify-center" }, ht = {
+}, ht = { class: "flex items-center justify-center" }, xt = {
   key: 0,
   class: "text-center font-medium mt-2"
-}, xt = {
+}, $t = {
   __name: "Loader",
   props: {
     label: String
   },
   setup(e) {
-    return (l, t) => (a(), s("div", pt, [
+    return (l, t) => (a(), s("div", ht, [
       c("div", null, [
         t[0] || (t[0] = c("div", { class: "spinner" }, null, -1)),
-        e.label ? (a(), s("p", ht, g(e.label), 1)) : k("", !0)
+        e.label ? (a(), s("p", xt, g(e.label), 1)) : k("", !0)
       ])
     ]));
   }
-}, wl = /* @__PURE__ */ J(xt, [["__scopeId", "data-v-d8288a84"]]), $t = { class: "flex items-center justify-center" }, St = { key: 0 }, kt = ["src", "alt"], wt = { key: 1 }, Vt = ["src"], Ct = { key: 2 }, zt = ["src"], Mt = {
+}, Vl = /* @__PURE__ */ J($t, [["__scopeId", "data-v-d8288a84"]]), St = { class: "flex items-center justify-center" }, kt = { key: 0 }, wt = ["src", "alt"], Vt = { key: 1 }, Ct = ["src"], zt = { key: 2 }, Mt = ["src"], Bt = {
   key: 3,
   class: "text-center"
-}, Bt = {
+}, Dt = {
   __name: "MediaCarousel",
   props: /* @__PURE__ */ h({
     files: Array,
@@ -975,25 +975,25 @@ const se = {
         default: z(() => [
           (a(!0), s(L, null, A(e.files, (u) => (a(), T(r, null, {
             default: z(() => [
-              c("div", $t, [
-                u.type === "image" ? (a(), s("div", St, [
+              c("div", St, [
+                u.type === "image" ? (a(), s("div", kt, [
                   c("img", {
                     src: u.preview,
                     alt: u.name,
                     class: f(e.maxMediaHeight)
-                  }, null, 10, kt)
-                ])) : u.type === "video" ? (a(), s("div", wt, [
+                  }, null, 10, wt)
+                ])) : u.type === "video" ? (a(), s("div", Vt, [
                   c("video", {
                     src: u.preview,
                     controls: "",
                     class: f(e.maxMediaHeight)
-                  }, null, 10, Vt)
-                ])) : u.type === "audio" ? (a(), s("div", Ct, [
+                  }, null, 10, Ct)
+                ])) : u.type === "audio" ? (a(), s("div", zt, [
                   c("audio", {
                     src: u.preview,
                     controls: ""
-                  }, null, 8, zt)
-                ])) : (a(), s("div", Mt, [
+                  }, null, 8, Mt)
+                ])) : (a(), s("div", Bt, [
                   x(y(F), {
                     icon: y(ae),
                     size: "xl"
@@ -1009,16 +1009,16 @@ const se = {
       }, 8, ["navigation"]);
     };
   }
-}, Dt = {
+}, Ft = {
   key: 0,
   class: "font-medium mb-1"
-}, Ft = {
+}, Tt = {
   key: 1,
   class: "mb-2"
-}, Tt = {
+}, It = {
   key: 0,
   class: "text-error text-sm mt-1"
-}, Vl = {
+}, Cl = {
   __name: "MediaInput",
   props: /* @__PURE__ */ h({
     label: String,
@@ -1032,14 +1032,14 @@ const se = {
   setup(e) {
     const l = $(e, "modelValue"), t = D(0), { formatFiles: o } = ie(), n = (r) => l.value.push(...r.target.files), i = B(() => o(l.value));
     return (r, d) => (a(), s("div", null, [
-      e.label ? (a(), s("label", Dt, g(e.label), 1)) : k("", !0),
-      l.value.length > 0 ? (a(), s("div", Ft, [
-        x(Bt, {
+      e.label ? (a(), s("label", Ft, g(e.label), 1)) : k("", !0),
+      l.value.length > 0 ? (a(), s("div", Tt, [
+        x(Dt, {
           "selected-idx": t.value,
           "onUpdate:selectedIdx": d[0] || (d[0] = (u) => t.value = u),
           files: i.value
         }, null, 8, ["selected-idx", "files"]),
-        x(Oe, {
+        x(Ue, {
           "selected-idx": t.value,
           "onUpdate:selectedIdx": d[1] || (d[1] = (u) => t.value = u),
           files: l.value,
@@ -1052,7 +1052,7 @@ const se = {
             }, {
               default: z(() => [
                 x(Y, {
-                  icon: y(pe),
+                  icon: y(Se),
                   color: "secondary",
                   variant: "dashed",
                   styles: "!w-14 !h-14 !rounded-md"
@@ -1063,8 +1063,8 @@ const se = {
           ]),
           _: 1
         }, 8, ["selected-idx", "files"]),
-        e.error ? (a(), s("p", Tt, g(e.error), 1)) : k("", !0)
-      ])) : (a(), T(dt, {
+        e.error ? (a(), s("p", It, g(e.error), 1)) : k("", !0)
+      ])) : (a(), T(mt, {
         key: 2,
         "with-icon": "",
         "drop-text": e.placeholder,
@@ -1074,7 +1074,7 @@ const se = {
       }, null, 8, ["drop-text", "modelValue", "error"]))
     ]));
   }
-}, It = {
+}, jt = {
   __name: "ModalContent",
   props: {
     contentClass: {
@@ -1085,7 +1085,7 @@ const se = {
   emits: ["close"],
   setup(e, { emit: l }) {
     const t = l;
-    return te(() => t("close")), (o, n) => (a(), T(y(ke), {
+    return te(() => t("close")), (o, n) => (a(), T(y(me), {
       "overlay-transition": "vfm-fade",
       "content-transition": "vfm-fade",
       class: "flex justify-center items-center",
@@ -1102,7 +1102,7 @@ const se = {
       _: 3
     }, 8, ["content-class"]));
   }
-}, Cl = {
+}, zl = {
   __name: "Modal",
   props: /* @__PURE__ */ h({
     contentClass: {
@@ -1115,8 +1115,8 @@ const se = {
   }),
   emits: ["update:modelValue"],
   setup(e) {
-    const l = e, t = $(e, "modelValue"), o = R(), n = we({
-      component: It,
+    const l = e, t = $(e, "modelValue"), o = R(), n = fe({
+      component: jt,
       attrs: {
         contentClass: l.contentClass,
         onClose: () => t.value = !1
@@ -1127,12 +1127,12 @@ const se = {
     });
     return O(t, () => {
       t.value === !0 ? n.open() : t.value === !1 && n.close();
-    }), (i, r) => (a(), T(y(Ve)));
+    }), (i, r) => (a(), T(y(ve)));
   }
-}, jt = {
+}, Et = {
   key: 0,
   class: "text-error text-sm"
-}, zl = {
+}, Ml = {
   __name: "Multiselect",
   props: /* @__PURE__ */ h({
     options: Array,
@@ -1254,19 +1254,19 @@ const se = {
           } : void 0
         ]), 1032, ["container", "options", "option-label", "track-by", "open", "accepts-empty-selection"])
       ], 512),
-      e.error && typeof e.error != "boolean" ? (a(), s("p", jt, g(e.error), 1)) : k("", !0)
+      e.error && typeof e.error != "boolean" ? (a(), s("p", Et, g(e.error), 1)) : k("", !0)
     ], 2));
   }
-}, Et = { class: "font-medium" }, Lt = {
+}, Lt = { class: "font-medium" }, At = {
   key: 0,
   class: "text-text-secondary flex justify-center items-center w-10 rounded-l-md"
-}, At = ["placeholder", "min", "max", "disabled"], Ot = {
+}, Ot = ["placeholder", "min", "max", "disabled"], Ut = {
   key: 0,
   class: "text-error text-sm"
-}, Ut = {
+}, Nt = {
   key: 1,
   class: "text-error text-sm"
-}, Ml = {
+}, Bl = {
   __name: "NumberInput",
   props: /* @__PURE__ */ h({
     label: String,
@@ -1304,11 +1304,11 @@ const se = {
       () => l.variant === "filled" ? `bg-${l.color}` : "bg-transparent border border-secondary-text"
     ), n = B(() => l.modelValue > l.max ? `Value must be ${l.max} or less.` : l.modelValue < l.min ? `Value must be ${l.min} or more.` : !1);
     return (i, r) => (a(), s("div", null, [
-      c("h4", Et, g(e.label), 1),
+      c("h4", Lt, g(e.label), 1),
       c("div", {
         class: f(["rounded-lg flex h-10 items-center", o.value, e.styles, { error: n.value || e.error, "px-2": !e.icon }])
       }, [
-        e.icon ? (a(), s("div", Lt, [
+        e.icon ? (a(), s("div", At, [
           x(y(F), {
             icon: e.icon,
             size: "1x",
@@ -1323,14 +1323,14 @@ const se = {
           max: e.max,
           disabled: e.disabled,
           class: "flex-grow w-full py-2 px-0 border-none outline-none rounded-lg placeholder:text-secondary-text bg-transparent appearance-none"
-        }, null, 8, At), [
-          [fe, t.value]
+        }, null, 8, Ot), [
+          [be, t.value]
         ])
       ], 2),
-      n.value ? (a(), s("p", Ot, g(n.value), 1)) : e.error && typeof e.error == "string" ? (a(), s("p", Ut, g(e.error), 1)) : k("", !0)
+      n.value ? (a(), s("p", Ut, g(n.value), 1)) : e.error && typeof e.error == "string" ? (a(), s("p", Nt, g(e.error), 1)) : k("", !0)
     ]));
   }
-}, Bl = {
+}, Dl = {
   __name: "Paragraph",
   props: {
     text: String,
@@ -1344,7 +1344,7 @@ const se = {
       class: f([e.styles, { "whitespace-pre-wrap": e.includeWhitespace }])
     }, g(t.value), 3));
   }
-}, Nt = ["name", "value", "checked"], Pt = { class: "rounded-full border-2 border-secondary flex items-center justify-center h-4 w-4" }, Dl = {
+}, Pt = ["name", "value", "checked"], Ht = { class: "rounded-full border-2 border-secondary flex items-center justify-center h-4 w-4" }, Fl = {
   __name: "Radio",
   props: /* @__PURE__ */ h({
     value: [String, Boolean],
@@ -1372,8 +1372,8 @@ const se = {
         value: e.value,
         checked: r.value,
         onChange: b[0] || (b[0] = (p) => d(p))
-      }, null, 40, Nt),
-      c("span", Pt, [
+      }, null, 40, Pt),
+      c("span", Ht, [
         c("span", {
           class: f(["rounded-full h-2 w-2", { "bg-secondary": i.value || r.value }])
         }, null, 2)
@@ -1381,10 +1381,10 @@ const se = {
       c("span", null, g(e.label), 1)
     ], 32));
   }
-}, Ht = { class: "flex items-center pr-1" }, Rt = { class: "flex items-center pr-2 text-secondary-text" }, Qt = {
+}, Rt = { class: "flex items-center pr-1" }, Qt = { class: "flex items-center pr-2 text-secondary-text" }, qt = {
   key: 0,
   class: "text-error text-sm"
-}, Fl = {
+}, Tl = {
   __name: "Select",
   props: /* @__PURE__ */ h({
     options: Array,
@@ -1492,7 +1492,7 @@ const se = {
             e.lockOnSelect && e.searchable && n.value ? {
               name: "right-section",
               fn: z(() => [
-                c("div", Ht, [
+                c("div", Rt, [
                   x(Y, {
                     icon: y(X),
                     "on-click": v,
@@ -1506,9 +1506,9 @@ const se = {
             } : e.searchable ? void 0 : {
               name: "right-section",
               fn: z(() => [
-                c("div", Rt, [
+                c("div", Qt, [
                   x(y(F), {
-                    icon: y(he),
+                    icon: y(ke),
                     size: e.size
                   }, null, 8, ["icon", "size"])
                 ])
@@ -1535,13 +1535,13 @@ const se = {
           } : void 0
         ]), 1032, ["container", "options", "option-label", "track-by", "open", "accepts-empty-selection"])
       ], 512),
-      e.error && typeof e.error != "boolean" ? (a(), s("p", Qt, g(e.error), 1)) : k("", !0)
+      e.error && typeof e.error != "boolean" ? (a(), s("p", qt, g(e.error), 1)) : k("", !0)
     ], 2));
   }
-}, qt = {
+}, Wt = {
   key: 0,
   class: "w-full"
-}, Wt = { class: "flex justify-between items-center gap-2 px-4" }, Gt = ["onClick"], Kt = { class: "flex justify-between items-center mt-1 px-3" }, Zt = ["onClick"], Xt = ["onClick"], Tl = {
+}, Gt = { class: "flex justify-between items-center gap-2 px-4" }, Kt = ["onClick"], Zt = { class: "flex justify-between items-center mt-1 px-3" }, Xt = ["onClick"], Jt = ["onClick"], Il = {
   __name: "Stepper",
   props: /* @__PURE__ */ h({
     steps: Array,
@@ -1564,8 +1564,8 @@ const se = {
     const l = e, t = $(e, "modelValue"), o = B(() => l.steps.findIndex((u) => u.value === t.value)), n = B(() => l.steps.map((u, b) => b < o.value ? { ...u, status: "completed" } : b === o.value ? { ...u, status: "in-progress" } : { ...u, status: "uncompleted" })), i = (u) => u.status === "uncompleted" || u.status !== "in-progress" && l.variant === "minimalist" ? "text-secondary-text bg-card-accent" : `text-${l.color} bg-${l.color}${l.variant === "classic" ? "/30" : ""}`, r = (u) => l.canMoveForwards && u > o.value || l.canMoveBackwards && u < o.value ? "cursor-pointer" : "cursor-default", d = (u, b) => {
       (l.canMoveForwards && b > o.value || l.canMoveBackwards && b < o.value) && (t.value = u.value);
     };
-    return (u, b) => e.variant === "classic" ? (a(), s("div", qt, [
-      c("div", Wt, [
+    return (u, b) => e.variant === "classic" ? (a(), s("div", Wt, [
+      c("div", Gt, [
         (a(!0), s(L, null, A(n.value, (p, v) => (a(), s(L, {
           key: p.value
         }, [
@@ -1580,14 +1580,14 @@ const se = {
             x(y(F), {
               icon: p.status === "completed" && !e.canMoveBackwards ? y(oe) : p.icon
             }, null, 8, ["icon"])
-          ], 10, Gt),
+          ], 10, Kt),
           v < e.steps.length - 1 ? (a(), s("div", {
             key: 0,
             class: f(`flex-grow bg-${n.value[v + 1].status === "uncompleted" ? "secondary-text" : e.color} h-0.5`)
           }, null, 2)) : k("", !0)
         ], 64))), 128))
       ]),
-      c("div", Kt, [
+      c("div", Zt, [
         (a(!0), s(L, null, A(n.value, (p, v) => (a(), s("p", {
           key: "label-" + p.value,
           onClick: (m) => d(p, v),
@@ -1596,7 +1596,7 @@ const se = {
             "text-xs font-medium text-center",
             r(v)
           ])
-        }, g(p.label), 11, Zt))), 128))
+        }, g(p.label), 11, Xt))), 128))
       ])
     ])) : e.variant === "minimalist" ? (a(), s("div", {
       key: 1,
@@ -1616,11 +1616,11 @@ const se = {
             r(v)
           ])
         }, g(p.label), 3)
-      ], 8, Xt))), 128))
+      ], 8, Jt))), 128))
     ], 2)) : k("", !0);
   }
-}, Jt = {};
-function Yt(e, l) {
+}, Yt = {};
+function _t(e, l) {
   return a(), s("div", {
     onClick: G(() => {
     }, ["stop"])
@@ -1628,7 +1628,7 @@ function Yt(e, l) {
     w(e.$slots, "default")
   ]);
 }
-const Il = /* @__PURE__ */ J(Jt, [["render", Yt]]), _t = ["onClick"], jl = {
+const jl = /* @__PURE__ */ J(Yt, [["render", _t]]), el = ["onClick"], El = {
   __name: "Tabs",
   props: /* @__PURE__ */ h({
     tabs: Array,
@@ -1655,7 +1655,7 @@ const Il = /* @__PURE__ */ J(Jt, [["render", Yt]]), _t = ["onClick"], jl = {
             "underline-offset-8 underline font-medium": n.name === l.value
           }, `text-${e.size}`]]),
           onClick: (i) => l.value = n.name
-        }, g(n.label), 11, _t))), 128))
+        }, g(n.label), 11, el))), 128))
       ], 2),
       (a(!0), s(L, null, A(e.tabs, (n) => P((a(), s("div", {
         key: n.name
@@ -1666,7 +1666,7 @@ const Il = /* @__PURE__ */ J(Jt, [["render", Yt]]), _t = ["onClick"], jl = {
       ])), 128))
     ]));
   }
-}, El = {
+}, Ll = {
   __name: "Tag",
   props: {
     color: {
@@ -1693,16 +1693,16 @@ const Il = /* @__PURE__ */ J(Jt, [["render", Yt]]), _t = ["onClick"], jl = {
       w(l.$slots, "default")
     ], 2));
   }
-}, el = { class: "flex items-center justify-between" }, tl = ["for"], ll = {
+}, tl = { class: "flex items-center justify-between" }, ll = ["for"], nl = {
   key: 0,
   class: "text-xs text-secondary-text mr-1"
-}, nl = ["name", "placeholder", "value", "disabled", "maxlength", "rows"], al = {
+}, al = ["name", "placeholder", "value", "disabled", "maxlength", "rows"], ol = {
   key: 0,
   class: "text-error text-sm"
-}, ol = {
+}, sl = {
   key: 1,
   class: "text-success text-sm"
-}, Ll = {
+}, Al = {
   __name: "Textarea",
   props: /* @__PURE__ */ h({
     name: String,
@@ -1754,12 +1754,12 @@ const Il = /* @__PURE__ */ J(Jt, [["render", Yt]]), _t = ["onClick"], jl = {
         r.value = m;
       }
     ), (m, S) => (a(), s("div", null, [
-      c("div", el, [
+      c("div", tl, [
         c("label", {
           for: e.name,
           class: "font-medium"
-        }, g(e.label), 9, tl),
-        e.maxlength ? (a(), s("p", ll, g(n.value?.length ?? 0) + " / " + g(e.maxlength), 1)) : k("", !0)
+        }, g(e.label), 9, ll),
+        e.maxlength ? (a(), s("p", nl, g(n.value?.length ?? 0) + " / " + g(e.maxlength), 1)) : k("", !0)
       ]),
       c("div", {
         class: f([
@@ -1787,12 +1787,12 @@ const Il = /* @__PURE__ */ J(Jt, [["render", Yt]]), _t = ["onClick"], jl = {
           rows: e.rows,
           ref_key: "inputElement",
           ref: i
-        }, null, 42, nl)
+        }, null, 42, al)
       ], 2),
-      e.error && typeof e.error != "boolean" ? (a(), s("p", al, g(e.error), 1)) : e.success && typeof e.error != "boolean" ? (a(), s("p", ol, g(e.success), 1)) : k("", !0)
+      e.error && typeof e.error != "boolean" ? (a(), s("p", ol, g(e.error), 1)) : e.success && typeof e.error != "boolean" ? (a(), s("p", sl, g(e.success), 1)) : k("", !0)
     ]));
   }
-}, Al = {
+}, Ol = {
   __name: "Toggle",
   props: /* @__PURE__ */ h({
     activeColor: {
@@ -1833,7 +1833,7 @@ const Il = /* @__PURE__ */ J(Jt, [["render", Yt]]), _t = ["onClick"], jl = {
       ], 2)
     ], 2));
   }
-}, sl = { class: "rounded-md bg-dropdown/80 text-dropdown-text p-1 text-xs text-nowrap" }, Ol = {
+}, rl = { class: "rounded-md bg-dropdown/80 text-dropdown-text p-1 text-xs text-nowrap" }, Ul = {
   __name: "Tooltip",
   props: {
     text: {
@@ -1867,7 +1867,7 @@ const Il = /* @__PURE__ */ J(Jt, [["render", Yt]]), _t = ["onClick"], jl = {
             key: 0,
             class: f([o.value, "absolute delay-1000 z-50"])
           }, [
-            c("div", sl, [
+            c("div", rl, [
               w(n.$slots, "tooltip-content", {}, () => [
                 Z(g(e.text), 1)
               ])
@@ -1878,42 +1878,48 @@ const Il = /* @__PURE__ */ J(Jt, [["render", Yt]]), _t = ["onClick"], jl = {
       })
     ], 32));
   }
+}, Nl = {
+  install(e) {
+    const l = ye();
+    e.use(l);
+  }
 };
 export {
-  yl as Accordion,
-  Oe as AttachmentList,
-  gl as Avatar,
-  bl as AvatarGroup,
-  pl as Badge,
-  Re as Button,
+  gl as Accordion,
+  Ue as AttachmentList,
+  bl as Avatar,
+  pl as AvatarGroup,
+  hl as Badge,
+  Qe as Button,
   se as Card,
-  hl as Checkbox,
-  xl as ClickableTag,
-  $l as CurrencyInput,
-  Sl as DatePicker,
-  dt as DragAndDropFiles,
+  xl as Checkbox,
+  $l as ClickableTag,
+  Sl as CurrencyInput,
+  kl as DatePicker,
+  mt as DragAndDropFiles,
   ce as DropdownOptions,
-  ot as Dropzone,
+  st as Dropzone,
   ue as FileButton,
-  kl as FlashMessage,
+  wl as FlashMessage,
   Y as IconButton,
-  wl as Loader,
-  Bt as MediaCarousel,
-  Vl as MediaInput,
-  Cl as Modal,
-  zl as Multiselect,
-  Ml as NumberInput,
-  Bl as Paragraph,
-  Dl as Radio,
-  Fl as Select,
-  Tl as Stepper,
-  Il as StopPropagation,
-  jl as Tabs,
-  El as Tag,
-  Ll as Textarea,
+  Vl as Loader,
+  Dt as MediaCarousel,
+  Cl as MediaInput,
+  zl as Modal,
+  Ml as Multiselect,
+  Bl as NumberInput,
+  Dl as Paragraph,
+  Fl as Radio,
+  Tl as Select,
+  Il as Stepper,
+  jl as StopPropagation,
+  El as Tabs,
+  Ll as Tag,
+  Al as Textarea,
   Q as Textbox,
-  Al as Toggle,
-  Ol as Tooltip,
+  Ol as Toggle,
+  Ul as Tooltip,
+  Nl as default,
   ie as useFiles,
   re as useIsHandheld
 };
