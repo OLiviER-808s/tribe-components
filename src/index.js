@@ -1,3 +1,7 @@
+import './styles/style.css'
+import 'vue-final-modal/style.css'
+import 'v-dropdown-menu/css'
+
 import { createVfm } from 'vue-final-modal'
 
 export { Accordion } from './components/Accordion/index.js'
