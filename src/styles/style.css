@@ -6,6 +6,16 @@
 	@apply ring-0;
 }
 
+html {
+	@apply h-full;
+}
+body {
+	@apply h-full transition duration-300 bg-base text-base-text;
+}
+#app {
+	@apply h-full;
+}
+
 /* width */
 ::-webkit-scrollbar {
 	@apply rounded-md w-2;
