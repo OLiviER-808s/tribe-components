@@ -1,6 +1,7 @@
 <script setup>
 import { VueFinalModal } from 'vue-final-modal'
 import Card from '../Card/Card.vue'
+import { onUnmounted } from 'vue'
 
 const props = defineProps({
     contentClass: {
@@ -8,6 +9,9 @@ const props = defineProps({
         default: 'w-full max-w-xl p-2'
     }
 })
+const emit = defineEmits(['close'])
+
+onUnmounted(() => emit('close'))
 </script>
 
 <template>

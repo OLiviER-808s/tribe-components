@@ -1,6 +1,6 @@
 <script setup>
 import { useSlots, watch } from 'vue';
-import { useModal } from 'vue-final-modal';
+import { ModalsContainer, useModal } from 'vue-final-modal';
 import ModalContent from './ModalContent.vue';
 
 const props = defineProps({
@@ -17,10 +17,11 @@ const modal = useModal({
     component: ModalContent,
     attrs: {
         contentClass: props.contentClass,
+        onClose: () => open.value = false,
     },
     slots: {
         default: slots.default
-    }
+    },
 })
 
 watch(open, () => {
