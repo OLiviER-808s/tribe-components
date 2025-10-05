@@ -33,13 +33,3 @@ const selectedTab = defineModel('selectedTab')
         </div>
     </div>
 </template>
-
-<style>
-.tab-container {
-    @apply flex pb-2 overflow-auto gap-6 text-nowrap;
-}
-
-.tab-container::-webkit-scrollbar {
-    height: 6px;
-}
-</style>

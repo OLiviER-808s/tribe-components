@@ -54,15 +54,3 @@ const open = defineModel({ default: false })
         </div>
     </template>
 </template>
-
-<style scoped>
-.rotated {
-    transform: rotate(180deg);
-    transition: transform 0.3s ease;
-}
-
-.not-rotated {
-    transform: rotate(0deg);
-    transition: transform 0.3s ease;
-}
-</style>

@@ -42,5 +42,3 @@ const select = (e) => {
         <span>{{ label }}</span>
     </label>
 </template>
-
-<style></style>

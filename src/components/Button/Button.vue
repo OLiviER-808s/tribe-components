@@ -75,17 +75,3 @@ const classes = computed(() => {
         <slot />
     </button>
 </template>
-
-<style scoped>
-.pressed {
-    transform: translateY(2px);
-}
-
-.btn {
-    @apply px-6 py-2 rounded-lg font-semibold transition duration-300 flex items-center justify-center gap-2;
-}
-
-.disabled-btn {
-    @apply opacity-50 cursor-default;
-}
-</style>
