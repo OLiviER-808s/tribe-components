@@ -294,7 +294,7 @@ const ke = {
     const t = e, a = l, n = D(!1), i = (u) => {
       t.href && window.open(t.href), a("click", u);
     }, r = M(() => t.color === "base" ? "secondary-text" : t.color), d = M(() => {
-      switch (variant) {
+      switch (t.variant) {
         case "light":
           return `${t.styles} btn bg-${r.value}/20 hover:bg-${r.value}/35 text-${r.value}`;
         case "outline":
@@ -318,7 +318,7 @@ const ke = {
       z(u.$slots, "default", {}, void 0, !0)
     ], 42, Pe));
   }
-}, He = /* @__PURE__ */ U(Re, [["__scopeId", "data-v-1b563b4d"]]), Qe = { class: "flex items-center gap-2" }, qe = ["for"], We = {
+}, He = /* @__PURE__ */ U(Re, [["__scopeId", "data-v-5d2cd333"]]), Qe = { class: "flex items-center gap-2" }, qe = ["for"], We = {
   key: 0,
   class: "text-error text-sm"
 }, $l = {
