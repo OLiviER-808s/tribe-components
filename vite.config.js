@@ -10,7 +10,7 @@ export default defineConfig({
     build: {
         lib: {
             entry: resolve(__dirname, 'src/index.js'),
-            name: 'ComponentLibrary',
+            name: 'TribeComponents',
             formats: ['es', 'cjs'],
             fileName: (format) => `index.${format === 'es' ? 'js' : 'cjs'}`
         },
@@ -39,7 +39,14 @@ export default defineConfig({
                 globals: {
                     vue: 'Vue'
                 },
-                exports: 'named'
+                exports: 'named',
+                assetFileNames: (assetInfo) => {
+                    // Rename the CSS file to style.css
+                    if (assetInfo.name && assetInfo.name.endsWith('.css')) {
+                        return 'style.css'
+                    }
+                    return assetInfo.name
+                }
             }
         }
     }
