@@ -1,5 +1,3 @@
-import forms from '@tailwindcss/forms'
-
 export default {
 	content: [
 		'./src/**/*.{vue,js,ts}',
@@ -64,6 +62,5 @@ export default {
 		{
 			pattern: /grid-cols-([1234])/
 		}
-	],
-	plugins: [forms],
+	]
 }

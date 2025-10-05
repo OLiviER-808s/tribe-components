@@ -15,7 +15,26 @@ export default defineConfig({
             fileName: (format) => `index.${format === 'es' ? 'js' : 'cjs'}`
         },
         rollupOptions: {
-            external: ['vue'],
+            external: [
+                'vue',
+                '@vueuse/core',
+                '@vueuse/gesture',
+                '@vueuse/motion',
+                '@vuepic/vue-datepicker',
+                '@vueup/vue-quill',
+                'cropperjs',
+                'dompurify',
+                'swiper',
+                'uuid',
+                'v-dropdown-menu',
+                'vue-final-modal',
+                'vuedraggable',
+                '@fortawesome/fontawesome-svg-core',
+                '@fortawesome/free-solid-svg-icons',
+                '@fortawesome/free-regular-svg-icons',
+                '@fortawesome/free-brands-svg-icons',
+                '@fortawesome/vue-fontawesome'
+            ],
             output: {
                 globals: {
                     vue: 'Vue'
