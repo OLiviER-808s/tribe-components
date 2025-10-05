@@ -48,7 +48,7 @@ const btnColor = computed(() => {
     return props.color === 'base' ? 'secondary-text' : props.color
 })
 const classes = computed(() => {
-    switch (variant) {
+    switch (props.variant) {
         case 'light':
             return `${props.styles} btn bg-${btnColor.value}/20 hover:bg-${btnColor.value}/35 text-${btnColor.value}`
         case 'outline':
