@@ -1,5 +1,5 @@
 import { VueFinalModal as me, useModal as fe, ModalsContainer as ve, createVfm as ye } from "vue-final-modal";
-import { createElementBlock as s, openBlock as a, normalizeClass as v, renderSlot as w, mergeModels as x, useModel as $, createBlock as T, createCommentVNode as k, withCtx as V, createElementVNode as d, withDirectives as H, createVNode as h, toDisplayString as p, Transition as N, unref as f, vShow as G, ref as M, onMounted as U, onUnmounted as ne, computed as D, watch as O, Fragment as L, renderList as A, normalizeStyle as ge, createTextVNode as Z, withModifiers as K, onBeforeUnmount as X, useSlots as P, nextTick as oe, createSlots as R, resolveComponent as te, vModelText as pe } from "vue";
+import { createElementBlock as s, openBlock as a, normalizeClass as v, renderSlot as w, mergeModels as x, useModel as S, createBlock as T, createCommentVNode as k, withCtx as V, createElementVNode as d, withDirectives as H, createVNode as h, toDisplayString as p, Transition as N, unref as f, vShow as G, ref as M, onMounted as U, onUnmounted as ne, computed as D, watch as O, Fragment as L, renderList as A, normalizeStyle as ge, createTextVNode as Z, withModifiers as K, onBeforeUnmount as X, useSlots as P, nextTick as oe, createSlots as R, resolveComponent as te, vModelText as pe } from "vue";
 import { FontAwesomeIcon as F } from "@fortawesome/vue-fontawesome";
 import { faChevronDown as le, faHeadphones as be, faVideoCamera as he, faFile as ae, faXmark as J, faCheck as se, faCalendar as xe, faUpload as $e, faPlus as Se, faSort as ke } from "@fortawesome/free-solid-svg-icons";
 import we from "vuedraggable";
@@ -39,7 +39,7 @@ const re = {
   }),
   emits: ["update:modelValue"],
   setup(e) {
-    const l = $(e, "modelValue");
+    const l = S(e, "modelValue");
     return (t, o) => e.variant === "card" ? (a(), T(re, { key: 0 }, {
       default: V(() => [
         d("div", {
@@ -124,8 +124,8 @@ const re = {
   }),
   emits: ["update:files", "update:selectedIdx"],
   setup(e) {
-    const l = e, t = $(e, "files"), o = $(e, "selectedIdx"), n = ie(), { formatFiles: r } = ue(), i = M(-1), c = M(r(l.files)), u = (y) => {
-      t.value = t.value.filter((m, S) => S !== y), o.value > y && (o.value -= 1);
+    const l = e, t = S(e, "files"), o = S(e, "selectedIdx"), n = ie(), { formatFiles: r } = ue(), i = M(-1), c = M(r(l.files)), u = (y) => {
+      t.value = t.value.filter((m, $) => $ !== y), o.value > y && (o.value -= 1);
     }, g = ({ moved: { oldIndex: y, newIndex: m } }) => {
       t.value = Fe(t.value, y, m), o.value === y ? o.value = m : o.value > y && o.value <= m ? o.value-- : o.value < y && o.value >= m && o.value++;
     }, b = D(() => l.size === "lg" ? "w-16 h-16" : "w-14 h-14");
@@ -133,14 +133,14 @@ const re = {
       w(y.$slots, "additional-items-before"),
       h(f(we), {
         modelValue: c.value,
-        "onUpdate:modelValue": m[1] || (m[1] = (S) => c.value = S),
+        "onUpdate:modelValue": m[1] || (m[1] = ($) => c.value = $),
         "item-key": "uuid",
         "swap-threshold": 0.65,
         animation: 200,
         class: "flex gap-2",
         onChange: g
       }, {
-        item: V(({ element: S, index: B }) => [
+        item: V(({ element: $, index: B }) => [
           d("div", {
             class: v(`relative border-secondary rounded-md ${b.value} ${o.value === B ? "border-3 bg-secondary" : ""}`),
             onMouseenter: (j) => i.value = B,
@@ -150,17 +150,17 @@ const re = {
               class: "w-full h-full",
               onClick: (j) => o.value = B
             }, [
-              S.type === "image" ? (a(), s("img", {
+              $.type === "image" ? (a(), s("img", {
                 key: 0,
-                src: S.preview,
-                alt: S.name,
+                src: $.preview,
+                alt: $.name,
                 class: "w-full h-full object-cover rounded-md"
               }, null, 8, Le)) : (a(), s("span", Ae, [
-                S.type === "audio" ? (a(), T(f(F), {
+                $.type === "audio" ? (a(), T(f(F), {
                   key: 0,
                   icon: f(be),
                   size: "lg"
-                }, null, 8, ["icon"])) : S.type === "video" ? (a(), T(f(F), {
+                }, null, 8, ["icon"])) : $.type === "video" ? (a(), T(f(F), {
                   key: 1,
                   icon: f(he),
                   size: "lg"
@@ -327,7 +327,7 @@ const re = {
   }),
   emits: /* @__PURE__ */ x(["toggle"], ["update:modelValue"]),
   setup(e, { emit: l }) {
-    const t = $(e, "modelValue"), o = l, n = () => {
+    const t = S(e, "modelValue"), o = l, n = () => {
       t.value = !t.value, o("toggle", t.value);
     };
     return (r, i) => (a(), s("div", null, [
@@ -375,7 +375,7 @@ const re = {
   }),
   emits: /* @__PURE__ */ x(["select"], ["update:modelValue"]),
   setup(e, { emit: l }) {
-    const t = e, o = l, n = $(e, "modelValue"), r = D(() => `${t.styles} py-1 px-3 duration-100 text-center border-2 rounded-${t.rounded} text-${t.size} text-${t.color} border-${t.color} hover:bg-${t.color}/10`), i = D(() => `${t.styles} py-1 px-3 duration-100 text-center border-2 rounded-${t.rounded} text-${t.size} bg-${t.color} border-${t.color} text-black`);
+    const t = e, o = l, n = S(e, "modelValue"), r = D(() => `${t.styles} py-1 px-3 duration-100 text-center border-2 rounded-${t.rounded} text-${t.size} text-${t.color} border-${t.color} hover:bg-${t.color}/10`), i = D(() => `${t.styles} py-1 px-3 duration-100 text-center border-2 rounded-${t.rounded} text-${t.size} bg-${t.color} border-${t.color} text-black`);
     return (c, u) => (a(), s("button", {
       onClick: u[0] || (u[0] = (g) => o("select")),
       class: v(n.value ? i.value : r.value)
@@ -430,7 +430,7 @@ const re = {
   }),
   emits: /* @__PURE__ */ x(["input", "focus", "blur"], ["update:modelValue", "update:input"]),
   setup(e, { emit: l }) {
-    const t = e, o = l, n = $(e, "modelValue"), r = $(e, "input"), i = M(!1), c = D(
+    const t = e, o = l, n = S(e, "modelValue"), r = S(e, "input"), i = M(!1), c = D(
       () => t.variant === "filled" ? `bg-${t.color}` : "bg-transparent border border-secondary-text"
     ), u = (y) => {
       i.value = !0, o("input", y);
@@ -520,7 +520,7 @@ const re = {
   }),
   emits: ["update:modelValue"],
   setup(e) {
-    const l = e, t = $(e, "modelValue"), o = (r) => {
+    const l = e, t = S(e, "modelValue"), o = (r) => {
       let i = parseFloat(r.target.value.replace(/[^\d.-]/g, ""));
       Te(i) > 0 && (i = (Math.round(i * 100) / 100).toFixed(2)), t.value = i;
     }, n = D(() => {
@@ -583,7 +583,7 @@ const re = {
   }),
   emits: ["update:modelValue"],
   setup(e) {
-    const l = e, t = $(e, "modelValue"), o = M(null), n = D(() => l.range ? nt : l.includeTime ? lt : Q);
+    const l = e, t = S(e, "modelValue"), o = M(null), n = D(() => l.range ? nt : l.includeTime ? lt : Q);
     return (r, i) => (a(), s("div", {
       class: v(e.styles)
     }, [
@@ -625,7 +625,7 @@ const re = {
   },
   emits: /* @__PURE__ */ x(["drop"], ["update:modelValue"]),
   setup(e, { emit: l }) {
-    const t = l, o = $(e, "modelValue"), n = (r) => {
+    const t = l, o = S(e, "modelValue"), n = (r) => {
       o.value = !1, t("drop", r);
     };
     return (r, i) => (a(), s("div", {
@@ -691,7 +691,7 @@ const re = {
   }),
   emits: ["update:modelValue"],
   setup(e) {
-    const l = $(e, "modelValue"), t = (r) => l.value = Array.from(r), o = (r) => t(r.dataTransfer.files), n = (r) => t(r.target.files);
+    const l = S(e, "modelValue"), t = (r) => l.value = Array.from(r), o = (r) => t(r.dataTransfer.files), n = (r) => t(r.target.files);
     return (r, i) => (a(), s("div", null, [
       e.label ? (a(), s("p", it, p(e.label), 1)) : k("", !0),
       d("div", null, [
@@ -746,7 +746,7 @@ const re = {
   class: "text-xs text-secondary-text"
 }, pt = {
   __name: "DropdownOptions",
-  props: /* @__PURE__ */ x({
+  props: {
     container: Object,
     options: Array,
     optionLabel: {
@@ -761,19 +761,22 @@ const re = {
       type: String,
       default: "description"
     },
+    width: {
+      type: String,
+      default: "w-full"
+    },
+    direction: {
+      type: String,
+      default: "left"
+    },
     open: Boolean,
     acceptsEmptySelection: Boolean
-  }, {
-    modelValue: {},
-    modelModifiers: {}
-  }),
-  emits: /* @__PURE__ */ x(["select"], ["update:modelValue"]),
+  },
+  emits: ["select"],
   setup(e, { emit: l }) {
-    const t = e, o = l;
-    $(e, "modelValue");
-    const n = P(), r = M(-1), i = M("top-full"), c = M(null), u = (m) => o("select", m), g = () => {
-      const m = t.container.getBoundingClientRect(), S = window.innerHeight || document.documentElement.clientHeight;
-      i.value = m.bottom + 150 > S ? "bottom-full" : "top-full";
+    const t = e, o = l, n = P(), r = M(-1), i = M("top-full"), c = M(null), u = (m) => o("select", m), g = () => {
+      const m = t.container.getBoundingClientRect(), $ = window.innerHeight || document.documentElement.clientHeight;
+      i.value = m.bottom + 150 > $ ? "bottom-full" : "top-full";
     }, b = () => {
       i.value = "top-full";
     }, y = async (m) => {
@@ -789,7 +792,7 @@ const re = {
       t.open && t.options.length > 0 ? (m.preventDefault(), u(t.options[r.value])) : t.acceptsEmptySelection && (m.preventDefault(), u());
     }), O(() => t.open, () => {
       t.open || (r.value = -1);
-    }), (m, S) => (a(), T(N, {
+    }), (m, $) => (a(), T(N, {
       name: i.value === "top-full" ? "slide-down" : "slide-up",
       onBeforeEnter: g,
       onAfterLeave: b
@@ -797,10 +800,12 @@ const re = {
       default: V(() => [
         e.open && e.options?.length > 0 ? (a(), s("div", {
           key: 0,
-          ref_key: "dropdownContainer",
+          ref_key: "optionsContainer",
           ref: c,
           class: v([
-            "w-full rounded-md bg-dropdown text-dropdown-text absolute overflow-auto max-h-64 flex flex-col cursor-pointer z-50",
+            "rounded-md bg-dropdown text-dropdown-text absolute overflow-auto max-h-64 flex flex-col cursor-pointer z-50",
+            e.width,
+            e.direction === "right" ? "right-0" : "left-0",
             i.value
           ])
         }, [
@@ -823,7 +828,7 @@ const re = {
       _: 3
     }, 8, ["name"]));
   }
-}, _ = /* @__PURE__ */ Y(pt, [["__scopeId", "data-v-2cf8e7b1"]]), Vl = {
+}, _ = /* @__PURE__ */ Y(pt, [["__scopeId", "data-v-f26fd92c"]]), Vl = {
   __name: "DropdownMenu",
   props: {
     options: Array,
@@ -1009,7 +1014,7 @@ const re = {
   }),
   emits: ["update:selectedIdx"],
   setup(e) {
-    const l = $(e, "selectedIdx"), t = ie(), o = () => {
+    const l = S(e, "selectedIdx"), t = ie(), o = () => {
       const n = document.querySelector("swiper-container").swiper;
       l.value = n.activeIndex;
     };
@@ -1082,7 +1087,7 @@ const re = {
   }),
   emits: ["update:modelValue"],
   setup(e) {
-    const l = $(e, "modelValue"), t = M(0), { formatFiles: o } = ue(), n = (i) => l.value.push(...i.target.files), r = D(() => o(l.value));
+    const l = S(e, "modelValue"), t = M(0), { formatFiles: o } = ue(), n = (i) => l.value.push(...i.target.files), r = D(() => o(l.value));
     return (i, c) => (a(), s("div", null, [
       e.label ? (a(), s("label", Tt, p(e.label), 1)) : k("", !0),
       l.value.length > 0 ? (a(), s("div", It, [
@@ -1167,7 +1172,7 @@ const re = {
   }),
   emits: ["update:modelValue"],
   setup(e) {
-    const l = e, t = $(e, "modelValue"), o = P(), n = fe({
+    const l = e, t = S(e, "modelValue"), o = P(), n = fe({
       component: jt,
       attrs: {
         contentClass: l.contentClass,
@@ -1227,16 +1232,16 @@ const re = {
   }),
   emits: /* @__PURE__ */ x(["select", "focus", "blur"], ["update:modelValue", "update:searchQuery", "update:input"]),
   setup(e, { emit: l }) {
-    const t = e, o = l, n = $(e, "modelValue"), r = $(e, "searchQuery"), i = $(e, "input"), c = P(), u = M(!1), g = M(null), b = D(() => t.acceptsDuplicates ? t.options : t.options.filter((C) => !n.value.includes(t.formatResult(C)))), y = (C) => {
+    const t = e, o = l, n = S(e, "modelValue"), r = S(e, "searchQuery"), i = S(e, "input"), c = P(), u = M(!1), g = M(null), b = D(() => t.acceptsDuplicates ? t.options : t.options.filter((C) => !n.value.includes(t.formatResult(C)))), y = (C) => {
       n.value.push(t.formatResult(C)), r.value = "", o("select", C);
     }, m = (C) => {
       n.value = n.value.filter((z, E) => E !== C);
-    }, S = () => {
+    }, $ = () => {
       u.value = !0;
     }, B = () => {
       u.value = !1;
     }, j = () => {
-      t.searchable || (u.value ? B() : S());
+      t.searchable || (u.value ? B() : $());
     }, I = (C) => {
       g.value.contains(C.target) || B();
     };
@@ -1245,7 +1250,7 @@ const re = {
     }), X(() => {
       document.removeEventListener("mousedown", I);
     }), O(r, () => {
-      t.searchable && r.value.length > 0 && S();
+      t.searchable && r.value.length > 0 && $();
     }), (C, z) => (a(), s("div", {
       class: v([e.styles])
     }, [
@@ -1352,7 +1357,7 @@ const re = {
   }),
   emits: ["update:modelValue"],
   setup(e) {
-    const l = e, t = $(e, "modelValue"), o = D(
+    const l = e, t = S(e, "modelValue"), o = D(
       () => l.variant === "filled" ? `bg-${l.color}` : "bg-transparent border border-secondary-text"
     ), n = D(() => l.modelValue > l.max ? `Value must be ${l.max} or less.` : l.modelValue < l.min ? `Value must be ${l.min} or more.` : !1);
     return (r, i) => (a(), s("div", null, [
@@ -1409,7 +1414,7 @@ const re = {
   }),
   emits: /* @__PURE__ */ x(["select"], ["update:modelValue"]),
   setup(e, { emit: l }) {
-    const t = e, o = l, n = $(e, "modelValue"), r = M(!1), i = D(() => t.modelValue === t.value), c = (u) => {
+    const t = e, o = l, n = S(e, "modelValue"), r = M(!1), i = D(() => t.modelValue === t.value), c = (u) => {
       n.value = t.value, o("select", u);
     };
     return (u, g) => (a(), s("label", {
@@ -1492,25 +1497,25 @@ const re = {
   }),
   emits: /* @__PURE__ */ x(["select", "blur", "focus"], ["update:modelValue", "update:searchQuery", "update:input"]),
   setup(e, { emit: l }) {
-    const t = e, o = l, n = $(e, "modelValue"), r = $(e, "searchQuery"), i = $(e, "input"), c = P(), u = M(!1), g = M(null), b = (I) => {
-      n.value = t.formatResult(I), t.optionLabel && (r.value = I[t.optionLabel]), o("select", I), oe(S);
+    const t = e, o = l, n = S(e, "modelValue"), r = S(e, "searchQuery"), i = S(e, "input"), c = P(), u = M(!1), g = M(null), b = (I) => {
+      n.value = t.formatResult(I), t.optionLabel && (r.value = I[t.optionLabel]), o("select", I), oe($);
     }, y = (I) => {
       I.stopPropagation(), n.value = null, r.value = "";
     }, m = () => {
       u.value = !0;
-    }, S = () => {
+    }, $ = () => {
       u.value = !1;
     }, B = () => {
-      t.searchable || (u.value ? S() : m());
+      t.searchable || (u.value ? $() : m());
     }, j = (I) => {
-      g.value.contains(I.target) || S();
+      g.value.contains(I.target) || $();
     };
     return U(() => {
       document.addEventListener("mousedown", j);
     }), X(() => {
       document.removeEventListener("mousedown", j);
     }), O(r, () => {
-      t.searchable && r.value.length > 0 ? m() : t.searchable && S();
+      t.searchable && r.value.length > 0 ? m() : t.searchable && $();
     }), (I, C) => (a(), s("div", {
       class: v([e.styles])
     }, [
@@ -1613,7 +1618,7 @@ const re = {
   }),
   emits: ["update:modelValue"],
   setup(e) {
-    const l = e, t = $(e, "modelValue"), o = D(() => l.steps.findIndex((u) => u.value === t.value)), n = D(() => l.steps.map((u, g) => g < o.value ? { ...u, status: "completed" } : g === o.value ? { ...u, status: "in-progress" } : { ...u, status: "uncompleted" })), r = (u) => u.status === "uncompleted" || u.status !== "in-progress" && l.variant === "minimalist" ? "text-secondary-text bg-card-accent" : `text-${l.color} bg-${l.color}${l.variant === "classic" ? "/30" : ""}`, i = (u) => l.canMoveForwards && u > o.value || l.canMoveBackwards && u < o.value ? "cursor-pointer" : "cursor-default", c = (u, g) => {
+    const l = e, t = S(e, "modelValue"), o = D(() => l.steps.findIndex((u) => u.value === t.value)), n = D(() => l.steps.map((u, g) => g < o.value ? { ...u, status: "completed" } : g === o.value ? { ...u, status: "in-progress" } : { ...u, status: "uncompleted" })), r = (u) => u.status === "uncompleted" || u.status !== "in-progress" && l.variant === "minimalist" ? "text-secondary-text bg-card-accent" : `text-${l.color} bg-${l.color}${l.variant === "classic" ? "/30" : ""}`, i = (u) => l.canMoveForwards && u > o.value || l.canMoveBackwards && u < o.value ? "cursor-pointer" : "cursor-default", c = (u, g) => {
       (l.canMoveForwards && g > o.value || l.canMoveBackwards && g < o.value) && (t.value = u.value);
     };
     return (u, g) => e.variant === "classic" ? (a(), s("div", Gt, [
@@ -1695,7 +1700,7 @@ const Ll = /* @__PURE__ */ Y(_t, [["render", el]]), tl = ["onClick"], Al = {
   }),
   emits: ["update:selectedTab"],
   setup(e) {
-    const l = $(e, "selectedTab");
+    const l = S(e, "selectedTab");
     return (t, o) => (a(), s("div", null, [
       d("div", {
         class: v(["tab-container", { "justify-between": e.stretch }])
@@ -1790,22 +1795,22 @@ const Ll = /* @__PURE__ */ Y(_t, [["render", el]]), tl = ["onClick"], Al = {
   }),
   emits: /* @__PURE__ */ x(["focus", "blur", "keyPress", "input"], ["update:modelValue", "update:input"]),
   setup(e, { emit: l }) {
-    const t = e, o = l, n = $(e, "modelValue"), r = $(e, "input"), i = M(t.modelValue), c = M(!1), u = D(
+    const t = e, o = l, n = S(e, "modelValue"), r = S(e, "input"), i = M(t.modelValue), c = M(!1), u = D(
       () => t.variant === "filled" ? `bg-${t.color}` : "bg-transparent ring-1 ring-secondary-text"
     ), g = (m) => {
       c.value = !0, o("focus", m);
     }, b = (m) => {
       c.value = !1, o("blur", m);
     }, y = (m) => {
-      const S = m.target;
-      i.value = S.value, n.value = S.value, o("input", m);
+      const $ = m.target;
+      i.value = $.value, n.value = $.value, o("input", m);
     };
     return O(
       () => t.modelValue,
       (m) => {
         i.value = m;
       }
-    ), (m, S) => (a(), s("div", null, [
+    ), (m, $) => (a(), s("div", null, [
       d("div", ll, [
         d("label", {
           for: e.name,
@@ -1834,7 +1839,7 @@ const Ll = /* @__PURE__ */ Y(_t, [["render", el]]), tl = ["onClick"], Al = {
           onInput: y,
           onFocus: g,
           onBlur: b,
-          onKeydown: S[0] || (S[0] = (B) => o("keyPress", B)),
+          onKeydown: $[0] || ($[0] = (B) => o("keyPress", B)),
           maxlength: e.maxlength,
           rows: e.rows,
           ref_key: "inputElement",
@@ -1862,7 +1867,7 @@ const Ll = /* @__PURE__ */ Y(_t, [["render", el]]), tl = ["onClick"], Al = {
   }),
   emits: /* @__PURE__ */ x(["toggle"], ["update:modelValue"]),
   setup(e, { emit: l }) {
-    const t = e, o = l, n = $(e, "modelValue"), r = () => {
+    const t = e, o = l, n = S(e, "modelValue"), r = () => {
       n.value = !n.value, o("toggle", n.value);
     }, i = D(
       () => n.value ? `bg-${t.activeColor}` : "bg-gray-300 dark:bg-gray-600"

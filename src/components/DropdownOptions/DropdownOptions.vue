@@ -17,18 +17,24 @@ const props = defineProps({
         type: String,
         default: 'description',
     },
+    width: {
+        type: String,
+        default: 'w-full'
+    },
+    direction: {
+        type: String,
+        default: 'left'
+    },
     open: Boolean,
     acceptsEmptySelection: Boolean
 })
 const emit = defineEmits(['select'])
 
-const model = defineModel()
-
 const slots = useSlots()
 
 const highlightedIdx = ref(-1)
 const dropdownPosition = ref('top-full')
-const dropdownContainer = ref(null)
+const optionsContainer = ref(null)
 
 const select = (option) => emit('select', option)
 
@@ -53,7 +59,7 @@ const navigate = async (direction) => {
 
     await nextTick()
 
-    const optionElements = dropdownContainer.value?.querySelectorAll("div > div")
+    const optionElements = optionsContainer.value?.querySelectorAll("div > div")
     const highlightedOption = optionElements?.[highlightedIdx.value]
 
     if (highlightedOption) {
@@ -100,9 +106,11 @@ watch(() => props.open, () => {
     >
         <div
             v-if="open && options?.length > 0"
-            ref="dropdownContainer"
+            ref="optionsContainer"
             :class="[
-                        'w-full rounded-md bg-dropdown text-dropdown-text absolute overflow-auto max-h-64 flex flex-col cursor-pointer z-50',
+                        'rounded-md bg-dropdown text-dropdown-text absolute overflow-auto max-h-64 flex flex-col cursor-pointer z-50',
+                        width,
+                        direction === 'right' ? 'right-0' : 'left-0',
                         dropdownPosition,
                     ]"
         >
