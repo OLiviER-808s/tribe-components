@@ -1711,7 +1711,8 @@ const Ll = /* @__PURE__ */ Y(_t, [["render", el]]), tl = ["onClick"], Al = {
             "text-error": n.error,
             "underline-offset-8 underline font-medium": n.name === l.value
           }, `text-${e.size}`]]),
-          onClick: (r) => l.value = n.name
+          onClick: (r) => l.value = n.name,
+          type: "button"
         }, p(n.label), 11, tl))), 128))
       ], 2),
       (a(!0), s(L, null, A(e.tabs, (n) => H((a(), s("div", {
