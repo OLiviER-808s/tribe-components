@@ -1,6 +1,6 @@
 import { VueFinalModal as me, useModal as fe, ModalsContainer as ve, createVfm as ye } from "vue-final-modal";
-import { createElementBlock as s, openBlock as a, normalizeClass as v, renderSlot as w, mergeModels as x, useModel as S, createBlock as T, createCommentVNode as k, withCtx as V, createElementVNode as d, withDirectives as H, createVNode as h, toDisplayString as p, Transition as N, unref as f, vShow as G, ref as M, onMounted as U, onUnmounted as ne, computed as D, watch as O, Fragment as L, renderList as A, normalizeStyle as ge, createTextVNode as Z, withModifiers as K, onBeforeUnmount as X, useSlots as P, nextTick as oe, createSlots as R, resolveComponent as te, vModelText as pe } from "vue";
-import { FontAwesomeIcon as F } from "@fortawesome/vue-fontawesome";
+import { createElementBlock as s, openBlock as a, normalizeClass as v, renderSlot as w, mergeModels as x, useModel as S, createBlock as F, createCommentVNode as k, withCtx as V, createElementVNode as d, withDirectives as H, createVNode as h, toDisplayString as p, Transition as N, unref as f, vShow as G, ref as M, onMounted as U, onUnmounted as ne, computed as D, watch as O, Fragment as L, renderList as A, normalizeStyle as ge, createTextVNode as Z, withModifiers as K, onBeforeUnmount as X, useSlots as P, nextTick as oe, createSlots as R, resolveComponent as te, vModelText as pe } from "vue";
+import { FontAwesomeIcon as T } from "@fortawesome/vue-fontawesome";
 import { faChevronDown as le, faHeadphones as be, faVideoCamera as he, faFile as ae, faXmark as J, faCheck as se, faCalendar as xe, faUpload as $e, faPlus as Se, faSort as ke } from "@fortawesome/free-solid-svg-icons";
 import we from "vuedraggable";
 import { v4 as Ve } from "uuid";
@@ -40,7 +40,7 @@ const re = {
   emits: ["update:modelValue"],
   setup(e) {
     const l = S(e, "modelValue");
-    return (t, o) => e.variant === "card" ? (a(), T(re, { key: 0 }, {
+    return (t, o) => e.variant === "card" ? (a(), F(re, { key: 0 }, {
       default: V(() => [
         d("div", {
           onClick: o[0] || (o[0] = (n) => l.value = !l.value),
@@ -52,7 +52,7 @@ const re = {
               d("div", {
                 class: v({ rotated: l.value, "not-rotated": !l.value })
               }, [
-                h(f(F), {
+                h(f(T), {
                   icon: f(le),
                   size: "lg"
                 }, null, 8, ["icon"])
@@ -79,7 +79,7 @@ const re = {
             d("div", {
               class: v({ rotated: l.value, "not-rotated": !l.value })
             }, [
-              h(f(F), { icon: f(le) }, null, 8, ["icon"])
+              h(f(T), { icon: f(le) }, null, 8, ["icon"])
             ], 2)
           ]),
           _: 1
@@ -104,12 +104,12 @@ const re = {
   uuid: Ve(),
   preview: URL.createObjectURL(o),
   type: o.type?.split("/")[0]
-}) }), Fe = (e, l, t) => {
+}) }), Te = (e, l, t) => {
   if (l < 0 || l >= e.length || t < 0 || t >= e.length)
     throw new Error("Invalid indices");
   const [o] = e.splice(l, 1);
   return e.splice(t, 0, o), e;
-}, Te = (e) => Math.floor(e) !== e && e.toString().split(".")[1]?.length || 0, Ie = { class: "flex justify-center gap-2 w-full p-4" }, Ee = ["onMouseenter"], je = ["onClick"], Le = ["src", "alt"], Ae = {
+}, Fe = (e) => Math.floor(e) !== e && e.toString().split(".")[1]?.length || 0, Ie = { class: "flex justify-center gap-2 w-full p-4" }, Ee = ["onMouseenter"], je = ["onClick"], Le = ["src", "alt"], Ae = {
   key: 1,
   class: "w-full h-full flex items-center justify-center text-secondary-text bg-card rounded-md"
 }, Oe = ["onClick"], Ue = {
@@ -127,7 +127,7 @@ const re = {
     const l = e, t = S(e, "files"), o = S(e, "selectedIdx"), n = ie(), { formatFiles: r } = ue(), i = M(-1), c = M(r(l.files)), u = (y) => {
       t.value = t.value.filter((m, $) => $ !== y), o.value > y && (o.value -= 1);
     }, g = ({ moved: { oldIndex: y, newIndex: m } }) => {
-      t.value = Fe(t.value, y, m), o.value === y ? o.value = m : o.value > y && o.value <= m ? o.value-- : o.value < y && o.value >= m && o.value++;
+      t.value = Te(t.value, y, m), o.value === y ? o.value = m : o.value > y && o.value <= m ? o.value-- : o.value < y && o.value >= m && o.value++;
     }, b = D(() => l.size === "lg" ? "w-16 h-16" : "w-14 h-14");
     return O(t, () => c.value = r(l.files)), (y, m) => (a(), s("div", Ie, [
       w(y.$slots, "additional-items-before"),
@@ -156,15 +156,15 @@ const re = {
                 alt: $.name,
                 class: "w-full h-full object-cover rounded-md"
               }, null, 8, Le)) : (a(), s("span", Ae, [
-                $.type === "audio" ? (a(), T(f(F), {
+                $.type === "audio" ? (a(), F(f(T), {
                   key: 0,
                   icon: f(be),
                   size: "lg"
-                }, null, 8, ["icon"])) : $.type === "video" ? (a(), T(f(F), {
+                }, null, 8, ["icon"])) : $.type === "video" ? (a(), F(f(T), {
                   key: 1,
                   icon: f(he),
                   size: "lg"
-                }, null, 8, ["icon"])) : (a(), T(f(F), {
+                }, null, 8, ["icon"])) : (a(), F(f(T), {
                   key: 2,
                   icon: f(ae),
                   size: "lg"
@@ -176,7 +176,7 @@ const re = {
               onClick: (j) => u(B),
               class: "absolute cursor-pointer top-0 right-0 text-secondary-text bg-card/80 rounded-full w-5 h-5 flex justify-center items-center"
             }, [
-              h(f(F), {
+              h(f(T), {
                 icon: f(J),
                 size: "xs"
               }, null, 8, ["icon"])
@@ -337,7 +337,7 @@ const re = {
           type: "button",
           class: v(["rounded-sm cursor-pointer border-secondary border-2 w-4 h-4 flex items-center justify-center text-black", { "bg-secondary": t.value, "hover:bg-secondary/30": !t.value }])
         }, [
-          t.value ? (a(), T(f(F), {
+          t.value ? (a(), F(f(T), {
             key: 0,
             icon: f(se),
             size: "xs"
@@ -459,7 +459,7 @@ const re = {
         ])
       }, [
         e.icon ? (a(), s("div", Ze, [
-          h(f(F), {
+          h(f(T), {
             icon: e.icon,
             size: e.size,
             class: "text-secondary-text"
@@ -522,12 +522,12 @@ const re = {
   setup(e) {
     const l = e, t = S(e, "modelValue"), o = (r) => {
       let i = parseFloat(r.target.value.replace(/[^\d.-]/g, ""));
-      Te(i) > 0 && (i = (Math.round(i * 100) / 100).toFixed(2)), t.value = i;
+      Fe(i) > 0 && (i = (Math.round(i * 100) / 100).toFixed(2)), t.value = i;
     }, n = D(() => {
       if (t.value)
         return `${l.currencySymbol}${t.value}`;
     });
-    return (r, i) => (a(), T(q, {
+    return (r, i) => (a(), F(q, {
       label: e.label,
       value: n.value,
       "on-input": o,
@@ -710,7 +710,7 @@ const re = {
                   }])
                 }, [
                   e.withIcon ? (a(), s("div", ut, [
-                    h(f(F), {
+                    h(f(T), {
                       icon: f($e),
                       size: "lg"
                     }, null, 8, ["icon"])
@@ -792,7 +792,7 @@ const re = {
       t.open && t.options.length > 0 ? (m.preventDefault(), u(t.options[r.value])) : t.acceptsEmptySelection && (m.preventDefault(), u());
     }), O(() => t.open, () => {
       t.open || (r.value = -1);
-    }), (m, $) => (a(), T(N, {
+    }), (m, $) => (a(), F(N, {
       name: i.value === "top-full" ? "slide-down" : "slide-up",
       onBeforeEnter: g,
       onAfterLeave: b
@@ -904,16 +904,12 @@ const re = {
     href: {
       type: String,
       default: ""
-    },
-    onClick: {
-      type: Function,
-      default: (e) => {
-      }
     }
   },
-  setup(e) {
-    const l = e, t = D(() => {
-      switch (l.size) {
+  emits: ["click"],
+  setup(e, { emit: l }) {
+    const t = e, o = l, n = D(() => {
+      switch (t.size) {
         case "sm":
           return "w-6 h-6";
         case "lg":
@@ -924,23 +920,23 @@ const re = {
           return "w-8 h-8";
       }
     });
-    return (o, n) => (a(), T(Qe, {
-      styles: `${e.styles} ${t.value} flex justify-center items-center !px-0 !py-0`,
+    return (r, i) => (a(), F(Qe, {
+      styles: `${e.styles} ${n.value} flex justify-center items-center !px-0 !py-0`,
       href: e.href,
       type: e.type,
       color: e.color,
-      "on-click": e.onClick,
       disabled: e.disabled,
-      variant: e.variant
+      variant: e.variant,
+      onClick: i[0] || (i[0] = (c) => o("click", c))
     }, {
       default: V(() => [
-        h(f(F), {
+        h(f(T), {
           size: e.size,
           icon: e.icon
         }, null, 8, ["size", "icon"])
       ]),
       _: 1
-    }, 8, ["styles", "href", "type", "color", "on-click", "disabled", "variant"]));
+    }, 8, ["styles", "href", "type", "color", "disabled", "variant"]));
   }
 }, bt = { class: "flex-grow" }, ht = { class: "text-md font-medium" }, Cl = {
   __name: "FlashMessage",
@@ -961,7 +957,7 @@ const re = {
   },
   setup(e) {
     const l = e, t = M(!0);
-    return U(() => setTimeout(() => t.value = !1, l.duration)), (o, n) => (a(), T(N, { name: "slide-fade" }, {
+    return U(() => setTimeout(() => t.value = !1, l.duration)), (o, n) => (a(), F(N, { name: "slide-fade" }, {
       default: V(() => [
         t.value ? (a(), s("div", {
           key: 0,
@@ -1000,7 +996,7 @@ const re = {
 }, zl = /* @__PURE__ */ Y(St, [["__scopeId", "data-v-d8288a84"]]), kt = { class: "flex items-center justify-center" }, wt = { key: 0 }, Vt = ["src", "alt"], Ct = { key: 1 }, zt = ["src"], Mt = { key: 2 }, Bt = ["src"], Dt = {
   key: 3,
   class: "text-center"
-}, Ft = {
+}, Tt = {
   __name: "MediaCarousel",
   props: /* @__PURE__ */ x({
     files: Array,
@@ -1023,14 +1019,14 @@ const re = {
       l.value !== n.activeIndex && n.slideTo(l.value);
     }), (n, r) => {
       const i = te("swiper-slide"), c = te("swiper-container");
-      return a(), T(c, {
+      return a(), F(c, {
         "slides-per-view": 1,
         "centered-slides": !0,
         navigation: !f(t),
         onSwiperslidechange: o
       }, {
         default: V(() => [
-          (a(!0), s(L, null, A(e.files, (u) => (a(), T(i, null, {
+          (a(!0), s(L, null, A(e.files, (u) => (a(), F(i, null, {
             default: V(() => [
               d("div", kt, [
                 u.type === "image" ? (a(), s("div", wt, [
@@ -1051,7 +1047,7 @@ const re = {
                     controls: ""
                   }, null, 8, Bt)
                 ])) : (a(), s("div", Dt, [
-                  h(f(F), {
+                  h(f(T), {
                     icon: f(ae),
                     size: "xl"
                   }, null, 8, ["icon"]),
@@ -1066,7 +1062,7 @@ const re = {
       }, 8, ["navigation"]);
     };
   }
-}, Tt = {
+}, Ft = {
   key: 0,
   class: "font-medium mb-1"
 }, It = {
@@ -1089,9 +1085,9 @@ const re = {
   setup(e) {
     const l = S(e, "modelValue"), t = M(0), { formatFiles: o } = ue(), n = (i) => l.value.push(...i.target.files), r = D(() => o(l.value));
     return (i, c) => (a(), s("div", null, [
-      e.label ? (a(), s("label", Tt, p(e.label), 1)) : k("", !0),
+      e.label ? (a(), s("label", Ft, p(e.label), 1)) : k("", !0),
       l.value.length > 0 ? (a(), s("div", It, [
-        h(Ft, {
+        h(Tt, {
           "selected-idx": t.value,
           "onUpdate:selectedIdx": c[0] || (c[0] = (u) => t.value = u),
           files: r.value
@@ -1121,7 +1117,7 @@ const re = {
           _: 1
         }, 8, ["selected-idx", "files"]),
         e.error ? (a(), s("p", Et, p(e.error), 1)) : k("", !0)
-      ])) : (a(), T(mt, {
+      ])) : (a(), F(mt, {
         key: 2,
         "with-icon": "",
         "drop-text": e.placeholder,
@@ -1142,7 +1138,7 @@ const re = {
   emits: ["close"],
   setup(e, { emit: l }) {
     const t = l;
-    return ne(() => t("close")), (o, n) => (a(), T(f(me), {
+    return ne(() => t("close")), (o, n) => (a(), F(f(me), {
       "overlay-transition": "vfm-fade",
       "content-transition": "vfm-fade",
       class: "flex justify-center items-center",
@@ -1184,7 +1180,7 @@ const re = {
     });
     return O(t, () => {
       t.value === !0 ? n.open() : t.value === !1 && n.close();
-    }), (r, i) => (a(), T(f(ve)));
+    }), (r, i) => (a(), F(f(ve)));
   }
 }, Lt = {
   key: 0,
@@ -1323,7 +1319,7 @@ const re = {
 }, Pt = {
   key: 1,
   class: "text-error text-sm"
-}, Fl = {
+}, Tl = {
   __name: "NumberInput",
   props: /* @__PURE__ */ x({
     label: String,
@@ -1366,7 +1362,7 @@ const re = {
         class: v(["rounded-lg flex h-10 items-center", o.value, e.styles, { error: n.value || e.error, "px-2": !e.icon }])
       }, [
         e.icon ? (a(), s("div", Ot, [
-          h(f(F), {
+          h(f(T), {
             icon: e.icon,
             size: "1x",
             class: "text-secondary-text"
@@ -1387,7 +1383,7 @@ const re = {
       n.value ? (a(), s("p", Nt, p(n.value), 1)) : e.error && typeof e.error == "string" ? (a(), s("p", Pt, p(e.error), 1)) : k("", !0)
     ]));
   }
-}, Tl = {
+}, Fl = {
   __name: "Paragraph",
   props: {
     text: String,
@@ -1564,7 +1560,7 @@ const re = {
               name: "right-section",
               fn: V(() => [
                 d("div", qt, [
-                  h(f(F), {
+                  h(f(T), {
                     icon: f(ke),
                     size: e.size
                   }, null, 8, ["icon", "size"])
@@ -1634,7 +1630,7 @@ const re = {
               i(y)
             ])
           }, [
-            h(f(F), {
+            h(f(T), {
               icon: b.status === "completed" && !e.canMoveBackwards ? f(se) : b.icon
             }, null, 8, ["icon"])
           ], 10, Zt),
@@ -1884,7 +1880,7 @@ const Ll = /* @__PURE__ */ Y(_t, [["render", el]]), tl = ["onClick"], Al = {
       d("div", {
         class: v([c.value, "bg-white dark:bg-gray-200 text-black text-sm flex justify-center items-center w-6 h-6 rounded-full shadow-md transform transition-transform duration-300"])
       }, [
-        e.icon ? (a(), T(f(F), {
+        e.icon ? (a(), F(f(T), {
           key: 0,
           icon: e.icon
         }, null, 8, ["icon"])) : k("", !0)
@@ -1962,12 +1958,12 @@ export {
   Cl as FlashMessage,
   ee as IconButton,
   zl as Loader,
-  Ft as MediaCarousel,
+  Tt as MediaCarousel,
   Ml as MediaInput,
   Bl as Modal,
   Dl as Multiselect,
-  Fl as NumberInput,
-  Tl as Paragraph,
+  Tl as NumberInput,
+  Fl as Paragraph,
   Il as Radio,
   El as Select,
   jl as Stepper,

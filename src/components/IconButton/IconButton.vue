@@ -35,11 +35,8 @@ const props = defineProps({
         type: String,
         default: '',
     },
-    onClick: {
-        type: Function,
-        default: (e) => {},
-    },
 })
+const emit = defineEmits(['click'])
 
 const btnSize = computed(() => {
     switch (props.size) {
@@ -61,9 +58,9 @@ const btnSize = computed(() => {
         :href="href"
         :type="type"
         :color="color"
-        :on-click="onClick"
         :disabled="disabled"
         :variant="variant"
+        @click="e => emit('click', e)"
     >
         <FontAwesomeIcon :size="size" :icon="icon" />
     </Button>
