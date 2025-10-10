@@ -23,6 +23,7 @@ const selectedTab = defineModel('selectedTab')
                     'underline-offset-8 underline font-medium': tab.name === selectedTab,
                 }, `text-${size}`]"
                 @click="selectedTab = tab.name"
+                type="button"
             >
                 {{ tab.label }}
             </button>
