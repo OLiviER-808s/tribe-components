@@ -5,6 +5,14 @@ import DropdownOptions from '../DropdownOptions/DropdownOptions.vue'
 
 const props = defineProps({
     options: Array,
+    label: {
+        type: String,
+        default: 'label'
+    },
+    trackBy: {
+        type: String,
+        default: 'value'
+    },
     direction: {
         type: String,
         default: 'left'
@@ -31,6 +39,8 @@ const select = (option) => {
             :container="dropdownContainer"
             :options="options"
             :open="dropdownOpen"
+            :option-label="label"
+            :track-by="trackBy"
             accepts-empty-selection
             @select="select"
             width="w-64"
