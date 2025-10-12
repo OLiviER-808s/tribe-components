@@ -5,18 +5,9 @@ import { onKeyStroke } from "@vueuse/core"
 const props = defineProps({
     container: Object,
     options: Array,
-    optionLabel: {
-        type: String,
-        default: 'label',
-    },
-    trackBy: {
-        type: String,
-        default: 'value',
-    },
-    optionDescription: {
-        type: String,
-        default: 'description',
-    },
+    optionLabel: String,
+    trackBy: String,
+    optionDescription: String,
     width: {
         type: String,
         default: 'w-full'
@@ -116,7 +107,7 @@ watch(() => props.open, () => {
         >
             <div
                 v-for="(option, idx) in options"
-                :key="options[trackBy]"
+                :key="trackBy ? options[trackBy] : option"
                 @click="select(option)"
                 @mouseover="highlightedIdx = idx"
                 class="text-md py-2 px-6 rounded-md text-left"
@@ -124,7 +115,7 @@ watch(() => props.open, () => {
             >
                 <slot v-if="slots.option" name="option" :option="option" />
                 <div v-else>
-                    {{ option[optionLabel] }}
+                    {{ optionLabel ? option[optionLabel] : option }}
 
                     <div v-if="option[optionDescription]" class="text-xs text-secondary-text">
                         {{ option[optionDescription] }}

@@ -5,22 +5,14 @@ import { faSort, faXmark } from '@fortawesome/free-solid-svg-icons'
 import IconButton from '../Iconbutton/IconButton.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import DropdownOptions from "../DropdownOptions/DropdownOptions.vue"
+import { useDropdown } from '../../composables/useDropdown.js'
 
 const props = defineProps({
     options: Array,
     label: String,
-    optionLabel: {
-        type: String,
-        default: 'label',
-    },
-    trackBy: {
-        type: String,
-        default: 'value',
-    },
-    optionDescription: {
-        type: String,
-        default: 'description',
-    },
+    optionLabel: String,
+    trackBy: String,
+    optionDescription: String,
     searchable: Boolean,
     icon: Object,
     error: [String, Boolean],
@@ -58,18 +50,17 @@ const searchQuery = defineModel('searchQuery', { default: '' })
 const inputElement = defineModel('input')
 
 const slots = useSlots()
-
-const dropdownOpen = ref(false)
-const dropdownContainer = ref(null)
+const { dropdownOpen, dropdownContainer, open, close } = useDropdown()
 
 const select = (option) => {
-    model.value = props.formatResult(option)
+    const result = props.formatResult(option)
+
+    model.value = result
+    emit('select', result)
 
     if (props.optionLabel) {
         searchQuery.value = option[props.optionLabel]
     }
-
-    emit('select', option)
 
     nextTick(close)
 }
@@ -78,14 +69,6 @@ const deselect = (e) => {
     e.stopPropagation()
     model.value = null
     searchQuery.value = ''
-}
-
-const open = () => {
-    dropdownOpen.value = true
-}
-
-const close = () => {
-    dropdownOpen.value = false
 }
 
 const toggle = () => {
@@ -98,19 +81,11 @@ const toggle = () => {
     }
 }
 
-const handleClickOutside = (event) => {
-    if (!dropdownContainer.value.contains(event.target)) {
-        close()
-    }
+const getInitialValue = () => {
+    if (model.value && props.optionLabel) return model.value[props.optionLabel]
+    else if (model.value) return model.value
+    else return null
 }
-
-onMounted(() => {
-    document.addEventListener('mousedown', handleClickOutside)
-    if (props.formatResult && model.value) model.value = props.formatResult(model.value)
-})
-onBeforeUnmount(() => {
-    document.removeEventListener('mousedown', handleClickOutside)
-})
 
 watch(searchQuery, () => {
     if (props.searchable && searchQuery.value.length > 0) {
@@ -128,7 +103,7 @@ watch(searchQuery, () => {
                 <Textbox
                     v-model="searchQuery"
                     v-model:input="inputElement"
-                    :value="model ? model[optionLabel] : null"
+                    :value="getInitialValue()"
                     :label="label"
                     :placeholder="placeholder"
                     :disabled="!searchable || (lockOnSelect && model)"
