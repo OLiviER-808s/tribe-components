@@ -106,6 +106,7 @@ const handleClickOutside = (event) => {
 
 onMounted(() => {
     document.addEventListener('mousedown', handleClickOutside)
+    if (props.formatResult && model.value) model.value = props.formatResult(model.value)
 })
 onBeforeUnmount(() => {
     document.removeEventListener('mousedown', handleClickOutside)

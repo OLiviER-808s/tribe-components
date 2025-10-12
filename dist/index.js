@@ -1,5 +1,5 @@
 import { VueFinalModal as me, useModal as fe, ModalsContainer as ve, createVfm as ye } from "vue-final-modal";
-import { createElementBlock as s, openBlock as a, normalizeClass as v, renderSlot as w, mergeModels as x, useModel as S, createBlock as F, createCommentVNode as k, withCtx as V, createElementVNode as d, withDirectives as H, createVNode as h, toDisplayString as p, Transition as N, unref as f, vShow as G, ref as M, onMounted as U, onUnmounted as ne, computed as D, watch as O, Fragment as L, renderList as A, normalizeStyle as ge, createTextVNode as Z, withModifiers as K, onBeforeUnmount as X, useSlots as P, nextTick as oe, createSlots as R, resolveComponent as te, vModelText as pe } from "vue";
+import { createElementBlock as s, openBlock as a, normalizeClass as v, renderSlot as w, mergeModels as x, useModel as S, createBlock as F, createCommentVNode as k, withCtx as V, createElementVNode as d, withDirectives as R, createVNode as h, toDisplayString as p, Transition as N, unref as f, vShow as G, ref as M, onMounted as U, onUnmounted as ne, computed as D, watch as O, Fragment as L, renderList as A, normalizeStyle as ge, createTextVNode as Z, withModifiers as K, onBeforeUnmount as X, useSlots as P, nextTick as oe, createSlots as H, resolveComponent as te, vModelText as pe } from "vue";
 import { FontAwesomeIcon as T } from "@fortawesome/vue-fontawesome";
 import { faChevronDown as le, faHeadphones as be, faVideoCamera as he, faFile as ae, faXmark as J, faCheck as se, faCalendar as xe, faUpload as $e, faPlus as Se, faSort as ke } from "@fortawesome/free-solid-svg-icons";
 import we from "vuedraggable";
@@ -61,7 +61,7 @@ const re = {
             _: 1
           })
         ]),
-        H(d("div", Me, [
+        R(d("div", Me, [
           w(t.$slots, "default")
         ], 512), [
           [G, l.value]
@@ -85,7 +85,7 @@ const re = {
           _: 1
         })
       ]),
-      H(d("div", De, [
+      R(d("div", De, [
         w(t.$slots, "default")
       ], 512), [
         [G, l.value]
@@ -204,7 +204,7 @@ const re = {
       class: v(`rounded-full ${e.styles}`)
     }, null, 10, Ne));
   }
-}, Pe = { class: "flex items-center" }, He = ["src", "alt"], hl = {
+}, Pe = { class: "flex items-center" }, Re = ["src", "alt"], hl = {
   __name: "AvatarGroup",
   props: {
     avatars: Array,
@@ -225,7 +225,7 @@ const re = {
         alt: `avatar ${n + 1}`,
         class: v(`${e.width} rounded-full relative`),
         style: ge({ marginLeft: n === 0 ? "0" : `-${e.overlap}px` })
-      }, null, 14, He))), 128))
+      }, null, 14, Re))), 128))
     ]));
   }
 }, xl = {
@@ -251,7 +251,7 @@ const re = {
       ])
     ], 2));
   }
-}, Re = ["disabled", "type"], Qe = {
+}, He = ["disabled", "type"], Qe = {
   __name: "Button",
   props: {
     color: {
@@ -311,7 +311,7 @@ const re = {
       type: e.type
     }, [
       w(u.$slots, "default")
-    ], 42, Re));
+    ], 42, He));
   }
 }, qe = { class: "flex items-center gap-2" }, We = ["for"], Ge = {
   key: 0,
@@ -860,7 +860,7 @@ const re = {
         onSelect: i,
         width: "w-64",
         direction: e.direction
-      }, R({ _: 2 }, [
+      }, H({ _: 2 }, [
         f(o).option ? {
           name: "option",
           fn: V(({ option: g }) => [
@@ -1297,7 +1297,7 @@ const re = {
           open: u.value,
           "accepts-empty-selection": e.acceptsEmptySelection,
           onSelect: y
-        }, R({ _: 2 }, [
+        }, H({ _: 2 }, [
           f(c).option ? {
             name: "option",
             fn: V(({ option: E }) => [
@@ -1368,7 +1368,7 @@ const re = {
             class: "text-secondary-text"
           }, null, 8, ["icon"])
         ])) : k("", !0),
-        H(d("input", {
+        R(d("input", {
           "onUpdate:modelValue": i[0] || (i[0] = (c) => t.value = c),
           placeholder: e.placeholder,
           type: "number",
@@ -1397,7 +1397,7 @@ const re = {
       class: v([e.styles, { "whitespace-pre-wrap": e.includeWhitespace }])
     }, p(t.value), 3));
   }
-}, Ht = ["name", "value", "checked"], Rt = { class: "rounded-full border-2 border-secondary flex items-center justify-center h-4 w-4" }, Il = {
+}, Rt = ["name", "value", "checked"], Ht = { class: "rounded-full border-2 border-secondary flex items-center justify-center h-4 w-4" }, Il = {
   __name: "Radio",
   props: /* @__PURE__ */ x({
     value: [String, Boolean],
@@ -1425,8 +1425,8 @@ const re = {
         value: e.value,
         checked: i.value,
         onChange: g[0] || (g[0] = (b) => c(b))
-      }, null, 40, Ht),
-      d("span", Rt, [
+      }, null, 40, Rt),
+      d("span", Ht, [
         d("span", {
           class: v(["rounded-full h-2 w-2", { "bg-secondary": r.value || i.value }])
         }, null, 2)
@@ -1507,7 +1507,7 @@ const re = {
       g.value.contains(I.target) || $();
     };
     return U(() => {
-      document.addEventListener("mousedown", j);
+      document.addEventListener("mousedown", j), t.formatResult && n.value && (n.value = t.formatResult(n.value));
     }), X(() => {
       document.removeEventListener("mousedown", j);
     }), O(r, () => {
@@ -1541,7 +1541,7 @@ const re = {
             styles: e.textboxStyles,
             onFocus: C[2] || (C[2] = (z) => o("focus", z)),
             onBlur: C[3] || (C[3] = (z) => o("blur", z))
-          }, R({ _: 2 }, [
+          }, H({ _: 2 }, [
             e.lockOnSelect && e.searchable && n.value ? {
               name: "right-section",
               fn: V(() => [
@@ -1578,7 +1578,7 @@ const re = {
           open: u.value,
           "accepts-empty-selection": e.acceptsEmptySelection,
           onSelect: b
-        }, R({ _: 2 }, [
+        }, H({ _: 2 }, [
           f(c).option ? {
             name: "option",
             fn: V(({ option: z }) => [
@@ -1711,7 +1711,7 @@ const Ll = /* @__PURE__ */ Y(_t, [["render", el]]), tl = ["onClick"], Al = {
           type: "button"
         }, p(n.label), 11, tl))), 128))
       ], 2),
-      (a(!0), s(L, null, A(e.tabs, (n) => H((a(), s("div", {
+      (a(!0), s(L, null, A(e.tabs, (n) => R((a(), s("div", {
         key: n.name
       }, [
         w(t.$slots, `tab-${n.name}`)
@@ -1932,7 +1932,7 @@ const Ll = /* @__PURE__ */ Y(_t, [["render", el]]), tl = ["onClick"], Al = {
       })
     ], 32));
   }
-}, Hl = {
+}, Rl = {
   install(e) {
     const l = ye();
     e.use(l);
@@ -1974,7 +1974,7 @@ export {
   q as Textbox,
   Nl as Toggle,
   Pl as Tooltip,
-  Hl as default,
+  Rl as default,
   ue as useFiles,
   ie as useIsHandheld
 };
