@@ -8,11 +8,19 @@ const props = defineProps({
         type: String,
         default: 'p-4',
     },
+    flat: Boolean,
+    boxed: Boolean,
 })
 </script>
 
 <template>
-    <div :class="`${styles} ${padding} bg-card border border-border dark:border-none rounded-md shadow-sm`">
+    <div :class="[
+        props.styles,
+        props.padding,
+        { 'shadow-sm': !props.flat },
+        { 'rounded-md': !props.boxed },
+        'bg-card border border-border dark:border-none rounded-md shadow-sm'
+    ]">
         <slot />
     </div>
 </template>
