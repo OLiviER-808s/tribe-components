@@ -15,10 +15,10 @@ const props = defineProps({
 
 <template>
     <div :class="[
-        props.styles,
-        props.padding,
-        { 'shadow-sm': !props.flat },
-        { 'rounded-md': !props.boxed },
+        styles,
+        padding,
+        { 'shadow-sm': !flat },
+        { 'rounded-md': !boxed },
         'bg-card border border-border dark:border-none rounded-md shadow-sm'
     ]">
         <slot />
