@@ -27,7 +27,7 @@ const re = {
         e.padding,
         { "shadow-sm": !e.flat },
         { "rounded-md": !e.boxed },
-        "bg-card border border-border dark:border-none rounded-md shadow-sm"
+        "bg-card border border-border dark:border-none"
       ])
     }, [
       w(l.$slots, "default")

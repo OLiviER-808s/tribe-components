@@ -19,7 +19,7 @@ const props = defineProps({
         padding,
         { 'shadow-sm': !flat },
         { 'rounded-md': !boxed },
-        'bg-card border border-border dark:border-none rounded-md shadow-sm'
+        'bg-card border border-border dark:border-none'
     ]">
         <slot />
     </div>
