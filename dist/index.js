@@ -419,9 +419,7 @@ const re = {
       type: String,
       default: "filled"
     },
-    size: {
-      type: String
-    },
+    size: String,
     color: {
       type: String,
       default: "base"
@@ -429,7 +427,11 @@ const re = {
     styles: String,
     label: String,
     icon: Object,
-    placeholder: String
+    placeholder: String,
+    labelStyles: {
+      type: String,
+      default: "font-medium"
+    }
   }, {
     modelValue: {},
     modelModifiers: {},
@@ -439,7 +441,7 @@ const re = {
   emits: /* @__PURE__ */ x(["input", "focus", "blur"], ["update:modelValue", "update:input"]),
   setup(e, { emit: l }) {
     const t = e, o = l, n = $(e, "modelValue"), r = $(e, "input"), i = D(!1), c = B(
-      () => t.variant === "filled" ? `bg-${t.color}` : "bg-transparent border border-secondary-text"
+      () => t.variant === "filled" ? `bg-${t.color}` : "bg-transparent border border-border"
     ), u = (f) => {
       i.value = !0, o("input", f);
     }, g = (f) => {
@@ -450,8 +452,8 @@ const re = {
     return (f, v) => (a(), s("div", null, [
       d("label", {
         for: e.name,
-        class: "font-medium"
-      }, b(e.label), 9, Ze),
+        class: y(e.labelStyles)
+      }, b(e.label), 11, Ze),
       d("div", {
         class: y([
           "rounded-lg flex items-center duration-300",
@@ -1784,7 +1786,7 @@ const Ll = /* @__PURE__ */ J(_t, [["render", el]]), tl = ["onClick"], Al = {
   emits: /* @__PURE__ */ x(["focus", "blur", "keyPress", "input"], ["update:modelValue", "update:input"]),
   setup(e, { emit: l }) {
     const t = e, o = l, n = $(e, "modelValue"), r = $(e, "input"), i = D(t.modelValue), c = D(!1), u = B(
-      () => t.variant === "filled" ? `bg-${t.color}` : "bg-transparent ring-1 ring-secondary-text"
+      () => t.variant === "filled" ? `bg-${t.color}` : "bg-transparent border border-border"
     ), g = (v) => {
       c.value = !0, o("focus", v);
     }, p = (v) => {

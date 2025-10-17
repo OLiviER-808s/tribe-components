@@ -16,9 +16,7 @@ const props = defineProps({
         type: String,
         default: 'filled',
     },
-    size: {
-        type: String,
-    },
+    size: String,
     color: {
         type: String,
         default: 'base',
@@ -27,6 +25,10 @@ const props = defineProps({
     label: String,
     icon: Object,
     placeholder: String,
+    labelStyles: {
+        type: String,
+        default: 'font-medium',
+    }
 })
 const emit = defineEmits(['input', 'focus', 'blur'])
 
@@ -36,7 +38,7 @@ const inputElement = defineModel('input')
 const focused = ref(false)
 
 const variantStyles = computed(() =>
-    props.variant === 'filled' ? `bg-${props.color}` : 'bg-transparent border border-secondary-text'
+    props.variant === 'filled' ? `bg-${props.color}` : 'bg-transparent border border-border'
 )
 
 const handleFocus = (e) => {
@@ -57,7 +59,7 @@ const handleInput = (event) => {
 
 <template>
     <div>
-        <label :for="name" class="font-medium">{{ label }}</label>
+        <label :for="name" :class="labelStyles">{{ label }}</label>
 
         <div
             :class="[

@@ -38,7 +38,7 @@ const internalValue = ref(props.modelValue)
 const focused = ref(false)
 
 const variantStyles = computed(() =>
-    props.variant === 'filled' ? `bg-${props.color}` : 'bg-transparent ring-1 ring-secondary-text'
+    props.variant === 'filled' ? `bg-${props.color}` : 'bg-transparent border border-border'
 )
 
 const handleFocus = (e) => {
