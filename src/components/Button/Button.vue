@@ -58,7 +58,7 @@ const classes = computed(() => {
         props.styles,
         { pressed: isPressed }, 
         { 'disabled-btn': props.disabled },
-        { 'cursor-default': props.hoverEffects }
+        { 'cursor-default': !props.hoverEffects }
     ]
 
     switch (props.variant) {
