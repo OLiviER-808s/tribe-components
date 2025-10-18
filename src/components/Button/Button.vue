@@ -31,6 +31,10 @@ const props = defineProps({
         type: Function,
         default: (e) => {},
     },
+    hoverEffects: {
+        type: Boolean,
+        default: true,
+    },
 })
 const emit = defineEmits(['click'])
 
@@ -47,19 +51,43 @@ const handleClick = (e) => {
 const btnColor = computed(() => {
     return props.color === 'base' ? 'secondary-text' : props.color
 })
+
 const classes = computed(() => {
+    const result = [
+        'btn', 
+        props.styles,
+        { pressed: isPressed }, 
+        { 'disabled-btn': disabled },
+        { 'cursor-default': props.hoverEffects }
+    ]
+
     switch (props.variant) {
         case 'light':
-            return `${props.styles} btn bg-${btnColor.value}/20 hover:bg-${btnColor.value}/35 text-${btnColor.value}`
+            result.push(`bg-${btnColor.value}/20 text-${btnColor.value}`)
+            if (props.hoverEffects) result.push(`hover:bg-${btnColor.value}/35`)
+
+            break
         case 'outline':
-            return `${props.styles} btn text-${btnColor.value} border-${btnColor.value} hover:bg-${btnColor.value}/10 border-2`
+            result.push(`text-${btnColor.value} border-${btnColor.value} border-2`)
+            if (props.hoverEffects) result.push(`hover:bg-${btnColor.value}/10`)
+
+            break    
         case 'subtle':
-            return `${props.styles} btn text-${btnColor.value} hover:bg-${btnColor.value}/10`
+            result.push(`text-${btnColor.value} bg-transparent`)
+            if (props.hoverEffects) result.push(`hover:bg-${btnColor.value}/10`)
+
+            break
         case 'dashed':
-            return `${props.styles} btn text-${btnColor.value} border-${btnColor.value} border-2 border-dashed hover:bg-${btnColor.value}/10`
+            result.push(`text-${btnColor.value} border-${btnColor.value} border-2 border-dashed`)
+            if (props.hoverEffects) result.push(`hover:bg-${btnColor.value}/10`)
+
+            break
         default:
-            return `${props.styles} btn text-black bg-${btnColor.value}`
+            result.push(`text-black bg-${btnColor.value}`)
+            break
     }
+
+    return result
 })
 </script>
 
@@ -68,7 +96,7 @@ const classes = computed(() => {
         @click="handleClick"
         @mousedown="isPressed = true"
         @mouseup="isPressed = false"
-        :class="[classes, { pressed: isPressed }, { 'disabled-btn': disabled }]"
+        :class="classes"
         :disabled="disabled"
         :type="type"
     >

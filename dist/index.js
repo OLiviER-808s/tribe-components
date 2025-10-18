@@ -117,7 +117,7 @@ const re = {
     throw new Error("Invalid indices");
   const [o] = e.splice(l, 1);
   return e.splice(t, 0, o), e;
-}, Ie = (e) => Math.floor(e) !== e && e.toString().split(".")[1]?.length || 0, je = { class: "flex justify-center gap-2 w-full p-4" }, Ee = ["onMouseenter"], Le = ["onClick"], Ae = ["src", "alt"], Oe = {
+}, Ie = (e) => Math.floor(e) !== e && e.toString().split(".")[1]?.length || 0, Ee = { class: "flex justify-center gap-2 w-full p-4" }, je = ["onMouseenter"], Le = ["onClick"], Ae = ["src", "alt"], Oe = {
   key: 1,
   class: "w-full h-full flex items-center justify-center text-secondary-text bg-card rounded-md"
 }, Ue = ["onClick"], Ne = {
@@ -137,7 +137,7 @@ const re = {
     }, g = ({ moved: { oldIndex: f, newIndex: v } }) => {
       t.value = Fe(t.value, f, v), o.value === f ? o.value = v : o.value > f && o.value <= v ? o.value-- : o.value < f && o.value >= v && o.value++;
     }, p = B(() => l.size === "lg" ? "w-16 h-16" : "w-14 h-14");
-    return O(t, () => c.value = r(l.files)), (f, v) => (a(), s("div", je, [
+    return O(t, () => c.value = r(l.files)), (f, v) => (a(), s("div", Ee, [
       w(f.$slots, "additional-items-before"),
       h(m(Ve), {
         modelValue: c.value,
@@ -151,12 +151,12 @@ const re = {
         item: z(({ element: V, index: C }) => [
           d("div", {
             class: y(`relative border-secondary rounded-md ${p.value} ${o.value === C ? "border-3 bg-secondary" : ""}`),
-            onMouseenter: (E) => i.value = C,
-            onMouseleave: v[0] || (v[0] = (E) => i.value = -1)
+            onMouseenter: (j) => i.value = C,
+            onMouseleave: v[0] || (v[0] = (j) => i.value = -1)
           }, [
             d("button", {
               class: "w-full h-full",
-              onClick: (E) => o.value = C
+              onClick: (j) => o.value = C
             }, [
               V.type === "image" ? (a(), s("img", {
                 key: 0,
@@ -181,7 +181,7 @@ const re = {
             ], 8, Le),
             i.value === C || m(n) ? (a(), s("button", {
               key: 0,
-              onClick: (E) => u(C),
+              onClick: (j) => u(C),
               class: "absolute cursor-pointer top-0 right-0 text-secondary-text bg-card/80 rounded-full w-5 h-5 flex justify-center items-center"
             }, [
               h(m(T), {
@@ -189,7 +189,7 @@ const re = {
                 size: "xs"
               }, null, 8, ["icon"])
             ], 8, Ue)) : S("", !0)
-          ], 42, Ee)
+          ], 42, je)
         ]),
         _: 1
       }, 8, ["modelValue"]),
@@ -290,6 +290,10 @@ const re = {
       type: Function,
       default: (e) => {
       }
+    },
+    hoverEffects: {
+      type: Boolean,
+      default: !0
     }
   },
   emits: ["click"],
@@ -297,24 +301,37 @@ const re = {
     const t = e, o = l, n = D(!1), r = (u) => {
       t.href && window.open(t.href), o("click", u);
     }, i = B(() => t.color === "base" ? "secondary-text" : t.color), c = B(() => {
+      const u = [
+        "btn",
+        t.styles,
+        { pressed: n },
+        { "disabled-btn": disabled },
+        { "cursor-default": t.hoverEffects }
+      ];
       switch (t.variant) {
         case "light":
-          return `${t.styles} btn bg-${i.value}/20 hover:bg-${i.value}/35 text-${i.value}`;
+          u.push(`bg-${i.value}/20 text-${i.value}`), t.hoverEffects && u.push(`hover:bg-${i.value}/35`);
+          break;
         case "outline":
-          return `${t.styles} btn text-${i.value} border-${i.value} hover:bg-${i.value}/10 border-2`;
+          u.push(`text-${i.value} border-${i.value} border-2`), t.hoverEffects && u.push(`hover:bg-${i.value}/10`);
+          break;
         case "subtle":
-          return `${t.styles} btn text-${i.value} hover:bg-${i.value}/10`;
+          u.push(`text-${i.value} bg-transparent`), t.hoverEffects && u.push(`hover:bg-${i.value}/10`);
+          break;
         case "dashed":
-          return `${t.styles} btn text-${i.value} border-${i.value} border-2 border-dashed hover:bg-${i.value}/10`;
+          u.push(`text-${i.value} border-${i.value} border-2 border-dashed`), t.hoverEffects && u.push(`hover:bg-${i.value}/10`);
+          break;
         default:
-          return `${t.styles} btn text-black bg-${i.value}`;
+          u.push(`text-black bg-${i.value}`);
+          break;
       }
+      return u;
     });
     return (u, g) => (a(), s("button", {
       onClick: r,
       onMousedown: g[0] || (g[0] = (p) => n.value = !0),
       onMouseup: g[1] || (g[1] = (p) => n.value = !1),
-      class: y([c.value, { pressed: n.value }, { "disabled-btn": e.disabled }]),
+      class: y(c.value),
       disabled: e.disabled,
       type: e.type
     }, [
@@ -810,11 +827,11 @@ const re = {
             i.value
           ])
         }, [
-          (a(!0), s(L, null, A(e.options, (C, E) => (a(), s("div", {
+          (a(!0), s(L, null, A(e.options, (C, j) => (a(), s("div", {
             key: e.trackBy ? e.options[e.trackBy] : C,
-            onClick: (j) => u(C),
-            onMouseover: (j) => r.value = E,
-            class: y(["text-md py-2 px-6 rounded-md text-left", { "bg-dropdown-select": r.value === E }])
+            onClick: (E) => u(C),
+            onMouseover: (E) => r.value = j,
+            class: y(["text-md py-2 px-6 rounded-md text-left", { "bg-dropdown-select": r.value === j }])
           }, [
             m(n).option ? w(v.$slots, "option", {
               key: 0,
@@ -915,6 +932,10 @@ const re = {
     href: {
       type: String,
       default: ""
+    },
+    hoverEffects: {
+      type: Boolean,
+      default: !0
     }
   },
   emits: ["click"],
@@ -938,6 +959,7 @@ const re = {
       color: e.color,
       disabled: e.disabled,
       variant: e.variant,
+      "hover-effects": e.hoverEffects,
       onClick: i[0] || (i[0] = (c) => o("click", c))
     }, {
       default: z(() => [
@@ -947,7 +969,7 @@ const re = {
         }, null, 8, ["size", "icon"])
       ]),
       _: 1
-    }, 8, ["styles", "href", "type", "color", "disabled", "variant"]));
+    }, 8, ["styles", "href", "type", "color", "disabled", "variant", "hover-effects"]));
   }
 }, pt = { class: "flex-grow" }, ht = { class: "text-md font-medium" }, Cl = {
   __name: "FlashMessage",
@@ -1079,7 +1101,7 @@ const re = {
 }, It = {
   key: 1,
   class: "mb-2"
-}, jt = {
+}, Et = {
   key: 0,
   class: "text-error text-sm mt-1"
 }, Ml = {
@@ -1127,7 +1149,7 @@ const re = {
           ]),
           _: 1
         }, 8, ["selected-idx", "files"]),
-        e.error ? (a(), s("p", jt, b(e.error), 1)) : S("", !0)
+        e.error ? (a(), s("p", Et, b(e.error), 1)) : S("", !0)
       ])) : (a(), F(ft, {
         key: 2,
         "with-icon": "",
@@ -1138,7 +1160,7 @@ const re = {
       }, null, 8, ["drop-text", "modelValue", "error"]))
     ]));
   }
-}, Et = {
+}, jt = {
   __name: "ModalContent",
   props: {
     contentClass: {
@@ -1180,7 +1202,7 @@ const re = {
   emits: ["update:modelValue"],
   setup(e) {
     const l = e, t = $(e, "modelValue"), o = P(), n = ve({
-      component: Et,
+      component: jt,
       attrs: {
         contentClass: l.contentClass,
         onClose: () => t.value = !1
@@ -1247,15 +1269,15 @@ const re = {
       u.value = !0;
     }, C = () => {
       u.value = !1;
-    }, E = () => {
+    }, j = () => {
       t.searchable || (u.value ? C() : V());
-    }, j = (k) => {
+    }, E = (k) => {
       g.value.contains(k.target) || C();
     };
     return N(() => {
-      document.addEventListener("mousedown", j);
+      document.addEventListener("mousedown", E);
     }), ne(() => {
-      document.removeEventListener("mousedown", j);
+      document.removeEventListener("mousedown", E);
     }), O(r, () => {
       t.searchable && r.value.length > 0 && V();
     }), (k, M) => (a(), s("div", {
@@ -1267,7 +1289,7 @@ const re = {
         ref: g
       }, [
         d("div", {
-          onClick: M[4] || (M[4] = (I) => E()),
+          onClick: M[4] || (M[4] = (I) => j()),
           class: y({ "cursor-pointer": !e.searchable })
         }, [
           h(q, {
@@ -1448,7 +1470,7 @@ const re = {
 }, Qt = { class: "flex items-center pr-1" }, qt = { class: "flex items-center pr-2 text-secondary-text" }, Wt = {
   key: 0,
   class: "text-error text-sm"
-}, jl = {
+}, El = {
   __name: "Select",
   props: /* @__PURE__ */ x({
     options: Array,
@@ -1495,17 +1517,17 @@ const re = {
   }),
   emits: /* @__PURE__ */ x(["select", "blur", "focus"], ["update:modelValue", "update:searchQuery", "update:input"]),
   setup(e, { emit: l }) {
-    const t = e, o = l, n = $(e, "modelValue"), r = $(e, "searchQuery"), i = $(e, "input"), c = P(), { dropdownOpen: u, dropdownContainer: g, open: p, close: f } = de(), v = (j) => {
-      const k = t.formatResult(j);
-      n.value = k, o("select", k), t.optionLabel && (r.value = j[t.optionLabel]), oe(f);
-    }, V = (j) => {
-      j.stopPropagation(), n.value = null, r.value = "";
+    const t = e, o = l, n = $(e, "modelValue"), r = $(e, "searchQuery"), i = $(e, "input"), c = P(), { dropdownOpen: u, dropdownContainer: g, open: p, close: f } = de(), v = (E) => {
+      const k = t.formatResult(E);
+      n.value = k, o("select", k), t.optionLabel && (r.value = E[t.optionLabel]), oe(f);
+    }, V = (E) => {
+      E.stopPropagation(), n.value = null, r.value = "";
     }, C = () => {
       t.searchable || (u.value ? f() : p());
-    }, E = () => n.value && t.optionLabel ? n.value[t.optionLabel] : n.value ? n.value : null;
+    }, j = () => n.value && t.optionLabel ? n.value[t.optionLabel] : n.value ? n.value : null;
     return O(r, () => {
       t.searchable && r.value.length > 0 ? p() : t.searchable && f();
-    }), (j, k) => (a(), s("div", {
+    }), (E, k) => (a(), s("div", {
       class: y([e.styles])
     }, [
       d("div", {
@@ -1522,7 +1544,7 @@ const re = {
             "onUpdate:modelValue": k[0] || (k[0] = (M) => r.value = M),
             input: i.value,
             "onUpdate:input": k[1] || (k[1] = (M) => i.value = M),
-            value: E(),
+            value: j(),
             label: e.label,
             placeholder: e.placeholder,
             disabled: !e.searchable || e.lockOnSelect && n.value,
@@ -1575,7 +1597,7 @@ const re = {
           m(c).option ? {
             name: "option",
             fn: z(({ option: M }) => [
-              w(j.$slots, "option", { option: M })
+              w(E.$slots, "option", { option: M })
             ]),
             key: "0"
           } : void 0
@@ -1587,7 +1609,7 @@ const re = {
 }, Gt = {
   key: 0,
   class: "w-full"
-}, Kt = { class: "flex justify-between items-center gap-2 px-4" }, Zt = ["onClick"], Xt = { class: "flex justify-between items-center mt-1 px-3" }, Jt = ["onClick"], Yt = ["onClick"], El = {
+}, Kt = { class: "flex justify-between items-center gap-2 px-4" }, Zt = ["onClick"], Xt = { class: "flex justify-between items-center mt-1 px-3" }, Jt = ["onClick"], Yt = ["onClick"], jl = {
   __name: "Stepper",
   props: /* @__PURE__ */ x({
     steps: Array,
@@ -1958,8 +1980,8 @@ export {
   Tl as NumberInput,
   Fl as Paragraph,
   Il as Radio,
-  jl as Select,
-  El as Stepper,
+  El as Select,
+  jl as Stepper,
   Ll as StopPropagation,
   Al as Tabs,
   Ol as Tag,
