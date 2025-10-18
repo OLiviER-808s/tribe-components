@@ -57,7 +57,7 @@ const classes = computed(() => {
         'btn', 
         props.styles,
         { pressed: isPressed }, 
-        { 'disabled-btn': disabled },
+        { 'disabled-btn': props.disabled },
         { 'cursor-default': props.hoverEffects }
     ]
 

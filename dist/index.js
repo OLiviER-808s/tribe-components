@@ -305,7 +305,7 @@ const re = {
         "btn",
         t.styles,
         { pressed: n },
-        { "disabled-btn": disabled },
+        { "disabled-btn": t.disabled },
         { "cursor-default": t.hoverEffects }
       ];
       switch (t.variant) {
