@@ -1,5 +1,5 @@
 import { VueFinalModal as ve, useModal as ye, ModalsContainer as ge, createVfm as be } from "vue-final-modal";
-import { createElementBlock as r, openBlock as a, normalizeClass as v, renderSlot as k, mergeModels as x, useModel as $, createBlock as F, createCommentVNode as S, withCtx as z, createElementVNode as d, withDirectives as H, createVNode as h, toDisplayString as p, Transition as U, unref as f, vShow as K, ref as D, onMounted as N, onUnmounted as le, computed as B, watch as O, Fragment as E, renderList as L, normalizeStyle as ne, createTextVNode as q, withModifiers as Z, onBeforeUnmount as oe, useSlots as P, nextTick as ae, createSlots as R, resolveComponent as ee, vModelText as pe } from "vue";
+import { createElementBlock as r, openBlock as a, normalizeClass as v, renderSlot as k, mergeModels as x, useModel as $, createBlock as F, createCommentVNode as S, withCtx as z, createElementVNode as d, withDirectives as H, createVNode as h, toDisplayString as p, Transition as U, unref as f, vShow as K, ref as D, onMounted as N, onUnmounted as le, computed as M, watch as O, Fragment as E, renderList as L, normalizeStyle as ne, createTextVNode as q, withModifiers as Z, onBeforeUnmount as oe, useSlots as P, nextTick as ae, createSlots as R, resolveComponent as ee, vModelText as pe } from "vue";
 import { FontAwesomeIcon as T } from "@fortawesome/vue-fontawesome";
 import { faChevronDown as te, faHeadphones as he, faVideoCamera as xe, faFile as se, faXmark as X, faCheck as re, faCalendar as $e, faUpload as Se, faPlus as ke, faSort as we } from "@fortawesome/free-solid-svg-icons";
 import Ce from "vuedraggable";
@@ -33,7 +33,7 @@ const ie = {
       k(l.$slots, "default")
     ], 2));
   }
-}, Me = { class: "text-xl font-medium" }, Be = { class: "pt-4" }, De = { key: 1 }, Te = { class: "p-2" }, xl = {
+}, Be = { class: "text-xl font-medium" }, Me = { class: "pt-4" }, De = { key: 1 }, Te = { class: "p-2" }, xl = {
   __name: "Accordion",
   props: /* @__PURE__ */ x({
     title: String,
@@ -54,7 +54,7 @@ const ie = {
           onClick: o[0] || (o[0] = (n) => l.value = !l.value),
           class: "flex items-center justify-between gap-2 cursor-pointer"
         }, [
-          d("h3", Me, p(e.title), 1),
+          d("h3", Be, p(e.title), 1),
           h(U, { name: "rotate" }, {
             default: z(() => [
               d("div", {
@@ -69,7 +69,7 @@ const ie = {
             _: 1
           })
         ]),
-        H(d("div", Be, [
+        H(d("div", Me, [
           k(t.$slots, "default")
         ], 512), [
           [K, l.value]
@@ -136,7 +136,7 @@ const ie = {
       t.value = t.value.filter((g, C) => C !== m), o.value > m && (o.value -= 1);
     }, y = ({ moved: { oldIndex: m, newIndex: g } }) => {
       t.value = Fe(t.value, m, g), o.value === m ? o.value = g : o.value > m && o.value <= g ? o.value-- : o.value < m && o.value >= g && o.value++;
-    }, b = B(() => l.size === "lg" ? "w-16 h-16" : "w-14 h-14");
+    }, b = M(() => l.size === "lg" ? "w-16 h-16" : "w-14 h-14");
     return O(t, () => c.value = i(l.files)), (m, g) => (a(), r("div", Ee, [
       k(m.$slots, "additional-items-before"),
       h(f(Ce), {
@@ -300,7 +300,7 @@ const ie = {
   setup(e, { emit: l }) {
     const t = e, o = l, n = D(!1), i = (u) => {
       t.href && window.open(t.href), o("click", u);
-    }, s = B(() => t.color === "base" ? "secondary-text" : t.color), c = B(() => {
+    }, s = M(() => t.color === "base" ? "secondary-text" : t.color), c = M(() => {
       const u = [
         "btn",
         t.styles,
@@ -400,7 +400,7 @@ const ie = {
   }),
   emits: /* @__PURE__ */ x(["select"], ["update:modelValue"]),
   setup(e, { emit: l }) {
-    const t = e, o = l, n = $(e, "modelValue"), i = B(() => `${t.styles} py-1 px-3 duration-100 text-center border-2 rounded-${t.rounded} text-${t.size} text-${t.color} border-${t.color} hover:bg-${t.color}/10`), s = B(() => `${t.styles} py-1 px-3 duration-100 text-center border-2 rounded-${t.rounded} text-${t.size} bg-${t.color} border-${t.color} text-black`);
+    const t = e, o = l, n = $(e, "modelValue"), i = M(() => `${t.styles} py-1 px-3 duration-100 text-center border-2 rounded-${t.rounded} text-${t.size} text-${t.color} border-${t.color} hover:bg-${t.color}/10`), s = M(() => `${t.styles} py-1 px-3 duration-100 text-center border-2 rounded-${t.rounded} text-${t.size} bg-${t.color} border-${t.color} text-black`);
     return (c, u) => (a(), r("button", {
       onClick: u[0] || (u[0] = (y) => o("select")),
       class: v(n.value ? s.value : i.value)
@@ -457,7 +457,7 @@ const ie = {
   }),
   emits: /* @__PURE__ */ x(["input", "focus", "blur"], ["update:modelValue", "update:input"]),
   setup(e, { emit: l }) {
-    const t = e, o = l, n = $(e, "modelValue"), i = $(e, "input"), s = D(!1), c = B(
+    const t = e, o = l, n = $(e, "modelValue"), i = $(e, "input"), s = D(!1), c = M(
       () => t.variant === "filled" ? `bg-${t.color}` : "bg-transparent border border-border"
     ), u = (m) => {
       s.value = !0, o("input", m);
@@ -550,7 +550,7 @@ const ie = {
     const l = e, t = $(e, "modelValue"), o = (i) => {
       let s = parseFloat(i.target.value.replace(/[^\d.-]/g, ""));
       Ie(s) > 0 && (s = (Math.round(s * 100) / 100).toFixed(2)), t.value = s;
-    }, n = B(() => {
+    }, n = M(() => {
       if (t.value)
         return `${l.currencySymbol}${t.value}`;
     });
@@ -610,7 +610,7 @@ const ie = {
   }),
   emits: ["update:modelValue"],
   setup(e) {
-    const l = e, t = $(e, "modelValue"), o = D(null), n = B(() => l.range ? ot : l.includeTime ? nt : Q);
+    const l = e, t = $(e, "modelValue"), o = D(null), n = M(() => l.range ? ot : l.includeTime ? nt : Q);
     return (i, s) => (a(), r("div", {
       class: v(e.styles)
     }, [
@@ -846,7 +846,7 @@ const ie = {
       _: 3
     }, 8, ["name"]));
   }
-}, Y = /* @__PURE__ */ J(bt, [["__scopeId", "data-v-32652279"]]), Ml = {
+}, Y = /* @__PURE__ */ J(bt, [["__scopeId", "data-v-32652279"]]), Bl = {
   __name: "DropdownMenu",
   props: {
     options: Array,
@@ -940,7 +940,7 @@ const ie = {
   },
   emits: ["click"],
   setup(e, { emit: l }) {
-    const t = e, o = l, n = B(() => {
+    const t = e, o = l, n = M(() => {
       switch (t.size) {
         case "sm":
           return "w-6 h-6";
@@ -971,7 +971,7 @@ const ie = {
       _: 1
     }, 8, ["styles", "href", "type", "color", "disabled", "variant", "hover-effects"]));
   }
-}, pt = { class: "flex-grow" }, ht = { class: "text-md font-medium" }, Bl = {
+}, pt = { class: "flex-grow" }, ht = { class: "text-md font-medium" }, Ml = {
   __name: "FlashMessage",
   props: {
     content: String,
@@ -1026,7 +1026,7 @@ const ie = {
       ])
     ]));
   }
-}, Dl = /* @__PURE__ */ J(St, [["__scopeId", "data-v-d8288a84"]]), kt = { class: "flex items-center justify-center" }, wt = { key: 0 }, Ct = ["src", "alt"], Vt = { key: 1 }, zt = ["src"], Mt = { key: 2 }, Bt = ["src"], Dt = {
+}, Dl = /* @__PURE__ */ J(St, [["__scopeId", "data-v-d8288a84"]]), kt = { class: "flex items-center justify-center" }, wt = { key: 0 }, Ct = ["src", "alt"], Vt = { key: 1 }, zt = ["src"], Bt = { key: 2 }, Mt = ["src"], Dt = {
   key: 3,
   class: "text-center"
 }, Tt = {
@@ -1074,11 +1074,11 @@ const ie = {
                     controls: "",
                     class: v(e.maxMediaHeight)
                   }, null, 10, zt)
-                ])) : u.type === "audio" ? (a(), r("div", Mt, [
+                ])) : u.type === "audio" ? (a(), r("div", Bt, [
                   d("audio", {
                     src: u.preview,
                     controls: ""
-                  }, null, 8, Bt)
+                  }, null, 8, Mt)
                 ])) : (a(), r("div", Dt, [
                   h(f(T), {
                     icon: f(se),
@@ -1116,7 +1116,7 @@ const ie = {
   }),
   emits: ["update:modelValue"],
   setup(e) {
-    const l = $(e, "modelValue"), t = D(0), { formatFiles: o } = ce(), n = (s) => l.value.push(...s.target.files), i = B(() => o(l.value));
+    const l = $(e, "modelValue"), t = D(0), { formatFiles: o } = ce(), n = (s) => l.value.push(...s.target.files), i = M(() => o(l.value));
     return (s, c) => (a(), r("div", null, [
       e.label ? (a(), r("label", Ft, p(e.label), 1)) : S("", !0),
       l.value.length > 0 ? (a(), r("div", It, [
@@ -1194,6 +1194,14 @@ const ie = {
     contentClass: {
       type: String,
       default: "w-full max-w-xl p-2"
+    },
+    clickToClose: {
+      type: Boolean,
+      default: !0
+    },
+    escToClose: {
+      type: Boolean,
+      default: !0
     }
   }, {
     modelValue: {},
@@ -1205,6 +1213,8 @@ const ie = {
       component: jt,
       attrs: {
         contentClass: l.contentClass,
+        clickToClose: l.clickToClose,
+        escToClose: l.escToClose,
         onClose: () => t.value = !1
       },
       slots: {
@@ -1261,10 +1271,10 @@ const ie = {
   }),
   emits: /* @__PURE__ */ x(["select", "focus", "blur"], ["update:modelValue", "update:searchQuery", "update:input"]),
   setup(e, { emit: l }) {
-    const t = e, o = l, n = $(e, "modelValue"), i = $(e, "searchQuery"), s = $(e, "input"), c = P(), u = D(!1), y = D(null), b = B(() => t.acceptsDuplicates ? t.options : t.options.filter((w) => !n.value.includes(t.formatResult(w)))), m = (w) => {
+    const t = e, o = l, n = $(e, "modelValue"), i = $(e, "searchQuery"), s = $(e, "input"), c = P(), u = D(!1), y = D(null), b = M(() => t.acceptsDuplicates ? t.options : t.options.filter((w) => !n.value.includes(t.formatResult(w)))), m = (w) => {
       n.value.push(t.formatResult(w)), i.value = "", o("select", w);
     }, g = (w) => {
-      n.value = n.value.filter((M, I) => I !== w);
+      n.value = n.value.filter((B, I) => I !== w);
     }, C = () => {
       u.value = !0;
     }, V = () => {
@@ -1280,7 +1290,7 @@ const ie = {
       document.removeEventListener("mousedown", j);
     }), O(i, () => {
       t.searchable && i.value.length > 0 && C();
-    }), (w, M) => (a(), r("div", {
+    }), (w, B) => (a(), r("div", {
       class: v([e.styles])
     }, [
       d("div", {
@@ -1289,14 +1299,14 @@ const ie = {
         ref: y
       }, [
         d("div", {
-          onClick: M[4] || (M[4] = (I) => A()),
+          onClick: B[4] || (B[4] = (I) => A()),
           class: v({ "cursor-pointer": !e.searchable })
         }, [
           h(W, {
             modelValue: i.value,
-            "onUpdate:modelValue": M[0] || (M[0] = (I) => i.value = I),
+            "onUpdate:modelValue": B[0] || (B[0] = (I) => i.value = I),
             input: s.value,
-            "onUpdate:input": M[1] || (M[1] = (I) => s.value = I),
+            "onUpdate:input": B[1] || (B[1] = (I) => s.value = I),
             label: e.label,
             placeholder: e.placeholder,
             disabled: !e.searchable,
@@ -1306,8 +1316,8 @@ const ie = {
             color: e.color,
             variant: e.variant,
             styles: e.textboxStyles,
-            onFocus: M[2] || (M[2] = (I) => o("focus", I)),
-            onBlur: M[3] || (M[3] = (I) => o("blur", I))
+            onFocus: B[2] || (B[2] = (I) => o("focus", I)),
+            onBlur: B[3] || (B[3] = (I) => o("blur", I))
           }, {
             "left-section": z(() => [
               (a(!0), r(E, null, L(n.value, (I, fe) => (a(), r("div", {
@@ -1386,9 +1396,9 @@ const ie = {
   }),
   emits: ["update:modelValue"],
   setup(e) {
-    const l = e, t = $(e, "modelValue"), o = B(
+    const l = e, t = $(e, "modelValue"), o = M(
       () => l.variant === "filled" ? `bg-${l.color}` : "bg-transparent border border-secondary-text"
-    ), n = B(() => l.modelValue > l.max ? `Value must be ${l.max} or less.` : l.modelValue < l.min ? `Value must be ${l.min} or more.` : !1);
+    ), n = M(() => l.modelValue > l.max ? `Value must be ${l.max} or less.` : l.modelValue < l.min ? `Value must be ${l.min} or more.` : !1);
     return (i, s) => (a(), r("div", null, [
       d("h4", At, p(e.label), 1),
       d("div", {
@@ -1425,7 +1435,7 @@ const ie = {
     includeWhitespace: Boolean
   },
   setup(e) {
-    const l = e, t = B(() => l.limit ? `${l.text.substring(0, l.limit)}${l.text.length > l.limit ? "..." : ""}` : l.text);
+    const l = e, t = M(() => l.limit ? `${l.text.substring(0, l.limit)}${l.text.length > l.limit ? "..." : ""}` : l.text);
     return (o, n) => (a(), r("p", {
       class: v([e.styles, { "whitespace-pre-wrap": e.includeWhitespace }])
     }, p(t.value), 3));
@@ -1443,7 +1453,7 @@ const ie = {
   }),
   emits: /* @__PURE__ */ x(["select"], ["update:modelValue"]),
   setup(e, { emit: l }) {
-    const t = e, o = l, n = $(e, "modelValue"), i = D(!1), s = B(() => t.modelValue === t.value), c = (u) => {
+    const t = e, o = l, n = $(e, "modelValue"), i = D(!1), s = M(() => t.modelValue === t.value), c = (u) => {
       n.value = t.value, o("select", u);
     };
     return (u, y) => (a(), r("label", {
@@ -1536,14 +1546,14 @@ const ie = {
         ref: y
       }, [
         d("div", {
-          onClick: w[4] || (w[4] = (M) => V()),
+          onClick: w[4] || (w[4] = (B) => V()),
           class: v({ "cursor-pointer": !e.searchable })
         }, [
           h(W, {
             modelValue: i.value,
-            "onUpdate:modelValue": w[0] || (w[0] = (M) => i.value = M),
+            "onUpdate:modelValue": w[0] || (w[0] = (B) => i.value = B),
             input: s.value,
-            "onUpdate:input": w[1] || (w[1] = (M) => s.value = M),
+            "onUpdate:input": w[1] || (w[1] = (B) => s.value = B),
             value: A(),
             label: e.label,
             placeholder: e.placeholder,
@@ -1554,8 +1564,8 @@ const ie = {
             color: e.color,
             variant: e.variant,
             styles: e.textboxStyles,
-            onFocus: w[2] || (w[2] = (M) => o("focus", M)),
-            onBlur: w[3] || (w[3] = (M) => o("blur", M))
+            onFocus: w[2] || (w[2] = (B) => o("focus", B)),
+            onBlur: w[3] || (w[3] = (B) => o("blur", B))
           }, R({ _: 2 }, [
             e.lockOnSelect && e.searchable && n.value ? {
               name: "right-section",
@@ -1596,8 +1606,8 @@ const ie = {
         }, R({ _: 2 }, [
           f(c).option ? {
             name: "option",
-            fn: z(({ option: M }) => [
-              k(j.$slots, "option", { option: M })
+            fn: z(({ option: B }) => [
+              k(j.$slots, "option", { option: B })
             ]),
             key: "0"
           } : void 0
@@ -1629,7 +1639,7 @@ const ie = {
   }),
   emits: ["update:modelValue"],
   setup(e) {
-    const l = e, t = $(e, "modelValue"), o = B(() => l.steps.findIndex((u) => u.value === t.value)), n = B(() => l.steps.map((u, y) => y < o.value ? { ...u, status: "completed" } : y === o.value ? { ...u, status: "in-progress" } : { ...u, status: "uncompleted" })), i = (u) => u.status === "uncompleted" || u.status !== "in-progress" && l.variant === "minimalist" ? "text-secondary-text bg-card-accent" : `text-${l.color} bg-${l.color}${l.variant === "classic" ? "/30" : ""}`, s = (u) => l.canMoveForwards && u > o.value || l.canMoveBackwards && u < o.value ? "cursor-pointer" : "cursor-default", c = (u, y) => {
+    const l = e, t = $(e, "modelValue"), o = M(() => l.steps.findIndex((u) => u.value === t.value)), n = M(() => l.steps.map((u, y) => y < o.value ? { ...u, status: "completed" } : y === o.value ? { ...u, status: "in-progress" } : { ...u, status: "uncompleted" })), i = (u) => u.status === "uncompleted" || u.status !== "in-progress" && l.variant === "minimalist" ? "text-secondary-text bg-card-accent" : `text-${l.color} bg-${l.color}${l.variant === "classic" ? "/30" : ""}`, s = (u) => l.canMoveForwards && u > o.value || l.canMoveBackwards && u < o.value ? "cursor-pointer" : "cursor-default", c = (u, y) => {
       (l.canMoveForwards && y > o.value || l.canMoveBackwards && y < o.value) && (t.value = u.value);
     };
     return (u, y) => e.variant === "classic" ? (a(), r("div", Gt, [
@@ -1849,7 +1859,7 @@ const Ul = /* @__PURE__ */ J(_t, [["render", el]]), tl = { class: "overflow-hidd
   }),
   emits: /* @__PURE__ */ x(["focus", "blur", "keyPress", "input"], ["update:modelValue", "update:input"]),
   setup(e, { emit: l }) {
-    const t = e, o = l, n = $(e, "modelValue"), i = $(e, "input"), s = D(t.modelValue), c = D(!1), u = B(
+    const t = e, o = l, n = $(e, "modelValue"), i = $(e, "input"), s = D(t.modelValue), c = D(!1), u = M(
       () => t.variant === "filled" ? `bg-${t.color}` : "bg-transparent border border-border"
     ), y = (g) => {
       c.value = !0, o("focus", g);
@@ -1923,9 +1933,9 @@ const Ul = /* @__PURE__ */ J(_t, [["render", el]]), tl = { class: "overflow-hidd
   setup(e, { emit: l }) {
     const t = e, o = l, n = $(e, "modelValue"), i = () => {
       n.value = !n.value, o("toggle", n.value);
-    }, s = B(
+    }, s = M(
       () => n.value ? `bg-${t.activeColor}` : "bg-gray-300 dark:bg-gray-600"
-    ), c = B(
+    ), c = M(
       () => n.value ? "translate-x-6" : "translate-x-0"
     );
     return N(() => {
@@ -1957,7 +1967,7 @@ const Ul = /* @__PURE__ */ J(_t, [["render", el]]), tl = { class: "overflow-hidd
     }
   },
   setup(e) {
-    const l = e, t = D(!1), o = B(() => {
+    const l = e, t = D(!1), o = M(() => {
       let n;
       switch (l.position) {
         case "right":
@@ -2008,11 +2018,11 @@ export {
   Vl as CurrencyInput,
   zl as DatePicker,
   ft as DragAndDropFiles,
-  Ml as DropdownMenu,
+  Bl as DropdownMenu,
   Y as DropdownOptions,
   rt as Dropzone,
   de as FileButton,
-  Bl as FlashMessage,
+  Ml as FlashMessage,
   _ as IconButton,
   Dl as Loader,
   Tt as MediaCarousel,

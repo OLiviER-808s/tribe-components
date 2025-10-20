@@ -7,7 +7,15 @@ const props = defineProps({
     contentClass: {
         type: String,
         default: 'w-full max-w-xl p-2'
-    }
+    },
+    clickToClose: {
+        type: Boolean,
+        default: true
+    },
+    escToClose: {
+        type: Boolean,
+        default: true
+    },
 })
 const open = defineModel()
 
@@ -17,6 +25,8 @@ const modal = useModal({
     component: ModalContent,
     attrs: {
         contentClass: props.contentClass,
+        clickToClose: props.clickToClose,
+        escToClose: props.escToClose,
         onClose: () => open.value = false,
     },
     slots: {
