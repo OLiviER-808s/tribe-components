@@ -498,7 +498,7 @@ const ie = {
           k(m.$slots, "left-section"),
           e.disabled ? (a(), r("div", {
             key: 0,
-            class: v([{ "pl-0": e.icon, "text-sm": e.size === "sm" }, "flex-grow overflow-hidden"])
+            class: v([{ "pl-0": e.icon, "text-sm": e.size === "sm" }, "flex-grow overflow-hidden whitespace-nowrap"])
           }, [
             n.value ? (a(), r("span", Je, p(n.value), 1)) : e.value ? (a(), r("span", Ye, p(e.value), 1)) : e.placeholder ? (a(), r("span", _e, p(e.placeholder), 1)) : S("", !0)
           ], 2)) : (a(), r("input", {

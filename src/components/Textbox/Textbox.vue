@@ -82,7 +82,7 @@ const handleInput = (event) => {
             <div class="flex-grow w-full flex items-center gap-1 flex-wrap p-2" :class="{ 'pl-0': icon }">
                 <slot name="left-section" />
 
-                <div v-if="disabled" :class="{ 'pl-0': icon, 'text-sm': size === 'sm' }" class="flex-grow overflow-hidden">
+                <div v-if="disabled" :class="{ 'pl-0': icon, 'text-sm': size === 'sm' }" class="flex-grow overflow-hidden whitespace-nowrap">
                     <span v-if="modelValue">{{ modelValue }}</span>
                     <span v-else-if="value">{{ value }}</span>
                     <span v-else-if="placeholder" class="text-secondary-text">{{ placeholder }}</span>
