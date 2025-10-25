@@ -54,9 +54,15 @@ const { dropdownOpen, dropdownContainer, open, close } = useDropdown()
 
 const select = (option) => {
     const result = props.formatResult(option)
+    const event = { defaultPrevented: false, preventDefault() { this.defaultPrevented = true } }
 
     model.value = result
-    emit('select', result)
+    emit('select', result, event)
+
+    if (event.defaultPrevented) {
+        nextTick(close)
+        return
+    }
 
     if (props.optionLabel && props.searchable) {
         searchQuery.value = option[props.optionLabel]
