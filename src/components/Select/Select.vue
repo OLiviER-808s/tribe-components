@@ -58,8 +58,10 @@ const select = (option) => {
     model.value = result
     emit('select', result)
 
-    if (props.optionLabel) {
+    if (props.optionLabel && props.searchable) {
         searchQuery.value = option[props.optionLabel]
+    } else if (props.searchable) {
+        searchQuery.value = option
     }
 
     nextTick(close)
