@@ -120,7 +120,7 @@ watch(searchQuery, () => {
                         <div class="flex items-center pr-1">
                             <IconButton
                                 :icon="faXmark"
-                                :on-click="deselect"
+                                @click="deselect()"
                                 variant="subtle"
                                 color="base"
                                 :size="size"
