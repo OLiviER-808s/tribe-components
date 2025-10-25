@@ -1495,7 +1495,7 @@ const ie = {
       L.stopPropagation(), n.value = null, i.value = "";
     }, V = () => {
       t.searchable || (u.value ? m() : p());
-    }, A = () => n.value && t.optionLabel ? n.value[t.optionLabel] : n.value ? n.value : null;
+    }, A = B(() => n.value && t.optionLabel ? n.value[t.optionLabel] : n.value ? n.value : null);
     return O(i, () => {
       t.searchable && i.value.length > 0 ? p() : t.searchable && m();
     }), (L, S) => (a(), r("div", {
@@ -1515,7 +1515,7 @@ const ie = {
             "onUpdate:modelValue": S[1] || (S[1] = (z) => i.value = z),
             input: s.value,
             "onUpdate:input": S[2] || (S[2] = (z) => s.value = z),
-            value: A(),
+            value: A.value,
             label: e.label,
             placeholder: e.placeholder,
             disabled: !e.searchable || e.lockOnSelect && n.value,

@@ -1,5 +1,5 @@
 <script setup>
-import {nextTick, onBeforeUnmount, onMounted, ref, useSlots, watch} from 'vue'
+import {computed, nextTick, onBeforeUnmount, onMounted, ref, useSlots, watch} from 'vue'
 import Textbox from '../Textbox/Textbox.vue'
 import { faSort, faXmark } from '@fortawesome/free-solid-svg-icons'
 import IconButton from '../Iconbutton/IconButton.vue'
@@ -81,11 +81,11 @@ const toggle = () => {
     }
 }
 
-const getInitialValue = () => {
+const value = computed(() => {
     if (model.value && props.optionLabel) return model.value[props.optionLabel]
     else if (model.value) return model.value
     else return null
-}
+})
 
 watch(searchQuery, () => {
     if (props.searchable && searchQuery.value.length > 0) {
@@ -103,7 +103,7 @@ watch(searchQuery, () => {
                 <Textbox
                     v-model="searchQuery"
                     v-model:input="inputElement"
-                    :value="getInitialValue()"
+                    :value="value"
                     :label="label"
                     :placeholder="placeholder"
                     :disabled="!searchable || (lockOnSelect && model)"
