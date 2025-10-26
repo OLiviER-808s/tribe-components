@@ -1,50 +1,36 @@
 <script setup>
-import { defineProps } from "vue"
-
-// interface TableCell {
-//     content?: string | number | null
-//     align?: string
-//     colspan?: number
-//     rowspan?: number
-//     width?: string | number
-//     height?: string | number
-//     class?: string
-// }
-//
-// type TableRow = TableCell[]
-//
-// interface Props {
-//     rows: TableRow[]
-//     headerClasses?: string
-// }
-
 const props = defineProps({
-    rows: Array,
+    rows: {
+        type: Array,
+        required: true,
+    },
     headerClasses: String,
+    onRowClick: Function,
 })
 
-const getCellStyles = (cell) => {
-    return {
-        width: cell.width ? (typeof cell.width === "number" ? `${cell.width}px` : cell.width) : undefined,
-        height: cell.height ? (typeof cell.height === "number" ? `${cell.height}px` : cell.height) : undefined,
-    }
+
+const getCellStyles = (cell) => ({
+    width: cell.width ? (typeof cell.width === "number" ? `${cell.width}px` : cell.width) : undefined,
+    height: cell.height ? (typeof cell.height === "number" ? `${cell.height}px` : cell.height) : undefined,
+})
+
+const getCellClasses = (cell, ri, ci) => ([
+    `text-${cell.align ?? 'left'} p-2 border-border`,
+    { 'border-r': ci !== props.rows[ri].cells?.length - 1 && ci !== props.rows[ri].length - 1 },
+    cell.class
+])
+
+const getRowClasses = (row, ri) => ([
+    row.class ?? '',
+    'border-border',
+    { 'border-b': ri !== props.rows.length - 1 },
+    { 'cursor-pointer hover:bg-muted/50': row.onClick || props.onRowClick }
+])
+
+const handleRowClick = (row, ri) => {
+    if (row.onClick) return row.onClick(row, ri)
+    if (props.onRowClick) return props.onRowClick(row, ri)
 }
-
-const getCellClasses = (cell, ri, ci) => (
-    [
-        `text-${cell.align ?? 'left'} p-2 border-border`,
-        { 'border-r': ci !== props.rows[ri].length - 1 },
-        cell.class
-    ]
-)
-
-const getHeaderClasses = (ri) => (
-    [
-        ri === 0 && props.headerClasses ? props.headerClasses : '',
-        'border-border',
-        { 'border-b': ri !== props.rows.length - 1 }
-    ]
-)
 
 const colLetter = (index) => String.fromCharCode(65 + index)
 </script>
@@ -56,10 +42,11 @@ const colLetter = (index) => String.fromCharCode(65 + index)
                 <tr
                     v-for="(row, ri) in rows"
                     :key="'row-' + ri"
-                    :class="getHeaderClasses(ri)"
+                    :class="getRowClasses(row, ri)"
+                    @click="handleRowClick(row, ri)"
                 >
                     <td
-                        v-for="(cell, ci) in row"
+                        v-for="(cell, ci) in (row.cells ?? row)"
                         :key="'cell-' + ri + '-' + ci"
                         :colspan="cell.colspan || 1"
                         :rowspan="cell.rowspan || 1"
