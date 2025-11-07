@@ -4,6 +4,8 @@ import Dropzone from '../Dropzone/Dropzone.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faUpload } from '@fortawesome/free-solid-svg-icons'
 import FileButton from '../FileButton/FileButton.vue'
+import FileList from '../FileList/FileList.vue'
+import { isAcceptedFile } from '../../utils/utils'
 
 const props = defineProps({
     label: String,
@@ -13,10 +15,28 @@ const props = defineProps({
     },
     error: String,
     withIcon: Boolean,
+    limit: Number,
+    accept: String,
+    showFileList: Boolean
 })
-const model = defineModel()
+const files = defineModel({ default: [] })
 
-const handleUpload = (fileList) => model.value = Array.from(fileList)
+const handleUpload = (uploadedFiles) => {
+    const filesArray = Array.from(uploadedFiles)
+    const validFiles = filesArray.filter((file) => isAcceptedFile(props.accept, file))
+
+    const remainingSlots = props.limit ? props.limit - files.value.length : validFiles.length
+
+    if (props.limit && (validFiles.length) > props.limit) {
+        files.value.push(validFiles.slice(0, remainingSlots))
+    } else {
+        files.value.push(validFiles.slice(0, remainingSlots))
+    }
+}
+
+const deleteFile = (fileToDelete) => {
+    files.value = files.value.filter((file) => file !== fileToDelete)
+}
 
 const onDrop = (event) => handleUpload(event.dataTransfer.files)
 const onChange = (event) => handleUpload(event.target.files)
@@ -26,8 +46,8 @@ const onChange = (event) => handleUpload(event.target.files)
     <div>
         <p v-if="label" class="font-medium mb-1">{{ label }}</p>
 
-        <div>
-            <FileButton @change="onChange" accept="image/*">
+        <div v-if="files.length === 0 || !showFileList">
+            <FileButton @change="onChange" :accept="accept">
                 <Dropzone v-slot="{ isDragOver }" @drop="onDrop">
                     <div
                         class="cursor-pointer duration-300 text-center border-2 border-dashed py-6 px-4 rounded-lg"
@@ -46,6 +66,9 @@ const onChange = (event) => handleUpload(event.target.files)
             </FileButton>
 
             <p v-if="error" class="text-error text-sm mt-1">{{ error }}</p>
+        </div>
+        <div v-if="files.length > 0 && !showFileList">
+            <FileList :files="files" show-delete @delete="deleteFile" />
         </div>
     </div>
 </template>

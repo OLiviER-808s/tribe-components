@@ -14,3 +14,22 @@ export const countDecimals = (value) => {
 
     return 0
 }
+
+// Convert accept string into matchable rules
+export const isAcceptedFile = (rules, files) => {
+    if (!rules) return true
+
+    const acceptedTypes = rules.split(',').map(type => type.trim().toLowerCase())
+
+    return acceptedTypes.some(accept => {
+        if (accept.startsWith('.')) {
+            return file.name.toLowerCase().endsWith(accept)
+        }
+        if (accept.endsWith('/*')) {
+            const baseType = accept.split('/')[0]
+            return file.type.startsWith(baseType + '/')
+        }
+
+        return file.type === accept
+    })
+}
