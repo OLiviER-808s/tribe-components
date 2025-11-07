@@ -67,7 +67,7 @@ const onChange = (event) => handleUpload(event.target.files)
 
             <p v-if="error" class="text-error text-sm mt-1">{{ error }}</p>
         </div>
-        <div v-if="files.length > 0 && !showFileList">
+        <div v-if="files.length > 0 && showFileList">
             <FileList :files="files" show-delete @delete="deleteFile" />
         </div>
     </div>

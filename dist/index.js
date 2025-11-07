@@ -931,7 +931,7 @@ const ue = {
         }, 8, ["accept"]),
         e.error ? (s(), a("p", Mt, h(e.error), 1)) : x("", !0)
       ])) : x("", !0),
-      t.value.length > 0 && !e.showFileList ? (s(), a("div", zt, [
+      t.value.length > 0 && e.showFileList ? (s(), a("div", zt, [
         b(St, {
           files: t.value,
           "show-delete": "",
