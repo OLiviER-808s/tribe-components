@@ -28,9 +28,9 @@ const handleUpload = (uploadedFiles) => {
     const remainingSlots = props.limit ? props.limit - files.value.length : validFiles.length
 
     if (props.limit && (validFiles.length) > props.limit) {
-        files.value.push(validFiles.slice(0, remainingSlots))
+        files.value.push(...validFiles.slice(0, remainingSlots))
     } else {
-        files.value.push(validFiles.slice(0, remainingSlots))
+        files.value.push(...validFiles.slice(0, remainingSlots))
     }
 }
 

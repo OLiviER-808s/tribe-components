@@ -894,7 +894,7 @@ const ue = {
   setup(e) {
     const l = e, t = k(e, "modelValue"), o = (i) => {
       const m = Array.from(i).filter((f) => Re(l.accept)), p = l.limit ? l.limit - t.value.length : m.length;
-      l.limit && m.length > l.limit, t.value.push(m.slice(0, p));
+      l.limit && m.length > l.limit ? t.value.push(...m.slice(0, p)) : t.value.push(...m.slice(0, p));
     }, n = (i) => {
       t.value = t.value.filter((c) => c !== i);
     }, u = (i) => o(i.dataTransfer.files), r = (i) => o(i.target.files);
