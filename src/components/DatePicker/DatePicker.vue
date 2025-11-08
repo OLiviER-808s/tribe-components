@@ -73,6 +73,7 @@ const dateFormatter = computed(() => {
                     :size="size"
                     :color="color"
                     :error="!!error"
+                    disabled
                 />
             </template>
         </VueDatePicker>

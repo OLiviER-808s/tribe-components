@@ -1,6 +1,6 @@
 {
     "name": "@OLiviER-808s/tribe-components",
-    "version": "1.6.6",
+    "version": "1.6.7",
     "main": "./dist/index.cjs",
     "module": "./dist/index.js",
     "exports": {
