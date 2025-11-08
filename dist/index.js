@@ -910,7 +910,7 @@ const ue = {
     }, u = (i) => o(i.dataTransfer.files), r = (i) => o(i.target.files);
     return (i, c) => (a(), s("div", null, [
       e.label ? (a(), s("p", wt, b(e.label), 1)) : x("", !0),
-      e.disabled ? x("", !0) : (a(), s("div", Ct, [
+      !e.disabled && t.value.length < e.limit ? (a(), s("div", Ct, [
         h(me, {
           onChange: r,
           accept: e.accept
@@ -940,10 +940,10 @@ const ue = {
           _: 1
         }, 8, ["accept"]),
         e.error ? (a(), s("p", Mt, b(e.error), 1)) : x("", !0)
-      ])),
+      ])) : x("", !0),
       t.value.length > 0 && e.showFileList ? (a(), s("div", {
         key: 2,
-        class: g({ "mt-2": e.disabled })
+        class: g({ "mt-4": !e.disabled })
       }, [
         h(St, {
           files: t.value,

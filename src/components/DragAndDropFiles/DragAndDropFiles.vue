@@ -47,7 +47,7 @@ const onChange = (event) => handleUpload(event.target.files)
     <div>
         <p v-if="label" class="font-medium mb-1">{{ label }}</p>
 
-        <div v-if="!disabled">
+        <div v-if="!disabled && files.length < limit">
             <FileButton @change="onChange" :accept="accept">
                 <Dropzone v-slot="{ isDragOver }" @drop="onDrop">
                     <div
@@ -68,7 +68,7 @@ const onChange = (event) => handleUpload(event.target.files)
 
             <p v-if="error" class="text-error text-sm mt-1">{{ error }}</p>
         </div>
-        <div v-if="files.length > 0 && showFileList" :class="{ 'mt-2': disabled }">
+        <div v-if="files.length > 0 && showFileList" :class="{ 'mt-4': !disabled }">
             <FileList :files="files" :show-delete="!disabled" @delete="deleteFile" />
         </div>
     </div>
