@@ -25,8 +25,8 @@ const ue = {
       class: y([
         e.styles,
         e.padding,
-        { "shadow-sm": !e.flat },
-        { "rounded-md": !e.boxed },
+        { "shadow-sm": !e.flat && !e.styles.includes("shadow") },
+        { "rounded-md": !e.boxed && !e.styles.includes("rounded") },
         "bg-card border border-border dark:border-none"
       ])
     }, [

@@ -17,8 +17,8 @@ const props = defineProps({
     <div :class="[
         styles,
         padding,
-        { 'shadow-sm': !flat },
-        { 'rounded-md': !boxed },
+        { 'shadow-sm': !flat && !styles.includes('shadow') },
+        { 'rounded-md': !boxed && !styles.includes('rounded') },
         'bg-card border border-border dark:border-none'
     ]">
         <slot />
