@@ -774,8 +774,7 @@ const ue = {
             variant: e.variant,
             size: e.size,
             color: e.color,
-            error: !!e.error,
-            disabled: ""
+            error: !!e.error
           }, null, 8, ["placeholder", "value", "icon", "variant", "size", "color", "error"])
         ]),
         _: 1
