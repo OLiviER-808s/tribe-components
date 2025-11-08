@@ -775,7 +775,7 @@ const ue = {
             size: e.size,
             color: e.color,
             error: !!e.error,
-            styles: e.disabled ? "cursor-pointer" : "",
+            styles: e.disabled ? "" : "cursor-pointer",
             disabled: ""
           }, null, 8, ["placeholder", "value", "icon", "variant", "size", "color", "error", "styles"])
         ]),

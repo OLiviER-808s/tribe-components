@@ -73,7 +73,7 @@ const dateFormatter = computed(() => {
                     :size="size"
                     :color="color"
                     :error="!!error"
-                    :styles="disabled ? 'cursor-pointer' : ''"
+                    :styles="disabled ? '' : 'cursor-pointer'"
                     disabled
                 />
             </template>
