@@ -302,6 +302,10 @@ const ue = {
     hoverEffects: {
       type: Boolean,
       default: !0
+    },
+    textColor: {
+      type: String,
+      default: ""
     }
   },
   emits: ["click"],
@@ -321,16 +325,16 @@ const ue = {
           c.push(`bg-${r.value}/20 text-${r.value}`), t.hoverEffects && c.push(`hover:bg-${r.value}/35`);
           break;
         case "outline":
-          c.push(`text-${r.value} border-${r.value} border-2`), t.hoverEffects && c.push(`hover:bg-${r.value}/10`);
+          c.push(`text-${t.textColor ?? r.value} border-${r.value} border-2`), t.hoverEffects && c.push(`hover:bg-${r.value}/10`);
           break;
         case "subtle":
-          c.push(`text-${r.value} bg-transparent`), t.hoverEffects && c.push(`hover:bg-${r.value}/10`);
+          c.push(`text-${t.textColor ?? r.value} bg-transparent`), t.hoverEffects && c.push(`hover:bg-${r.value}/10`);
           break;
         case "dashed":
-          c.push(`text-${r.value} border-${r.value} border-2 border-dashed`), t.hoverEffects && c.push(`hover:bg-${r.value}/10`);
+          c.push(`text-${t.textColor ?? r.value} border-${r.value} border-2 border-dashed`), t.hoverEffects && c.push(`hover:bg-${r.value}/10`);
           break;
         default:
-          c.push(`text-black bg-${r.value}`);
+          c.push(`text-${t.textColor ?? "black"} bg-${r.value}`);
           break;
       }
       return c;
@@ -453,6 +457,10 @@ const ue = {
     hoverEffects: {
       type: Boolean,
       default: !0
+    },
+    textColor: {
+      type: String,
+      default: ""
     }
   },
   emits: ["click"],
@@ -477,6 +485,7 @@ const ue = {
       disabled: e.disabled,
       variant: e.variant,
       "hover-effects": e.hoverEffects,
+      "text-color": e.textColor,
       onClick: r[0] || (r[0] = (i) => o("click", i))
     }, {
       default: V(() => [
@@ -486,7 +495,7 @@ const ue = {
         }, null, 8, ["size", "icon"])
       ]),
       _: 1
-    }, 8, ["styles", "href", "type", "color", "disabled", "variant", "hover-effects"]));
+    }, 8, ["styles", "href", "type", "color", "disabled", "variant", "hover-effects", "text-color"]));
   }
 }, lt = {
   __name: "HoverBox",

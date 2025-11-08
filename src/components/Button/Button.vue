@@ -35,6 +35,10 @@ const props = defineProps({
         type: Boolean,
         default: true,
     },
+    textColor: {
+        type: String,
+        default: '',
+    }
 })
 const emit = defineEmits(['click'])
 
@@ -68,22 +72,22 @@ const classes = computed(() => {
 
             break
         case 'outline':
-            result.push(`text-${btnColor.value} border-${btnColor.value} border-2`)
+            result.push(`text-${props.textColor ?? btnColor.value} border-${btnColor.value} border-2`)
             if (props.hoverEffects) result.push(`hover:bg-${btnColor.value}/10`)
 
             break    
         case 'subtle':
-            result.push(`text-${btnColor.value} bg-transparent`)
+            result.push(`text-${props.textColor ?? btnColor.value} bg-transparent`)
             if (props.hoverEffects) result.push(`hover:bg-${btnColor.value}/10`)
 
             break
         case 'dashed':
-            result.push(`text-${btnColor.value} border-${btnColor.value} border-2 border-dashed`)
+            result.push(`text-${props.textColor ?? btnColor.value} border-${btnColor.value} border-2 border-dashed`)
             if (props.hoverEffects) result.push(`hover:bg-${btnColor.value}/10`)
 
             break
         default:
-            result.push(`text-black bg-${btnColor.value}`)
+            result.push(`text-${props.textColor ?? 'black'} bg-${btnColor.value}`)
             break
     }
 

@@ -39,6 +39,10 @@ const props = defineProps({
         type: Boolean,
         default: true,
     },
+    textColor: {
+        type: String,
+        default: '',
+    }
 })
 const emit = defineEmits(['click'])
 
@@ -65,6 +69,7 @@ const btnSize = computed(() => {
         :disabled="disabled"
         :variant="variant"
         :hover-effects="hoverEffects"
+        :text-color="textColor"
         @click="e => emit('click', e)"
     >
         <FontAwesomeIcon :size="size" :icon="icon" />
