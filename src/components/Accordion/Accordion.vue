@@ -1,18 +1,18 @@
-<script setup>
+<script setup lang="ts">
 import Card from '../Card/Card.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
-import { ref } from 'vue'
 
-const props = defineProps({
-    title: String,
-    variant: {
-        type: String,
-        default: 'card',
-    },
+interface Props {
+    title?: string
+    variant?: 'card' | 'minimal'
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    variant: 'card'
 })
 
-const open = defineModel({ default: false })
+const open = defineModel<boolean>({ default: false })
 </script>
 
 <template>

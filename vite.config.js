@@ -5,7 +5,7 @@ import { resolve } from 'path'
 export default defineConfig({
     plugins: [vue()],
     resolve: {
-        extensions: ['.js', '.vue', '.json']
+        extensions: ['.ts', '.js', '.vue', '.json']
     },
     build: {
         lib: {

@@ -4,7 +4,7 @@ import 'v-dropdown-menu/css'
 
 import { createVfm } from 'vue-final-modal'
 
-export { Accordion } from './components/Accordion/index.js'
+export { Accordion } from './components/Accordion/index.ts'
 export { AttachmentList } from './components/AttachmentList/index.js'
 export { Avatar } from './components/Avatar/index.js'
 export { AvatarGroup } from './components/AvatarGroup/index.js'
