@@ -1,15 +1,16 @@
-<script setup>
-const props = defineProps({
-    styles: {
-        type: String,
-        default: '',
-    },
-    padding: {
-        type: String,
-        default: 'p-4',
-    },
-    flat: Boolean,
-    boxed: Boolean,
+<script setup lang="ts">
+interface Props {
+    styles?: string
+    padding?: string
+    flat?: boolean
+    boxed?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    styles: '',
+    padding: 'p-4',
+    flat: false,
+    boxed: false
 })
 </script>
 

@@ -1,54 +1,41 @@
-<script setup>
-import { computed } from 'vue'
-import { ref } from 'vue'
+<script setup lang="ts">
+import { computed, ref } from 'vue'
 
-const props = defineProps({
-    color: {
-        type: String,
-        default: 'primary',
-    },
-    variant: {
-        type: String,
-        default: 'filled',
-    },
-    styles: {
-        type: String,
-        default: '',
-    },
-    disabled: {
-        type: Boolean,
-        default: false,
-    },
-    type: {
-        type: String,
-        default: 'button',
-    },
-    href: {
-        type: String,
-        default: '',
-    },
-    onClick: {
-        type: Function,
-        default: (e) => {},
-    },
-    hoverEffects: {
-        type: Boolean,
-        default: true,
-    },
-    textColor: {
-        type: String,
-        default: '',
-    }
+interface Props {
+    color?: string
+    variant?: 'filled' | 'light' | 'outline' | 'subtle' | 'dashed'
+    styles?: string
+    disabled?: boolean
+    type?: 'button' | 'submit' | 'reset'
+    href?: string
+    onClick?: (e: Event) => void
+    hoverEffects?: boolean
+    textColor?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    color: 'primary',
+    variant: 'filled',
+    styles: '',
+    disabled: false,
+    type: 'button',
+    href: '',
+    onClick: (e: Event) => {},
+    hoverEffects: true,
+    textColor: ''
 })
-const emit = defineEmits(['click'])
 
-const isPressed = ref(false)
+const emit = defineEmits<{
+    click: [e: Event]
+}>()
 
-const handleClick = (e) => {
+const isPressed = ref<boolean>(false)
+
+const handleClick = (e: Event): void => {
     if (props.href) {
         window.open(props.href)
     }
-    
+
     emit('click', e)
 }
 

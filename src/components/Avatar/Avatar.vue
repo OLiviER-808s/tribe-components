@@ -1,10 +1,11 @@
-<script setup>
-const props = defineProps({
-    src: String,
-    styles: {
-        type: String,
-        default: '',
-    },
+<script setup lang="ts">
+interface Props {
+    src?: string
+    styles?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    styles: ''
 })
 </script>
 

@@ -1,15 +1,14 @@
-<script setup>
-const props = defineProps({
-    content: [String, Number, null],
-    color: {
-        type: String,
-        default: 'primary',
-    },
-    size: {
-        type: String,
-        default: 'xs',
-    },
-    styles: String,
+<script setup lang="ts">
+interface Props {
+    content?: string | number | null
+    color?: string
+    size?: string
+    styles?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    color: 'primary',
+    size: 'xs'
 })
 </script>
 

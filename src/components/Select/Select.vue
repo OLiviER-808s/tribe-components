@@ -1,58 +1,55 @@
-<script setup>
-import {computed, nextTick, onBeforeUnmount, onMounted, ref, useSlots, watch} from 'vue'
+<script setup lang="ts">
+import { computed, nextTick, ref, useSlots, watch } from 'vue'
 import Textbox from '../Textbox/Textbox.vue'
 import { faSort, faXmark } from '@fortawesome/free-solid-svg-icons'
-import IconButton from '../Iconbutton/IconButton.vue'
+import IconButton from '../IconButton/IconButton.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import DropdownOptions from "../DropdownOptions/DropdownOptions.vue"
-import { useDropdown } from '../../composables/useDropdown.js'
+import DropdownOptions from '../DropdownOptions/DropdownOptions.vue'
+import { useDropdown } from '../../composables/useDropdown'
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 
-const props = defineProps({
-    options: Array,
-    label: String,
-    optionLabel: String,
-    trackBy: String,
-    optionDescription: String,
-    searchable: Boolean,
-    icon: Object,
-    error: [String, Boolean],
-    placeholder: {
-        type: String,
-        default: 'Select an option...',
-    },
-    size: {
-        type: String,
-    },
-    variant: {
-        type: String,
-        default: 'filled',
-    },
-    color: {
-        type: String,
-        default: 'base',
-    },
-    lockOnSelect: {
-        type: Boolean,
-        default: true,
-    },
-    formatResult: {
-        type: Function,
-        default: (option) => option,
-    },
-    styles: String,
-    textboxStyles: String,
-    acceptsEmptySelection: Boolean
+interface Props {
+    options?: any[]
+    label?: string
+    optionLabel?: string
+    trackBy?: string
+    optionDescription?: string
+    searchable?: boolean
+    icon?: IconDefinition
+    error?: string | boolean
+    placeholder?: string
+    size?: string
+    variant?: string
+    color?: string
+    lockOnSelect?: boolean
+    formatResult?: (option: any) => any
+    styles?: string
+    textboxStyles?: string
+    acceptsEmptySelection?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    placeholder: 'Select an option...',
+    variant: 'filled',
+    color: 'base',
+    lockOnSelect: true,
+    formatResult: (option: any) => option
 })
-const emit = defineEmits(['select', 'blur', 'focus'])
 
-const model = defineModel()
-const searchQuery = defineModel('searchQuery', { default: '' })
-const inputElement = defineModel('input')
+const emit = defineEmits<{
+    select: [result: any]
+    blur: [e: Event]
+    focus: [e: Event]
+}>()
+
+const model = defineModel<any>()
+const searchQuery = defineModel<string>('searchQuery', { default: '' })
+const inputElement = defineModel<HTMLInputElement | null>('input')
 
 const slots = useSlots()
 const { dropdownOpen, dropdownContainer, open, close } = useDropdown()
 
-const select = (option) => {
+const select = (option: any): void => {
     const result = props.formatResult(option)
 
     model.value = result
@@ -67,13 +64,13 @@ const select = (option) => {
     nextTick(close)
 }
 
-const deselect = (e) => {
-    e.stopPropagation()
+const deselect = (e?: Event): void => {
+    e?.stopPropagation()
     model.value = null
     searchQuery.value = ''
 }
 
-const toggle = () => {
+const toggle = (): void => {
     if (!props.searchable) {
         if (dropdownOpen.value) {
             close()

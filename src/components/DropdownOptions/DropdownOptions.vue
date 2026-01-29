@@ -1,45 +1,53 @@
-<script setup>
-import {nextTick, ref, useSlots, watch} from "vue"
-import { onKeyStroke } from "@vueuse/core"
+<script setup lang="ts">
+import { nextTick, ref, useSlots, watch } from 'vue'
+import { onKeyStroke } from '@vueuse/core'
 
-const props = defineProps({
-    container: Object,
-    options: Array,
-    optionLabel: String,
-    trackBy: String,
-    optionDescription: String,
-    width: {
-        type: String,
-        default: 'w-full'
-    },
-    direction: {
-        type: String,
-        default: 'left'
-    },
-    open: Boolean,
-    acceptsEmptySelection: Boolean
+interface Props {
+    container?: HTMLElement
+    options?: any[]
+    optionLabel?: string
+    trackBy?: string
+    optionDescription?: string
+    width?: string
+    direction?: string
+    open?: boolean
+    acceptsEmptySelection?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    width: 'w-full',
+    direction: 'left'
 })
-const emit = defineEmits(['select'])
+
+const emit = defineEmits<{
+    select: [option?: any]
+}>()
 
 const slots = useSlots()
 
-const highlightedIdx = ref(-1)
-const dropdownPosition = ref('top-full')
-const optionsContainer = ref(null)
+const highlightedIdx = ref<number>(-1)
+const dropdownPosition = ref<string>('top-full')
+const optionsContainer = ref<HTMLElement | null>(null)
 
-const select = (option) => emit('select', option)
+const select = (option?: any): void => {
+    emit('select', option)
+}
 
-const setDropdownPosition = () => {
+const setDropdownPosition = (): void => {
+    if (!props.container) return
+
     const rect = props.container.getBoundingClientRect()
     const viewportHeight = window.innerHeight || document.documentElement.clientHeight
     dropdownPosition.value = rect.bottom + 150 > viewportHeight ? 'bottom-full' : 'top-full'
 }
 
-const resetDropdownPosition = () => {
+const resetDropdownPosition = (): void => {
     dropdownPosition.value = 'top-full'
 }
 
-const navigate = async (direction) => {
+const navigate = async (direction: number): Promise<void> => {
+    if (!props.options || props.options.length === 0) return
+
     highlightedIdx.value += direction
 
     if (highlightedIdx.value < 0) {
@@ -50,30 +58,30 @@ const navigate = async (direction) => {
 
     await nextTick()
 
-    const optionElements = optionsContainer.value?.querySelectorAll("div > div")
-    const highlightedOption = optionElements?.[highlightedIdx.value]
+    const optionElements = optionsContainer.value?.querySelectorAll('div > div')
+    const highlightedOption = optionElements?.[highlightedIdx.value] as HTMLElement | undefined
 
     if (highlightedOption) {
-        highlightedOption.scrollIntoView({ block: "nearest", behavior: "smooth" })
+        highlightedOption.scrollIntoView({ block: 'nearest', behavior: 'smooth' })
     }
 }
 
 onKeyStroke('ArrowDown', (e) => {
-    if (props.open && props.options.length > 0) {
+    if (props.open && props.options && props.options.length > 0) {
         e.preventDefault()
         navigate(1)
     }
 })
 
 onKeyStroke('ArrowUp', (e) => {
-    if (props.open && props.options.length > 0) {
+    if (props.open && props.options && props.options.length > 0) {
         e.preventDefault()
         navigate(-1)
     }
 })
 
 onKeyStroke('Enter', (e) => {
-    if (props.open && props.options.length > 0) {
+    if (props.open && props.options && props.options.length > 0) {
         e.preventDefault()
         select(props.options[highlightedIdx.value])
     } else if (props.acceptsEmptySelection) {

@@ -1,29 +1,34 @@
-<script setup>
+<script setup lang="ts">
 import { faFile } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { useIsHandheld } from "../../composables/useIsHandheld"
-import { watch } from "vue"
+import { useIsHandheld } from '../../composables/useIsHandheld'
+import { watch } from 'vue'
+import type { FormattedFile } from '../../types/file'
 
-const props = defineProps({
-    files: Array,
-    maxMediaHeight: {
-        type: String,
-        default: 'max-h-72',
-    },
+interface Props {
+    files?: FormattedFile[]
+    maxMediaHeight?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    maxMediaHeight: 'max-h-72'
 })
-const selectedIdx = defineModel('selectedIdx', { default: 0 })
+
+const selectedIdx = defineModel<number>('selectedIdx', { default: 0 })
 
 const isHandheld = useIsHandheld()
 
-const onSlideChange = () => {
-    const swiper = document.querySelector('swiper-container').swiper
-    selectedIdx.value = swiper.activeIndex
+const onSlideChange = (): void => {
+    const swiper = (document.querySelector('swiper-container') as any)?.swiper
+    if (swiper) {
+        selectedIdx.value = swiper.activeIndex
+    }
 }
 
 watch(selectedIdx, () => {
-    const swiper = document.querySelector('swiper-container')?.swiper
+    const swiper = (document.querySelector('swiper-container') as any)?.swiper
 
-    if (selectedIdx.value !== swiper.activeIndex) {
+    if (swiper && selectedIdx.value !== swiper.activeIndex) {
         swiper.slideTo(selectedIdx.value)
     }
 })

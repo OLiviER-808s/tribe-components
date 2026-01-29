@@ -1,14 +1,21 @@
-<script setup>
-const props = defineProps({
-    tabs: Array,
-    stretch: Boolean,
-    size: {
-        type: String,
-        default: 'lg'
-    }
+<script setup lang="ts">
+interface Tab {
+    name: string
+    label: string
+    error?: boolean
+}
+
+interface Props {
+    tabs?: Tab[]
+    stretch?: boolean
+    size?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    size: 'lg'
 })
 
-const selectedTab = defineModel('selectedTab')
+const selectedTab = defineModel<string>('selectedTab')
 </script>
 
 <template>

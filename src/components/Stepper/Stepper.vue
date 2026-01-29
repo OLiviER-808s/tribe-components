@@ -1,29 +1,42 @@
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 
-const props = defineProps({
-    steps: Array,
-    color: {
-        type: String,
-        default: 'primary',
-    },
-    variant: {
-        type: String,
-        default: 'classic',
-    },
-    canMoveForwards: Boolean,
-    canMoveBackwards: Boolean,
+interface Step {
+    value: string | number
+    label: string
+    icon?: IconDefinition
+}
+
+interface StepWithStatus extends Step {
+    status: 'completed' | 'in-progress' | 'uncompleted'
+}
+
+interface Props {
+    steps?: Step[]
+    color?: string
+    variant?: 'classic' | 'minimalist'
+    canMoveForwards?: boolean
+    canMoveBackwards?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    color: 'primary',
+    variant: 'classic'
 })
-const selectedStep = defineModel()
+
+const selectedStep = defineModel<string | number>()
 
 const selectedStepIdx = computed(() => {
+    if (!props.steps) return -1
     return props.steps.findIndex((step) => step.value === selectedStep.value)
 })
 
 const stepsWithStatus = computed(() => {
-    return props.steps.map((step, idx) => {
+    if (!props.steps) return []
+    return props.steps.map((step, idx): StepWithStatus => {
         if (idx < selectedStepIdx.value) {
             return { ...step, status: 'completed' }
         } else if (idx === selectedStepIdx.value) {
@@ -33,7 +46,7 @@ const stepsWithStatus = computed(() => {
     })
 })
 
-const getStepColors = (step) => {
+const getStepColors = (step: StepWithStatus): string => {
     if (step.status === 'uncompleted' || (step.status !== 'in-progress' && props.variant === 'minimalist')) {
         return 'text-secondary-text bg-card-accent'
     }
@@ -41,7 +54,7 @@ const getStepColors = (step) => {
     return `text-${props.color} bg-${props.color}${props.variant === 'classic' ? '/30' : ''}`
 }
 
-const getCursorStyle = (idx) => {
+const getCursorStyle = (idx: number): string => {
     if (
         (props.canMoveForwards && idx > selectedStepIdx.value) ||
         (props.canMoveBackwards && idx < selectedStepIdx.value)
@@ -52,7 +65,7 @@ const getCursorStyle = (idx) => {
     return 'cursor-default'
 }
 
-const handleStepClick = (step, idx) => {
+const handleStepClick = (step: Step, idx: number): void => {
     if (
         (props.canMoveForwards && idx > selectedStepIdx.value) ||
         (props.canMoveBackwards && idx < selectedStepIdx.value)

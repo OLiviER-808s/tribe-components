@@ -1,31 +1,28 @@
-<script setup>
+<script setup lang="ts">
 import Textbox from '../Textbox/Textbox.vue'
 import { computed } from 'vue'
 import { countDecimals } from '../../utils/utils'
 
-const props = defineProps({
-    currencySymbol: {
-        type: String,
-        default: '$',
-    },
-    variant: {
-        type: String,
-        default: 'filled',
-    },
-    size: {
-        type: String,
-    },
-    color: {
-        type: String,
-        default: 'base',
-    },
-    label: String,
-    error: String,
-})
-const model = defineModel()
+interface Props {
+    currencySymbol?: string
+    variant?: string
+    size?: string
+    color?: string
+    label?: string
+    error?: string
+}
 
-const handleInput = (event) => {
-    let value = parseFloat(event.target.value.replace(/[^\d.-]/g, ''))
+const props = withDefaults(defineProps<Props>(), {
+    currencySymbol: '$',
+    variant: 'filled',
+    color: 'base'
+})
+
+const model = defineModel<number | string>()
+
+const handleInput = (event: Event): void => {
+    const target = event.target as HTMLInputElement
+    let value: number | string = parseFloat(target.value.replace(/[^\d.-]/g, ''))
 
     if (countDecimals(value) > 0) {
         value = (Math.round(value * 100) / 100).toFixed(2)

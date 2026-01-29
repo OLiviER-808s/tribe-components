@@ -1,14 +1,13 @@
-<script setup>
-const props = defineProps({
-    avatars: Array,
-    width: {
-        type: String,
-        default: 'w-6',
-    },
-    overlap: {
-        type: Number,
-        default: 12,
-    },
+<script setup lang="ts">
+interface Props {
+    avatars?: string[]
+    width?: string
+    overlap?: number
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    width: 'w-6',
+    overlap: 12
 })
 </script>
 

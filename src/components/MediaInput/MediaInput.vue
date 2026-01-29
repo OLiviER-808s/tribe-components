@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import DragAndDropFiles from '../DragAndDropFiles/DragAndDropFiles.vue'
 import MediaCarousel from '../MediaCarousel/MediaCarousel.vue'
@@ -7,19 +7,28 @@ import FileButton from '../FileButton/FileButton.vue'
 import IconButton from '../IconButton/IconButton.vue'
 import { computed, ref } from 'vue'
 import { useFiles } from '../../composables/useFiles'
+import type { FileInput } from '../../types/file'
 
-const props = defineProps({
-    label: String,
-    placeholder: String,
-    error: String,
-})
-const files = defineModel()
+interface Props {
+    label?: string
+    placeholder?: string
+    error?: string
+}
 
-const selectedIdx = ref(0)
+const props = defineProps<Props>()
+
+const files = defineModel<FileInput[]>({ default: [] })
+
+const selectedIdx = ref<number>(0)
 
 const { formatFiles } = useFiles()
 
-const addFiles = (event) => files.value.push(...event.target.files)
+const addFiles = (event: Event): void => {
+    const target = event.target as HTMLInputElement
+    if (target.files) {
+        files.value.push(...Array.from(target.files))
+    }
+}
 
 const formattedFiles = computed(() => formatFiles(files.value))
 </script>

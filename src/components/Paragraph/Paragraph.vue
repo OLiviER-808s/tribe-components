@@ -1,15 +1,17 @@
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue'
 
-const props = defineProps({
-    text: String,
-    styles: String,
-    limit: Number,
-    includeWhitespace: Boolean,
-})
+interface Props {
+    text?: string
+    styles?: string
+    limit?: number
+    includeWhitespace?: boolean
+}
+
+const props = defineProps<Props>()
 
 const formatedText = computed(() => {
-    if (props.limit) {
+    if (props.text && props.limit) {
         return `${props.text.substring(0, props.limit)}${props.text.length > props.limit ? '...' : ''}`
     }
 

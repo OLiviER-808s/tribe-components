@@ -1,44 +1,41 @@
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 
-const props = defineProps({
-    label: String,
-    icon: Object,
-    placeholder: String,
-    styles: String,
-    error: String,
-    min: {
-        type: Number,
-        default: 0,
-    },
-    max: {
-        type: Number,
-        default: 10000,
-    },
-    variant: {
-        type: String,
-        default: 'filled',
-    },
-    size: {
-        type: String,
-    },
-    color: {
-        type: String,
-        default: 'base',
-    },
-    disabled: Boolean,
+interface Props {
+    label?: string
+    icon?: IconDefinition
+    placeholder?: string
+    styles?: string
+    error?: string
+    min?: number
+    max?: number
+    variant?: string
+    size?: string
+    color?: string
+    disabled?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    min: 0,
+    max: 10000,
+    variant: 'filled',
+    color: 'base'
 })
-const modelValue = defineModel()
+
+const modelValue = defineModel<number | string>()
 
 const variantStyles = computed(() =>
     props.variant === 'filled' ? `bg-${props.color}` : 'bg-transparent border border-secondary-text'
 )
 
 const isError = computed(() => {
-    if (props.modelValue > props.max) {
+    const value = typeof modelValue.value === 'string' ? parseFloat(modelValue.value) : modelValue.value
+
+    if (value && value > props.max) {
         return `Value must be ${props.max} or less.`
-    } else if (props.modelValue < props.min) {
+    } else if (value && value < props.min) {
         return `Value must be ${props.min} or more.`
     }
 

@@ -1,58 +1,60 @@
-<script setup>
-import { ref, computed, defineProps, watch } from 'vue'
+<script setup lang="ts">
+import { ref, computed } from 'vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 
-const props = defineProps({
-    name: String,
-    value: String,
-    type: {
-        type: String,
-        default: 'text',
-    },
-    disabled: Boolean,
-    error: [String, Boolean],
-    success: [String, Boolean],
-    variant: {
-        type: String,
-        default: 'filled',
-    },
-    size: String,
-    color: {
-        type: String,
-        default: 'base',
-    },
-    styles: String,
-    label: String,
-    icon: Object,
-    placeholder: String,
-    labelStyles: {
-        type: String,
-        default: 'font-medium',
-    }
+interface Props {
+    name?: string
+    value?: string
+    type?: string
+    disabled?: boolean
+    error?: string | boolean
+    success?: string | boolean
+    variant?: string
+    size?: string
+    color?: string
+    styles?: string
+    label?: string
+    icon?: IconDefinition
+    placeholder?: string
+    labelStyles?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    type: 'text',
+    variant: 'filled',
+    color: 'base',
+    labelStyles: 'font-medium'
 })
-const emit = defineEmits(['input', 'focus', 'blur'])
 
-const modelValue = defineModel()
-const inputElement = defineModel('input')
+const emit = defineEmits<{
+    input: [e: Event]
+    focus: [e: Event]
+    blur: [e: Event]
+}>()
 
-const focused = ref(false)
+const modelValue = defineModel<string>()
+const inputElement = defineModel<HTMLInputElement | null>('input')
+
+const focused = ref<boolean>(false)
 
 const variantStyles = computed(() =>
     props.variant === 'filled' ? `bg-${props.color}` : 'bg-transparent border border-border'
 )
 
-const handleFocus = (e) => {
+const handleFocus = (e: Event): void => {
     focused.value = true
     emit('input', e)
 }
 
-const handleBlur = (e) => {
+const handleBlur = (e: Event): void => {
     focused.value = false
     emit('blur', e)
 }
 
-const handleInput = (event) => {
-    modelValue.value = event.target.value
+const handleInput = (event: Event): void => {
+    const target = event.target as HTMLInputElement
+    modelValue.value = target.value
     emit('input', event)
 }
 </script>

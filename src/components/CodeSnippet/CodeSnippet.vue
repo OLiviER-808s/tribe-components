@@ -1,21 +1,27 @@
-<script setup>
-import {ref} from "vue";
-import {faCopy} from "@fortawesome/free-solid-svg-icons";
-import {useClipboard} from "@vueuse/core";
-import IconButton from "../IconButton/IconButton.vue";
-import HoverBox from "../HoverBox/HoverBox.vue";
+<script setup lang="ts">
+import { ref } from 'vue'
+import { faCopy } from '@fortawesome/free-solid-svg-icons'
+import { useClipboard } from '@vueuse/core'
+import IconButton from '../IconButton/IconButton.vue'
+import HoverBox from '../HoverBox/HoverBox.vue'
 
-const props = defineProps({
-    snippet: String,
-    allowCopy: Boolean,
-    styles: String
-})
+interface Props {
+    snippet?: string
+    allowCopy?: boolean
+    styles?: string
+}
 
-const hovering = ref(false)
+const props = defineProps<Props>()
+
+const hovering = ref<boolean>(false)
 
 const { copy } = useClipboard()
 
-const copySnippet = async () => await copy(props.snippet)
+const copySnippet = async (): Promise<void> => {
+    if (props.snippet) {
+        await copy(props.snippet)
+    }
+}
 </script>
 
 <template>

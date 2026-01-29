@@ -1,20 +1,25 @@
-<script setup>
+<script setup lang="ts">
 import { computed, ref } from 'vue'
 
-const props = defineProps({
-    value: [String, Boolean],
-    label: String,
-    name: String,
-    modelValue: String,
-})
-const emit = defineEmits(['select'])
+interface Props {
+    value?: string | boolean
+    label?: string
+    name?: string
+    modelValue?: string
+}
 
-const model = defineModel()
+const props = defineProps<Props>()
 
-const hovering = ref(false)
+const emit = defineEmits<{
+    select: [e: Event]
+}>()
+
+const model = defineModel<string | boolean>()
+
+const hovering = ref<boolean>(false)
 const checked = computed(() => props.modelValue === props.value)
 
-const select = (e) => {
+const select = (e: Event): void => {
     model.value = props.value
     emit('select', e)
 }

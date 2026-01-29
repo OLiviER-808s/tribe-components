@@ -1,14 +1,20 @@
-<script setup>
-import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
-import {faDownload, faFile, faXmark} from "@fortawesome/free-solid-svg-icons";
-import IconButton from "../IconButton/IconButton.vue";
+<script setup lang="ts">
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faDownload, faFile, faXmark } from '@fortawesome/free-solid-svg-icons'
+import IconButton from '../IconButton/IconButton.vue'
 
-const props = defineProps({
-    files: Array,
-    showDownload: Boolean,
-    showDelete: Boolean,
-})
-const emit = defineEmits(['download', 'delete'])
+interface Props {
+    files?: File[]
+    showDownload?: boolean
+    showDelete?: boolean
+}
+
+const props = defineProps<Props>()
+
+const emit = defineEmits<{
+    download: [file: File]
+    delete: [file: File]
+}>()
 </script>
 
 <template>

@@ -1,20 +1,24 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 
-const props = defineProps({
-    multiple: {
-        type: Boolean,
-        default: true,
-    },
-    disabled: Boolean,
-    accept: String
+interface Props {
+    multiple?: boolean
+    disabled?: boolean
+    accept?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    multiple: true
 })
-const emit = defineEmits(['change'])
 
-const fileInput = ref(null)
+const emit = defineEmits<{
+    change: [event: Event]
+}>()
 
-const selectFiles = () => {
-    if (!props.disabled) {
+const fileInput = ref<HTMLInputElement | null>(null)
+
+const selectFiles = (): void => {
+    if (!props.disabled && fileInput.value) {
         fileInput.value.click()
     }
 }

@@ -1,15 +1,21 @@
-<script setup>
+<script setup lang="ts">
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
-const props = defineProps({
-    name: String,
-    error: String,
-})
-const checked = defineModel({ default: false })
-const emit = defineEmits(['toggle'])
+interface Props {
+    name?: string
+    error?: string
+}
 
-const handleToggle = () => {
+const props = defineProps<Props>()
+
+const checked = defineModel<boolean>({ default: false })
+
+const emit = defineEmits<{
+    toggle: [value: boolean]
+}>()
+
+const handleToggle = (): void => {
     checked.value = !checked.value
     emit('toggle', checked.value)
 }

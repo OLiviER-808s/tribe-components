@@ -1,21 +1,19 @@
-<script setup>
-import {computed, ref} from "vue";
+<script setup lang="ts">
+import { computed, ref } from 'vue'
 
-const props = defineProps({
-    text: {
-        type: String,
-        required: true,
-    },
-    position: {
-        type: String,
-        default: "top",
-    },
+interface Props {
+    text: string
+    position?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    position: 'top'
 })
 
-const visible = ref(false)
+const visible = ref<boolean>(false)
 
 const positionStyles = computed(() => {
-    let styles
+    let styles: string | undefined
 
     switch (props.position) {
         case 'right':

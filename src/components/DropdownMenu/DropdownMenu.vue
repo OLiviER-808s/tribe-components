@@ -1,29 +1,29 @@
-<script setup>
+<script setup lang="ts">
 import { useSlots } from 'vue'
 import { useDropdown } from '../../composables/useDropdown'
 import DropdownOptions from '../DropdownOptions/DropdownOptions.vue'
 
-const props = defineProps({
-    options: Array,
-    label: {
-        type: String,
-        default: 'label'
-    },
-    trackBy: {
-        type: String,
-        default: 'value'
-    },
-    direction: {
-        type: String,
-        default: 'left'
-    }
+interface Props {
+    options?: any[]
+    label?: string
+    trackBy?: string
+    direction?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    label: 'label',
+    trackBy: 'value',
+    direction: 'left'
 })
-const emit = defineEmits(['select'])
+
+const emit = defineEmits<{
+    select: [option: any]
+}>()
 
 const slots = useSlots()
 const { dropdownOpen, dropdownContainer } = useDropdown()
 
-const select = (option) => {
+const select = (option: any): void => {
     dropdownOpen.value = false
     emit('select', option)
 }

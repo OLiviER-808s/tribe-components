@@ -1,21 +1,16 @@
-<script setup>
-const props = defineProps({
-    color: {
-        type: String,
-        default: 'secondary',
-    },
-    size: {
-        type: String,
-        default: 'md',
-    },
-    styles: {
-        type: String,
-        default: '',
-    },
-    rounded: {
-        type: String,
-        default: 'full',
-    },
+<script setup lang="ts">
+interface Props {
+    color?: string
+    size?: string
+    styles?: string
+    rounded?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    color: 'secondary',
+    size: 'md',
+    styles: '',
+    rounded: 'full'
 })
 </script>
 

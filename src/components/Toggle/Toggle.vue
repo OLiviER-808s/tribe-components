@@ -1,23 +1,26 @@
-<script setup>
-import { ref, computed, onMounted } from 'vue'
-import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+<script setup lang="ts">
+import { computed, onMounted } from 'vue'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 
-const props = defineProps({
-    activeColor: {
-        type: String,
-        default: 'secondary'
-    },
-    value: {
-        type: Boolean,
-        default: false
-    },
-    icon: Object
+interface Props {
+    activeColor?: string
+    value?: boolean
+    icon?: IconDefinition
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    activeColor: 'secondary',
+    value: false
 })
-const emit = defineEmits(['toggle'])
 
-const model = defineModel()
+const emit = defineEmits<{
+    toggle: [value: boolean]
+}>()
 
-const toggle = () => {
+const model = defineModel<boolean>()
+
+const toggle = (): void => {
     model.value = !model.value
     emit('toggle', model.value)
 }
@@ -31,7 +34,9 @@ const circleClass = computed(() =>
 )
 
 onMounted(() => {
-    model.value = model.value ?? props.value
+    if (model.value === undefined) {
+        model.value = props.value
+    }
 })
 </script>
 

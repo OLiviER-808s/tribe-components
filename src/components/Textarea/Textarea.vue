@@ -1,58 +1,58 @@
-<script setup>
-import { computed, watch } from 'vue'
-import { ref } from 'vue'
+<script setup lang="ts">
+import { computed, ref, watch } from 'vue'
 
-const props = defineProps({
-    name: String,
-    disabled: Boolean,
-    error: [String, Boolean],
-    success: [String, Boolean],
-    label: String,
-    placeholder: String,
-    modelValue: String,
-    maxlength: Number,
-    styles: String,
-    variant: {
-        type: String,
-        default: 'filled',
-    },
-    color: {
-        type: String,
-        default: 'base',
-    },
-    rows: {
-        type: Number,
-        default: 4,
-    },
-    fieldSizingContent: {
-        type: Boolean,
-        default: false,
-    },
+interface Props {
+    name?: string
+    disabled?: boolean
+    error?: string | boolean
+    success?: string | boolean
+    label?: string
+    placeholder?: string
+    modelValue?: string
+    maxlength?: number
+    styles?: string
+    variant?: string
+    color?: string
+    rows?: number
+    fieldSizingContent?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    variant: 'filled',
+    color: 'base',
+    rows: 4,
+    fieldSizingContent: false
 })
-const emit = defineEmits(['focus', 'blur', 'keyPress', 'input'])
 
-const modelValue = defineModel()
-const inputElement = defineModel('input')
+const emit = defineEmits<{
+    focus: [e: Event]
+    blur: [e: Event]
+    keyPress: [e: KeyboardEvent]
+    input: [e: Event]
+}>()
 
-const internalValue = ref(props.modelValue)
-const focused = ref(false)
+const modelValue = defineModel<string>()
+const inputElement = defineModel<HTMLTextAreaElement | null>('input')
+
+const internalValue = ref<string | undefined>(props.modelValue)
+const focused = ref<boolean>(false)
 
 const variantStyles = computed(() =>
     props.variant === 'filled' ? `bg-${props.color}` : 'bg-transparent border border-border'
 )
 
-const handleFocus = (e) => {
+const handleFocus = (e: Event): void => {
     focused.value = true
     emit('focus', e)
 }
 
-const handleBlur = (e) => {
+const handleBlur = (e: Event): void => {
     focused.value = false
     emit('blur', e)
 }
 
-const handleInput = (event) => {
-    const target = event.target
+const handleInput = (event: Event): void => {
+    const target = event.target as HTMLTextAreaElement
     internalValue.value = target.value
     modelValue.value = target.value
 

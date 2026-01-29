@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import VueDatePicker from '@vuepic/vue-datepicker'
 import { computed, ref } from 'vue'
 import Textbox from '../Textbox/Textbox.vue'
@@ -6,35 +6,29 @@ import { faCalendar } from '@fortawesome/free-solid-svg-icons'
 import { formatDate, formatDateRange, formatDateWithTime } from '../../utils/dateService'
 import '@vuepic/vue-datepicker/dist/main.css'
 
-const props = defineProps({
-    error: String,
-    label: {
-        type: String,
-        default: '',
-    },
-    placeholder: {
-        type: String,
-        default: '',
-    },
-    variant: {
-        type: String,
-        default: 'filled',
-    },
-    size: {
-        type: String,
-    },
-    color: {
-        type: String,
-        default: 'base',
-    },
-    range: Boolean,
-    maxDate: Date,
-    minDate: Date,
-    includeTime: Boolean,
-    disabled: Boolean,
-    styles: String
+interface Props {
+    error?: string
+    label?: string
+    placeholder?: string
+    variant?: string
+    size?: string
+    color?: string
+    range?: boolean
+    maxDate?: Date
+    minDate?: Date
+    includeTime?: boolean
+    disabled?: boolean
+    styles?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    label: '',
+    placeholder: '',
+    variant: 'filled',
+    color: 'base'
 })
-const model = defineModel()
+
+const model = defineModel<Date | Date[] | null>()
 
 const dp = ref(null)
 

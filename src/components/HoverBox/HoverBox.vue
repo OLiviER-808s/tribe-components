@@ -1,5 +1,5 @@
-<script setup>
-const hovering = defineModel({ default: false })
+<script setup lang="ts">
+const hovering = defineModel<boolean>({ default: false })
 </script>
 
 <template>

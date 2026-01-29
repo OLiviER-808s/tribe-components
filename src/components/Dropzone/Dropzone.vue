@@ -1,10 +1,11 @@
-<script setup>
-import { ref } from 'vue'
+<script setup lang="ts">
+const emit = defineEmits<{
+    drop: [event: DragEvent]
+}>()
 
-const emit = defineEmits(['drop'])
-const isDragOver = defineModel({ default: false })
+const isDragOver = defineModel<boolean>({ default: false })
 
-const onDrop = (event) => {
+const onDrop = (event: DragEvent): void => {
     isDragOver.value = false
     emit('drop', event)
 }

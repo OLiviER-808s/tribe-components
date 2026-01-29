@@ -1,23 +1,21 @@
-<script setup>
-import { useSlots, watch } from 'vue';
-import { ModalsContainer, useModal } from 'vue-final-modal';
-import ModalContent from './ModalContent.vue';
+<script setup lang="ts">
+import { useSlots, watch } from 'vue'
+import { ModalsContainer, useModal } from 'vue-final-modal'
+import ModalContent from './ModalContent.vue'
 
-const props = defineProps({
-    contentClass: {
-        type: String,
-        default: 'w-full max-w-xl p-2'
-    },
-    clickToClose: {
-        type: Boolean,
-        default: true
-    },
-    escToClose: {
-        type: Boolean,
-        default: true
-    },
+interface Props {
+    contentClass?: string
+    clickToClose?: boolean
+    escToClose?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    contentClass: 'w-full max-w-xl p-2',
+    clickToClose: true,
+    escToClose: true
 })
-const open = defineModel()
+
+const open = defineModel<boolean>()
 
 const slots = useSlots()
 
@@ -27,11 +25,13 @@ const modal = useModal({
         contentClass: props.contentClass,
         clickToClose: props.clickToClose,
         escToClose: props.escToClose,
-        onClose: () => open.value = false,
+        onClose: () => {
+            open.value = false
+        }
     },
     slots: {
         default: slots.default
-    },
+    }
 })
 
 watch(open, () => {

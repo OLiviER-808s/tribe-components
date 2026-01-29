@@ -1,50 +1,37 @@
-<script setup>
+<script setup lang="ts">
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Button from '../Button/Button.vue'
 import { computed } from 'vue'
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 
-const props = defineProps({
-    icon: {
-        required: true,
-    },
-    size: {
-        type: String,
-        default: undefined,
-    },
-    color: {
-        type: String,
-        default: 'primary',
-    },
-    variant: {
-        type: String,
-        default: 'filled',
-    },
-    styles: {
-        type: String,
-        default: '',
-    },
-    disabled: {
-        type: Boolean,
-        default: false,
-    },
-    type: {
-        type: String,
-        default: 'button',
-    },
-    href: {
-        type: String,
-        default: '',
-    },
-    hoverEffects: {
-        type: Boolean,
-        default: true,
-    },
-    textColor: {
-        type: String,
-        default: '',
-    }
+interface Props {
+    icon: IconDefinition
+    size?: string
+    color?: string
+    variant?: 'filled' | 'light' | 'outline' | 'subtle' | 'dashed'
+    styles?: string
+    disabled?: boolean
+    type?: 'button' | 'submit' | 'reset'
+    href?: string
+    hoverEffects?: boolean
+    textColor?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    size: undefined,
+    color: 'primary',
+    variant: 'filled',
+    styles: '',
+    disabled: false,
+    type: 'button',
+    href: '',
+    hoverEffects: true,
+    textColor: ''
 })
-const emit = defineEmits(['click'])
+
+const emit = defineEmits<{
+    click: [e: Event]
+}>()
 
 const btnSize = computed(() => {
     switch (props.size) {

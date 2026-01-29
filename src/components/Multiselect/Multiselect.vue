@@ -1,77 +1,76 @@
-<script setup>
-import {computed, onBeforeUnmount, onMounted, ref, useSlots, watch} from 'vue'
+<script setup lang="ts">
+import { computed, onBeforeUnmount, onMounted, ref, useSlots, watch } from 'vue'
 import Textbox from '../Textbox/Textbox.vue'
-import DropdownOptions from "../DropdownOptions/DropdownOptions.vue"
+import DropdownOptions from '../DropdownOptions/DropdownOptions.vue'
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 
-const props = defineProps({
-    options: Array,
-    label: String,
-    optionLabel: String,
-    trackBy: String,
-    searchable: Boolean,
-    icon: Object,
-    error: [String, Boolean],
-    placeholder: {
-        type: String,
-        default: 'Select an option...',
-    },
-    size: {
-        type: String,
-    },
-    variant: {
-        type: String,
-        default: 'filled',
-    },
-    color: {
-        type: String,
-        default: 'base',
-    },
-    formatResult: {
-        type: Function,
-        default: (option) => option,
-    },
-    styles: String,
-    textboxStyles: String,
-    acceptsEmptySelection: Boolean,
-    acceptsDuplicates: Boolean
+interface Props {
+    options?: any[]
+    label?: string
+    optionLabel?: string
+    trackBy?: string
+    searchable?: boolean
+    icon?: IconDefinition
+    error?: string | boolean
+    placeholder?: string
+    size?: string
+    variant?: string
+    color?: string
+    formatResult?: (option: any) => any
+    styles?: string
+    textboxStyles?: string
+    acceptsEmptySelection?: boolean
+    acceptsDuplicates?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    placeholder: 'Select an option...',
+    variant: 'filled',
+    color: 'base',
+    formatResult: (option: any) => option
 })
-const emit = defineEmits(['select', 'focus', 'blur'])
 
-const model = defineModel({ default: [] })
-const searchQuery = defineModel('searchQuery', { default: '' })
-const inputElement = defineModel('input')
+const emit = defineEmits<{
+    select: [option: any]
+    focus: [e: Event]
+    blur: [e: Event]
+}>()
+
+const model = defineModel<any[]>({ default: [] })
+const searchQuery = defineModel<string>('searchQuery', { default: '' })
+const inputElement = defineModel<HTMLInputElement | null>('input')
 
 const slots = useSlots()
 
-const dropdownOpen = ref(false)
-const dropdownContainer = ref(null)
+const dropdownOpen = ref<boolean>(false)
+const dropdownContainer = ref<HTMLElement | null>(null)
 
 const filteredOptions = computed(() => {
-    if (props.acceptsDuplicates) return props.options
+    if (props.acceptsDuplicates || !props.options) return props.options
 
     return props.options.filter(option => !model.value.includes(props.formatResult(option)))
 })
 
-const select = (option) => {
+const select = (option: any): void => {
     model.value.push(props.formatResult(option))
 
     searchQuery.value = ''
     emit('select', option)
 }
 
-const deselect = (idx) => {
+const deselect = (idx: number): void => {
     model.value = model.value.filter((o, i) => i !== idx)
 }
 
-const open = () => {
+const open = (): void => {
     dropdownOpen.value = true
 }
 
-const close = () => {
+const close = (): void => {
     dropdownOpen.value = false
 }
 
-const toggle = () => {
+const toggle = (): void => {
     if (!props.searchable) {
         if (dropdownOpen.value) {
             close()
@@ -81,8 +80,9 @@ const toggle = () => {
     }
 }
 
-const handleClickOutside = (event) => {
-    if (!dropdownContainer.value.contains(event.target)) {
+const handleClickOutside = (event: MouseEvent): void => {
+    const target = event.target as Node
+    if (dropdownContainer.value && !dropdownContainer.value.contains(target)) {
         close()
     }
 }
@@ -90,6 +90,7 @@ const handleClickOutside = (event) => {
 onMounted(() => {
     document.addEventListener('mousedown', handleClickOutside)
 })
+
 onBeforeUnmount(() => {
     document.removeEventListener('mousedown', handleClickOutside)
 })

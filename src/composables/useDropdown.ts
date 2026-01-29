@@ -1,14 +1,14 @@
-import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { onBeforeUnmount, onMounted, ref, type Ref } from 'vue'
 
 export const useDropdown = () => {
     const dropdownOpen = ref(false)
-    const dropdownContainer = ref(null)
+    const dropdownContainer: Ref<HTMLElement | null> = ref(null)
 
     const open = () => dropdownOpen.value = true
     const close = () => dropdownOpen.value = false
 
-    const handleClickOutside = (event) => {
-        if (!dropdownContainer.value.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+        if (dropdownContainer.value && !dropdownContainer.value.contains(event.target as Node)) {
             close()
         }
     }
