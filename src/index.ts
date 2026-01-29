@@ -5,7 +5,7 @@ import 'v-dropdown-menu/css'
 import { createVfm } from 'vue-final-modal'
 
 export { Accordion } from './components/Accordion/index.ts'
-export { AttachmentList } from './components/AttachmentList/index.js'
+export { AttachmentList } from './components/AttachmentList/index.ts'
 export { Avatar } from './components/Avatar/index.js'
 export { AvatarGroup } from './components/AvatarGroup/index.js'
 export { Badge } from './components/Badge/index.js'
@@ -43,9 +43,12 @@ export { Textbox } from './components/Textbox/index.js'
 export { ToastContainer } from './components/Toast/index.js'
 export { Toggle } from './components/Toggle/index.js'
 export { Tooltip } from './components/Tooltip/index.js'
-export { useFiles } from './composables/useFiles.js'
-export { useIsHandheld } from './composables/useIsHandheld.js'
+export { useFiles } from './composables/useFiles.ts'
+export { useIsHandheld } from './composables/useIsHandheld.ts'
 export { useToast } from './composables/useToast.js'
+
+// Export types
+export type { FormattedFile, FileInput } from './types/file'
 
 export default {
     install(app) {

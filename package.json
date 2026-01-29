@@ -21,7 +21,8 @@
         "build:theme": "tailwindcss -i ./src/styles/theme.css -o ./dist/theme.css --minify",
         "build:style": "tailwindcss -i ./src/styles/style.css -o ./dist/style.css --minify",
         "build:css": "npm run build:theme && npm run build:style",
-        "build": "vite build"
+        "build": "vite build",
+        "type-check": "vue-tsc --noEmit"
     },
     "peerDependencies": {
         "@fortawesome/fontawesome-svg-core": "^6.5.1",

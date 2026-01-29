@@ -1,31 +1,42 @@
-<script setup>
+<script setup lang="ts">
 import { faFile, faHeadphones, faVideoCamera, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import {computed, ref, watch} from 'vue'
+import { computed, ref, watch } from 'vue'
 import Draggable from 'vuedraggable'
 import { useIsHandheld } from '../../composables/useIsHandheld'
-import {useFiles} from "../../composables/useFiles"
-import {reorderElementInArray} from "../../utils/utils"
+import { useFiles } from '../../composables/useFiles'
+import { reorderElementInArray } from '../../utils/utils'
+import type { FileInput, FormattedFile } from '../../types/file'
 
-const props = defineProps({
-    size: String,
-})
-const files = defineModel('files', { type: Array, required: true })
-const selectedIdx = defineModel('selectedIdx', { default: 0 })
+interface Props {
+    size?: 'lg' | 'md'
+}
+
+interface DragChangeEvent {
+    moved: {
+        oldIndex: number
+        newIndex: number
+    }
+}
+
+const props = defineProps<Props>()
+
+const files = defineModel<FileInput[]>('files', { required: true })
+const selectedIdx = defineModel<number>('selectedIdx', { default: 0 })
 
 const isHandheld = useIsHandheld()
 const { formatFiles } = useFiles()
 
-const hoveredIdx = ref(-1)
-const formattedFiles = ref(formatFiles(props.files))
+const hoveredIdx = ref<number>(-1)
+const formattedFiles = ref<FormattedFile[]>(formatFiles(files.value))
 
-const removeFile = (idx) => {
+const removeFile = (idx: number): void => {
     files.value = files.value.filter((file, i) => i !== idx)
 
     if (selectedIdx.value > idx) selectedIdx.value -= 1
 }
 
-const handleOrderChange = ({ moved: { oldIndex, newIndex } }) => {
+const handleOrderChange = ({ moved: { oldIndex, newIndex } }: DragChangeEvent): void => {
     files.value = reorderElementInArray(files.value, oldIndex, newIndex)
 
     if (selectedIdx.value === oldIndex)
@@ -38,7 +49,7 @@ const handleOrderChange = ({ moved: { oldIndex, newIndex } }) => {
 
 const sizeStyles = computed(() => (props.size === 'lg' ? 'w-16 h-16' : 'w-14 h-14'))
 
-watch(files, () => formattedFiles.value = formatFiles(props.files))
+watch(files, () => formattedFiles.value = formatFiles(files.value))
 </script>
 
 <template>

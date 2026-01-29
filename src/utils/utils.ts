@@ -1,4 +1,4 @@
-export const reorderElementInArray = (array, oldIndex, newIndex) => {
+export const reorderElementInArray = <T>(array: T[], oldIndex: number, newIndex: number): T[] => {
     if (oldIndex < 0 || oldIndex >= array.length || newIndex < 0 || newIndex >= array.length) {
         throw new Error("Invalid indices");
     }
@@ -9,14 +9,14 @@ export const reorderElementInArray = (array, oldIndex, newIndex) => {
     return array
 }
 
-export const countDecimals = (value) => {
+export const countDecimals = (value: number): number => {
     if (Math.floor(value) !== value) return value.toString().split('.')[1]?.length || 0
 
     return 0
 }
 
 // Convert accept string into matchable rules
-export const isAcceptedFile = (rules, files) => {
+export const isAcceptedFile = (rules: string | null | undefined, file: File): boolean => {
     if (!rules) return true
 
     const acceptedTypes = rules.split(',').map(type => type.trim().toLowerCase())

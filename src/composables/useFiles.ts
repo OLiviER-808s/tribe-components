@@ -1,7 +1,8 @@
 import { v4 as uuidv4 } from 'uuid'
+import type { FileInput, FormattedFile } from '../types/file'
 
 export const useFiles = () => {
-    const readableFileSize = (bytes) => {
+    const readableFileSize = (bytes: number): string => {
         const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB']
 
         const i = Math.floor(Math.log(bytes) / Math.log(1024))
@@ -10,18 +11,18 @@ export const useFiles = () => {
         return `${size} ${sizes[i]}`
     }
 
-    const formatFiles = (files) => {
-        return files?.map((file) => {
-            if (file.uuid) return file
+    const formatFiles = (files: FileInput[]): FormattedFile[] => {
+        return files?.map((file): FormattedFile => {
+            if ('uuid' in file && file.uuid) return file as FormattedFile
 
             return {
                 name: file.name,
                 size: file.size,
                 uuid: uuidv4(),
-                preview: URL.createObjectURL(file),
-                type: file.type?.split('/')[0],
+                preview: URL.createObjectURL(file as File),
+                type: (file as File).type?.split('/')[0] || '',
             }
-        })
+        }) || []
     }
 
     return { readableFileSize, formatFiles }
