@@ -2,6 +2,7 @@ import './styles/style.css'
 import 'vue-final-modal/style.css'
 import 'v-dropdown-menu/css'
 
+import type { App } from 'vue'
 import { createVfm } from 'vue-final-modal'
 
 export { Accordion } from './components/Accordion/index.ts'
@@ -40,18 +41,19 @@ export { Tabs } from './components/Tabs/index.ts'
 export { Tag } from './components/Tag/index.ts'
 export { Textarea } from './components/Textarea/index.ts'
 export { Textbox } from './components/Textbox/index.ts'
-export { ToastContainer } from './components/Toast/index.js'
+export { ToastContainer } from './components/Toast/index.ts'
 export { Toggle } from './components/Toggle/index.ts'
 export { Tooltip } from './components/Tooltip/index.ts'
 export { useFiles } from './composables/useFiles.ts'
 export { useIsHandheld } from './composables/useIsHandheld.ts'
-export { useToast } from './composables/useToast.js'
+export { useToast } from './composables/useToast.ts'
 
 // Export types
 export type { FormattedFile, FileInput } from './types/file'
+export type { ToastMessageInput as ToastMessage } from './types/toast'
 
 export default {
-    install(app) {
+    install(app: App) {
         const vfm = createVfm()
         app.use(vfm)
     }

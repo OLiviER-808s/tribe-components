@@ -5,13 +5,14 @@ import Textbox from '../Textbox/Textbox.vue'
 import { faCalendar } from '@fortawesome/free-solid-svg-icons'
 import { formatDate, formatDateRange, formatDateWithTime } from '../../utils/dateService'
 import '@vuepic/vue-datepicker/dist/main.css'
+import { IconSize } from '@/types/icon'
 
 interface Props {
     error?: string
     label?: string
     placeholder?: string
     variant?: string
-    size?: string
+    size?: IconSize
     color?: string
     range?: boolean
     maxDate?: Date

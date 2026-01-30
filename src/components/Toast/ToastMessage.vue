@@ -1,11 +1,14 @@
-<script setup>
+<script setup lang="ts">
 import {faXmark} from "@fortawesome/free-solid-svg-icons";
 import {useToast} from "../../composables/useToast";
 import {onMounted} from "vue";
+import { ToastMessage } from "@/types/toast";
 
-const props = defineProps({
-    message: Object,
-})
+interface Props {
+    message: ToastMessage
+}
+
+const props = defineProps<Props>()
 
 const { closeToast } = useToast()
 
