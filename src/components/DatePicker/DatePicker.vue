@@ -34,11 +34,11 @@ const dp = ref(null)
 
 const dateFormatter = computed(() => {
     if (props.range) {
-        return formatDateRange
+        return (dates: Date[]) => formatDateRange([dates[0], dates[1]])
     } else if (props.includeTime) {
-        return formatDateWithTime
+        return (date: Date) => formatDateWithTime(date)
     } else {
-        return formatDate
+        return (date: Date) => formatDate(date)
     }
 })
 </script>

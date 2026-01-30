@@ -5,6 +5,7 @@ import { faUpload } from '@fortawesome/free-solid-svg-icons'
 import FileButton from '../FileButton/FileButton.vue'
 import FileList from '../FileList/FileList.vue'
 import { isAcceptedFile } from '../../utils/utils'
+import { FileInput } from '@/types/file'
 
 interface Props {
     label?: string
@@ -21,7 +22,7 @@ const props = withDefaults(defineProps<Props>(), {
     dropText: 'Drag and drop files here, or click to select files'
 })
 
-const files = defineModel<File[]>({ default: [] })
+const files = defineModel<File[]|FileInput[]>({ default: [] })
 
 const handleUpload = (uploadedFiles: FileList | null): void => {
     if (!uploadedFiles) return
@@ -38,7 +39,7 @@ const handleUpload = (uploadedFiles: FileList | null): void => {
     }
 }
 
-const deleteFile = (fileToDelete: File): void => {
+const deleteFile = (fileToDelete: File|FileInput): void => {
     files.value = files.value.filter((file) => file !== fileToDelete)
 }
 
@@ -56,7 +57,7 @@ const onChange = (event: Event): void => {
     <div>
         <p v-if="label" class="font-medium mb-1">{{ label }}</p>
 
-        <div v-if="!disabled && files.length < limit">
+        <div v-if="limit ? (!disabled && files.length < limit) : !disabled">
             <FileButton @change="onChange" :accept="accept">
                 <Dropzone v-slot="{ isDragOver }" @drop="onDrop">
                     <div

@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
+import { IconSize } from '@/types/icon'
 
 interface Props {
     name?: string
@@ -11,7 +12,7 @@ interface Props {
     error?: string | boolean
     success?: string | boolean
     variant?: string
-    size?: string
+    size?: IconSize
     color?: string
     styles?: string
     label?: string

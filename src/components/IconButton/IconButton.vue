@@ -3,10 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Button from '../Button/Button.vue'
 import { computed } from 'vue'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
+import { IconSize } from '@/types/icon'
 
 interface Props {
     icon: IconDefinition
-    size?: string
+    size?: IconSize
     color?: string
     variant?: 'filled' | 'light' | 'outline' | 'subtle' | 'dashed'
     styles?: string

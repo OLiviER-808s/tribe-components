@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import DropdownOptions from '../DropdownOptions/DropdownOptions.vue'
 import { useDropdown } from '../../composables/useDropdown'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
+import { IconSize } from '@/types/icon'
 
 interface Props {
     options?: any[]
@@ -18,7 +19,7 @@ interface Props {
     icon?: IconDefinition
     error?: string | boolean
     placeholder?: string
-    size?: string
+    size?: IconSize
     variant?: string
     color?: string
     lockOnSelect?: boolean

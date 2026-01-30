@@ -15,7 +15,7 @@ interface StepWithStatus extends Step {
 }
 
 interface Props {
-    steps?: Step[]
+    steps: Step[]
     color?: string
     variant?: 'classic' | 'minimalist'
     canMoveForwards?: boolean
@@ -87,7 +87,7 @@ const handleStepClick = (step: Step, idx: number): void => {
                         getCursorStyle(idx),
                     ]"
                 >
-                    <FontAwesomeIcon :icon="step.status === 'completed' && !canMoveBackwards ? faCheck : step.icon" />
+                    <FontAwesomeIcon v-if="step.icon" :icon="step.status === 'completed' && !canMoveBackwards ? faCheck : step.icon" />
                 </div>
 
                 <div

@@ -3,7 +3,7 @@ import { nextTick, ref, useSlots, watch } from 'vue'
 import { onKeyStroke } from '@vueuse/core'
 
 interface Props {
-    container?: HTMLElement
+    container?: HTMLElement|null
     options?: any[]
     optionLabel?: string
     trackBy?: string
@@ -104,7 +104,7 @@ watch(() => props.open, () => {
         @after-leave="resetDropdownPosition"
     >
         <div
-            v-if="open && options?.length > 0"
+            v-if="open && options && options.length > 0"
             ref="optionsContainer"
             :class="[
                         'rounded-md bg-dropdown text-dropdown-text absolute overflow-auto max-h-64 flex flex-col cursor-pointer z-50',
@@ -115,7 +115,7 @@ watch(() => props.open, () => {
         >
             <div
                 v-for="(option, idx) in options"
-                :key="trackBy ? options[trackBy] : option"
+                :key="trackBy ? option[trackBy as keyof typeof option] : option"
                 @click="select(option)"
                 @mouseover="highlightedIdx = idx"
                 class="text-md py-2 px-6 rounded-md text-left"
@@ -123,10 +123,10 @@ watch(() => props.open, () => {
             >
                 <slot v-if="slots.option" name="option" :option="option" />
                 <div v-else>
-                    {{ optionLabel ? option[optionLabel] : option }}
+                    {{ optionLabel ? option[optionLabel as keyof typeof option] : option }}
 
-                    <div v-if="option[optionDescription]" class="text-xs text-secondary-text">
-                        {{ option[optionDescription] }}
+                    <div v-if="optionDescription && option[optionDescription as keyof typeof option]" class="text-xs text-secondary-text">
+                        {{ option[optionDescription as keyof typeof option] }}
                     </div>
                 </div>
             </div>

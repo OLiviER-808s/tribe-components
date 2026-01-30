@@ -2,9 +2,10 @@
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faDownload, faFile, faXmark } from '@fortawesome/free-solid-svg-icons'
 import IconButton from '../IconButton/IconButton.vue'
+import { FileInput } from '@/types/file'
 
 interface Props {
-    files?: File[]
+    files?: File[]|FileInput[]
     showDownload?: boolean
     showDelete?: boolean
 }
@@ -12,8 +13,8 @@ interface Props {
 const props = defineProps<Props>()
 
 const emit = defineEmits<{
-    download: [file: File]
-    delete: [file: File]
+    download: [file: File|FileInput]
+    delete: [file: File|FileInput]
 }>()
 </script>
 

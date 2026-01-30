@@ -8,7 +8,6 @@ interface Props {
     disabled?: boolean
     type?: 'button' | 'submit' | 'reset'
     href?: string
-    onClick?: (e: Event) => void
     hoverEffects?: boolean
     textColor?: string
 }
@@ -20,7 +19,6 @@ const props = withDefaults(defineProps<Props>(), {
     disabled: false,
     type: 'button',
     href: '',
-    onClick: (e: Event) => {},
     hoverEffects: true,
     textColor: ''
 })

@@ -75,7 +75,7 @@ const colLetter = (index: number): string => String.fromCharCode(65 + index)
                     @click="handleRowClick(row, ri)"
                 >
                     <td
-                        v-for="(cell, ci) in (row.cells ?? row)"
+                        v-for="(cell, ci) in (Array.isArray(row) ? row : row.cells)"
                         :key="'cell-' + ri + '-' + ci"
                         :colspan="cell.colspan || 1"
                         :rowspan="cell.rowspan || 1"
