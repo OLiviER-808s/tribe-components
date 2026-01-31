@@ -27,7 +27,6 @@ export default defineConfig({
                 'swiper',
                 'uuid',
                 'v-dropdown-menu',
-                'vue-final-modal',
                 'vuedraggable',
                 '@fortawesome/fontawesome-svg-core',
                 '@fortawesome/free-solid-svg-icons',
