@@ -1,3 +1,6 @@
+@import 'vue-final-modal/dist/style.css';
+@import 'v-dropdown-menu/dist/vue3/v-dropdown-menu.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

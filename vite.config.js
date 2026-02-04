@@ -8,6 +8,7 @@ export default defineConfig({
         extensions: ['.ts', '.js', '.vue', '.json']
     },
     build: {
+        emptyOutDir: false,
         lib: {
             entry: resolve(__dirname, 'src/index.ts'),
             name: 'TribeComponents',
@@ -40,9 +41,9 @@ export default defineConfig({
                 },
                 exports: 'named',
                 assetFileNames: (assetInfo) => {
-                    // Rename the CSS file to style.css
+                    // Keep component library CSS separate
                     if (assetInfo.name && assetInfo.name.endsWith('.css')) {
-                        return 'style.css'
+                        return 'components.css'
                     }
                     return assetInfo.name
                 }

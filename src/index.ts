@@ -1,7 +1,3 @@
-import './styles/style.css'
-import 'vue-final-modal/style.css'
-import 'v-dropdown-menu/css'
-
 import type { App } from 'vue'
 import { createVfm } from 'vue-final-modal'
 
