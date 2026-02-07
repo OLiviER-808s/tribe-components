@@ -1764,16 +1764,18 @@ const En = ["innerHTML"], Bn = /* @__PURE__ */ B({
     styles: { default: "" },
     padding: { default: "p-4" },
     flat: { type: Boolean, default: !1 },
-    boxed: { type: Boolean, default: !1 }
+    boxed: { type: Boolean, default: !1 },
+    border: { default: "border-border dark:border-none" }
   },
   setup(o) {
     return (e, t) => (c(), f("div", {
       class: C([
         e.styles,
         e.padding,
+        e.border,
         { "shadow-sm": !e.flat && !e.styles.includes("shadow") },
         { "rounded-md": !e.boxed && !e.styles.includes("rounded") },
-        "bg-card border border-border dark:border-none"
+        "border bg-card"
       ])
     }, [
       z(e.$slots, "default")
