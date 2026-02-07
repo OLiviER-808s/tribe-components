@@ -1,0 +1,1 @@
+export declare const DEFAULT_PROFILE_PIC = "/default_profile.jpg";

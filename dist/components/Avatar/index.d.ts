@@ -1,0 +1,4 @@
+import { default as Avatar } from './Avatar.vue';
+export { Avatar };
+export default Avatar;
+export type { AvatarProps, AvatarSlots, AvatarEmits } from './Avatar.types';
