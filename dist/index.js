@@ -5,10 +5,6 @@ import { faChevronDown as wt, faHeadphones as uo, faVideoCamera as co, faFile as
 import yo from "vuedraggable";
 import { v4 as Ot } from "uuid";
 import go from "@vuepic/vue-datepicker";
-/*!
-* tabbable 6.2.0
-* @license MIT, https://github.com/focus-trap/tabbable/blob/master/LICENSE
-*/
 var _t = ["input:not([inert])", "select:not([inert])", "textarea:not([inert])", "a[href]:not([inert])", "button:not([inert])", "[tabindex]:not(slot):not([inert])", "audio[controls]:not([inert])", "video[controls]:not([inert])", '[contenteditable]:not([contenteditable="false"]):not([inert])', "details>summary:first-of-type:not([inert])", "details:not([inert])"], We = /* @__PURE__ */ _t.join(","), xt = typeof Element > "u", ge = xt ? function() {
 } : Element.prototype.matches || Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector, Ge = !xt && Element.prototype.getRootNode ? function(o) {
   var e;
@@ -200,10 +196,6 @@ var _t = ["input:not([inert])", "select:not([inert])", "textarea:not([inert])", 
     throw new Error("No node provided");
   return ge.call(e, xo) === !1 ? !1 : Ze(t, e);
 };
-/*!
-* focus-trap 7.6.5
-* @license MIT, https://github.com/focus-trap/focus-trap/blob/master/LICENSE
-*/
 function ct(o, e) {
   (e == null || e > o.length) && (e = o.length);
   for (var t = 0, n = Array(e); t < e; t++) n[t] = o[t];
@@ -1405,7 +1397,7 @@ function gn(o, e) {
     onTouchStartSwipeBanner: A
   };
 }
-const Kt = Symbol("vfm");
+const Kt = /* @__PURE__ */ Symbol("vfm");
 let be;
 const wn = (o) => be = o, kn = {
   install: Ae,
@@ -1662,7 +1654,7 @@ function Vt(o, e = Wt) {
 }
 function Sn(o) {
   const e = it({
-    id: Symbol("useModal"),
+    id: /* @__PURE__ */ Symbol("useModal"),
     modelValue: !!(o != null && o.defaultModelValue),
     resolveOpened: () => {
     },
@@ -1721,7 +1713,7 @@ function Ye(o) {
 const En = ["innerHTML"], Bn = /* @__PURE__ */ B({
   __name: "ModalsContainer",
   setup(o) {
-    const { modalsContainers: e, dynamicModals: t } = Oe(), n = Symbol("ModalsContainer"), l = O(() => {
+    const { modalsContainers: e, dynamicModals: t } = Oe(), n = /* @__PURE__ */ Symbol("ModalsContainer"), l = O(() => {
       var s;
       return n === ((s = e.value) == null ? void 0 : s[0]);
     });
@@ -3675,12 +3667,7 @@ const Jl = /* @__PURE__ */ ht(il, [["render", ul]]), dl = { class: "overflow-hid
   setup(o) {
     const e = o, t = F(!1), n = O(() => {
       let l;
-      switch (e.position) {
-        case "right":
-          l = "left-full pl-4";
-          break;
-      }
-      return l;
+      return e.position === "right" && (l = "left-full pl-4"), l;
     });
     return (l, r) => (c(), f("div", {
       class: "relative flex items-center",
