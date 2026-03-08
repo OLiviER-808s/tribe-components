@@ -1,25 +1,7 @@
 @import './theme.css';
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
-}
-
-/* @import 'vue-final-modal/dist/style.css'; */
-/* @import 'v-dropdown-menu/dist/vue3/v-dropdown-menu.css'; */
+@source inline('{bg,text,border}-{primary,secondary,accent,error,success,base,secondary-text,back,white}');
+@source inline('bg-{primary,secondary,accent,error,success,base,secondary-text,back,white}/{10,20,30,35,40,50,60,70,80,90}');
 
 [type="text"]:focus, [type="password"]:focus, [type="email"]:focus, [type="number"]:focus, textarea:focus {
 	@apply ring-0;

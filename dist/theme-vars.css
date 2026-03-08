@@ -1,0 +1,48 @@
+/*
+  Library theme variables.
+  Import this inside your app's Tailwind entry (after @import 'tailwindcss')
+  so the consumer's Tailwind compilation picks up these custom colors.
+*/
+@theme {
+  --color-primary: 255, 133, 55;
+  --color-secondary: 3, 189, 206;
+  --color-accent: 170, 0, 250;
+
+  --color-error: 255, 50, 50;
+  --color-success: 48, 197, 53;
+
+  --color-base: 14, 14, 14;
+  --color-card: 35, 35, 35;
+  --color-card-accent: 75, 75, 75;
+  --color-border: 0, 0, 0, 0;
+  --color-dropdown: 252, 252, 252;
+  --color-dropdown-select: 237, 237, 237;
+  --color-quick-filter: 64, 64, 64;
+  --color-quick-filter-selected: 212, 212, 212;
+
+  --color-base-text: 255, 255, 255;
+  --color-secondary-text: 144, 144, 144;
+  --color-dropdown-text: 0, 0, 0;
+}
+
+@utility dark {
+  --color-primary: 255, 133, 55;
+  --color-secondary: 3, 189, 206;
+  --color-accent: 170, 0, 250;
+
+  --color-error: 255, 50, 50;
+  --color-success: 48, 197, 53;
+
+  --color-base: 14, 14, 14;
+  --color-card: 35, 35, 35;
+  --color-card-accent: 75, 75, 75;
+  --color-border: 0, 0, 0, 0;
+  --color-dropdown: 252, 252, 252;
+  --color-dropdown-select: 237, 237, 237;
+  --color-quick-filter: 64, 64, 64;
+  --color-quick-filter-selected: 212, 212, 212;
+
+  --color-base-text: 255, 255, 255;
+  --color-secondary-text: 144, 144, 144;
+  --color-dropdown-text: 0, 0, 0;
+}
