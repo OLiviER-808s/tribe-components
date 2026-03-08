@@ -8,6 +8,7 @@ interface Props {
     href?: string;
     hoverEffects?: boolean;
     textColor?: string;
+    padding?: string;
 }
 declare function __VLS_template(): {
     attrs: Partial<{}>;
@@ -24,6 +25,7 @@ declare const __VLS_component: DefineComponent<Props, {}, {}, {}, {}, ComponentO
     onClick?: ((e: Event) => any) | undefined;
 }>, {
     styles: string;
+    padding: string;
     type: "button" | "submit" | "reset";
     variant: "filled" | "light" | "outline" | "subtle" | "dashed";
     color: string;

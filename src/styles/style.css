@@ -1,6 +1,4 @@
-@import 'tailwindcss';
-
-@config "../../tailwind.config.js";
+@import './theme.css';
 
 /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
@@ -109,7 +107,7 @@ body {
 }
 
 .btn {
-    @apply px-6 py-2 rounded-lg font-semibold transition duration-300 flex items-center justify-center gap-2;
+    @apply rounded-lg font-semibold transition duration-300 flex items-center justify-center gap-2;
 }
 
 .disabled-btn {

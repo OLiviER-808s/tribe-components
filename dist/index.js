@@ -1765,8 +1765,8 @@ const En = ["innerHTML"], Bn = /* @__PURE__ */ B({
         e.styles,
         e.padding,
         e.border,
-        { "shadow-xs": !e.flat && !e.styles.includes("shadow-sm") },
-        { "rounded-md": !e.boxed && !e.styles.includes("rounded-sm") },
+        { "shadow-sm": !e.flat && !e.styles.includes("shadow") },
+        { "rounded-md": !e.boxed && !e.styles.includes("rounded") },
         "border bg-card"
       ])
     }, [
@@ -2001,7 +2001,8 @@ const En = ["innerHTML"], Bn = /* @__PURE__ */ B({
     type: { default: "button" },
     href: { default: "" },
     hoverEffects: { type: Boolean, default: !0 },
-    textColor: { default: "" }
+    textColor: { default: "" },
+    padding: { default: "px-6 py-2" }
   },
   emits: ["click"],
   setup(o, { emit: e }) {
@@ -2011,6 +2012,7 @@ const En = ["innerHTML"], Bn = /* @__PURE__ */ B({
       const i = [
         "btn",
         t.styles,
+        t.padding,
         { pressed: l },
         { "disabled-btn": t.disabled },
         { "cursor-default": !t.hoverEffects }
@@ -2019,7 +2021,7 @@ const En = ["innerHTML"], Bn = /* @__PURE__ */ B({
         case "light":
           i.push(`bg-${a.value}/20 text-${a.value}`), t.hoverEffects && i.push(`hover:bg-${a.value}/35`);
           break;
-        case "outline-solid":
+        case "outline":
           i.push(`text-${t.textColor ?? a.value} border-${a.value} border-2`), t.hoverEffects && i.push(`hover:bg-${a.value}/10`);
           break;
         case "subtle":
@@ -2115,7 +2117,8 @@ const En = ["innerHTML"], Bn = /* @__PURE__ */ B({
     type: { default: "button" },
     href: { default: "" },
     hoverEffects: { type: Boolean, default: !0 },
-    textColor: { default: "" }
+    textColor: { default: "" },
+    padding: { default: "p-0" }
   },
   emits: ["click"],
   setup(o, { emit: e }) {
@@ -2132,7 +2135,8 @@ const En = ["innerHTML"], Bn = /* @__PURE__ */ B({
       }
     });
     return (r, a) => (c(), Z(Wn, {
-      styles: `${r.styles} ${l.value} flex justify-center items-center px-0! py-0!`,
+      styles: `${r.styles} ${l.value} flex justify-center items-center`,
+      padding: r.padding,
       href: r.href,
       type: r.type,
       color: r.color,
@@ -2149,7 +2153,7 @@ const En = ["innerHTML"], Bn = /* @__PURE__ */ B({
         }, null, 8, ["size", "icon"])
       ]),
       _: 1
-    }, 8, ["styles", "href", "type", "color", "disabled", "variant", "hover-effects", "text-color"]));
+    }, 8, ["styles", "padding", "href", "type", "color", "disabled", "variant", "hover-effects", "text-color"]));
   }
 }), Qn = /* @__PURE__ */ B({
   __name: "HoverBox",
@@ -2237,14 +2241,14 @@ const En = ["innerHTML"], Bn = /* @__PURE__ */ B({
     input: {},
     inputModifiers: {}
   }),
-  emits: /* @__PURE__ */ j(["input", "focus", "blur-sm"], ["update:modelValue", "update:input"]),
+  emits: /* @__PURE__ */ j(["input", "focus", "blur"], ["update:modelValue", "update:input"]),
   setup(o, { emit: e }) {
     const t = o, n = e, l = P(o, "modelValue"), r = P(o, "input"), a = F(!1), s = O(
       () => t.variant === "filled" ? `bg-${t.color}` : "bg-transparent border border-border"
     ), i = (d) => {
       a.value = !0, n("input", d);
     }, u = (d) => {
-      a.value = !1, n("blur-sm", d);
+      a.value = !1, n("blur", d);
     }, m = (d) => {
       const v = d.target;
       l.value = v.value, n("input", d);
@@ -2276,12 +2280,12 @@ const En = ["innerHTML"], Bn = /* @__PURE__ */ B({
           }, null, 8, ["icon", "size"])
         ])) : D("", !0),
         g("div", {
-          class: C(["grow w-full flex items-center gap-1 flex-wrap p-2", { "pl-0": d.icon }])
+          class: C(["flex-grow w-full flex items-center gap-1 flex-wrap p-2", { "pl-0": d.icon }])
         }, [
           z(d.$slots, "left-section"),
           d.disabled ? (c(), f("div", {
             key: 0,
-            class: C([{ "pl-0": d.icon, "text-sm": d.size === "sm" }, "grow overflow-hidden whitespace-nowrap"])
+            class: C([{ "pl-0": d.icon, "text-sm": d.size === "sm" }, "flex-grow overflow-hidden whitespace-nowrap"])
           }, [
             l.value ? (c(), f("span", ea, E(l.value), 1)) : d.value ? (c(), f("span", ta, E(d.value), 1)) : d.placeholder ? (c(), f("span", oa, E(d.placeholder), 1)) : D("", !0)
           ], 2)) : (c(), f("input", {
@@ -2296,7 +2300,7 @@ const En = ["innerHTML"], Bn = /* @__PURE__ */ B({
             onInput: m,
             onFocus: i,
             onBlur: u,
-            class: C([{ "placeholder:text-sm": d.size === "sm" }, "p-0 grow border-none outline-hidden rounded-lg bg-transparent placeholder:text-secondary-text"])
+            class: C([{ "placeholder:text-sm": d.size === "sm" }, "p-0 flex-grow border-none outline-none rounded-lg bg-transparent placeholder:text-secondary-text"])
           }, null, 42, na))
         ], 2),
         z(d.$slots, "right-section")
@@ -2488,7 +2492,7 @@ const En = ["innerHTML"], Bn = /* @__PURE__ */ B({
           I(h(te), { icon: h(vt) }, null, 8, ["icon"])
         ])),
         g("p", null, E(r.name), 1),
-        l[0] || (l[0] = g("div", { class: "grow" }, null, -1)),
+        l[0] || (l[0] = g("div", { class: "flex-grow" }, null, -1)),
         n.showDelete ? (c(), f("div", ha, [
           I(Le, {
             icon: h(et),
@@ -2729,12 +2733,12 @@ const En = ["innerHTML"], Bn = /* @__PURE__ */ B({
   setup(o) {
     return (e, t) => (c(), f("div", Ma, [
       g("div", null, [
-        t[0] || (t[0] = g("div", { class: "spinner" }, null, -1)),
+        t[0] || (t[0] = g("div", { class: "spinner border-4 border-base border-t-primary" }, null, -1)),
         e.label ? (c(), f("p", Da, E(e.label), 1)) : D("", !0)
       ])
     ]));
   }
-}), Ul = /* @__PURE__ */ ht(Fa, [["__scopeId", "data-v-025bfaf0"]]), Ia = { class: "flex items-center justify-center" }, Na = { key: 0 }, Oa = ["src", "alt"], _a = { key: 1 }, xa = ["src"], Aa = { key: 2 }, La = ["src"], za = {
+}), Ul = /* @__PURE__ */ ht(Fa, [["__scopeId", "data-v-50892209"]]), Ia = { class: "flex items-center justify-center" }, Na = { key: 0 }, Oa = ["src", "alt"], _a = { key: 1 }, xa = ["src"], Aa = { key: 2 }, La = ["src"], za = {
   key: 3,
   class: "text-center"
 }, Ra = /* @__PURE__ */ B({
@@ -2956,7 +2960,7 @@ const En = ["innerHTML"], Bn = /* @__PURE__ */ B({
     input: {},
     inputModifiers: {}
   }),
-  emits: /* @__PURE__ */ j(["select", "focus", "blur-sm"], ["update:modelValue", "update:searchQuery", "update:input"]),
+  emits: /* @__PURE__ */ j(["select", "focus", "blur"], ["update:modelValue", "update:searchQuery", "update:input"]),
   setup(o, { emit: e }) {
     const t = o, n = e, l = P(o, "modelValue"), r = P(o, "searchQuery"), a = P(o, "input"), s = Re(), i = F(!1), u = F(null), m = O(() => t.acceptsDuplicates || !t.options ? t.options : t.options.filter((y) => !l.value.includes(t.formatResult(y)))), d = (y) => {
       l.value.push(t.formatResult(y)), r.value = "", n("select", y);
@@ -3005,7 +3009,7 @@ const En = ["innerHTML"], Bn = /* @__PURE__ */ B({
             variant: y.variant,
             styles: y.textboxStyles,
             onFocus: V[2] || (V[2] = (A) => n("focus", A)),
-            onBlur: V[3] || (V[3] = (A) => n("blur-sm", A))
+            onBlur: V[3] || (V[3] = (A) => n("blur", A))
           }, {
             "left-section": U(() => [
               (c(!0), f(oe, null, ne(l.value, (A, ae) => (c(), f("div", {
@@ -3095,7 +3099,7 @@ const En = ["innerHTML"], Bn = /* @__PURE__ */ B({
           min: r.min,
           max: r.max,
           disabled: r.disabled,
-          class: "grow w-full py-2 px-0 border-none outline-hidden rounded-lg placeholder:text-secondary-text bg-transparent appearance-none"
+          class: "flex-grow w-full py-2 px-0 border-none outline-none rounded-lg placeholder:text-secondary-text bg-transparent appearance-none"
         }, null, 8, qa), [
           [no, t.value]
         ])
@@ -3185,7 +3189,7 @@ const En = ["innerHTML"], Bn = /* @__PURE__ */ B({
     input: {},
     inputModifiers: {}
   }),
-  emits: /* @__PURE__ */ j(["select", "blur-sm", "focus"], ["update:modelValue", "update:searchQuery", "update:input"]),
+  emits: /* @__PURE__ */ j(["select", "blur", "focus"], ["update:modelValue", "update:searchQuery", "update:input"]),
   setup(o, { emit: e }) {
     const t = o, n = e, l = P(o, "modelValue"), r = P(o, "searchQuery"), a = P(o, "input"), s = Re(), { dropdownOpen: i, dropdownContainer: u, open: m, close: d } = Yt(), v = ($) => {
       const y = t.formatResult($);
@@ -3225,7 +3229,7 @@ const En = ["innerHTML"], Bn = /* @__PURE__ */ B({
             variant: $.variant,
             styles: $.textboxStyles,
             onFocus: y[3] || (y[3] = (V) => n("focus", V)),
-            onBlur: y[4] || (y[4] = (V) => n("blur-sm", V))
+            onBlur: y[4] || (y[4] = (V) => n("blur", V))
           }, xe({ _: 2 }, [
             $.lockOnSelect && $.searchable && l.value ? {
               name: "right-section",
@@ -3316,7 +3320,7 @@ const En = ["innerHTML"], Bn = /* @__PURE__ */ B({
           ], 10, al),
           d < i.steps.length - 1 ? (c(), f("div", {
             key: 0,
-            class: C(`grow bg-${l.value[d + 1].status === "uncompleted" ? "secondary-text" : i.color} h-0.5`)
+            class: C(`flex-grow bg-${l.value[d + 1].status === "uncompleted" ? "secondary-text" : i.color} h-0.5`)
           }, null, 2)) : D("", !0)
         ], 64))), 128))
       ]),
@@ -3497,14 +3501,14 @@ const Jl = /* @__PURE__ */ ht(il, [["render", ul]]), dl = { class: "overflow-hid
     input: {},
     inputModifiers: {}
   }),
-  emits: /* @__PURE__ */ j(["focus", "blur-sm", "keyPress", "input"], ["update:modelValue", "update:input"]),
+  emits: /* @__PURE__ */ j(["focus", "blur", "keyPress", "input"], ["update:modelValue", "update:input"]),
   setup(o, { emit: e }) {
     const t = o, n = e, l = P(o, "modelValue"), r = P(o, "input"), a = F(t.modelValue), s = F(!1), i = O(
       () => t.variant === "filled" ? `bg-${t.color}` : "bg-transparent border border-border"
     ), u = (v) => {
       s.value = !0, n("focus", v);
     }, m = (v) => {
-      s.value = !1, n("blur-sm", v);
+      s.value = !1, n("blur", v);
     }, d = (v) => {
       const k = v.target;
       a.value = k.value, l.value = k.value, n("input", v);
@@ -3535,7 +3539,7 @@ const Jl = /* @__PURE__ */ ht(il, [["render", ul]]), dl = { class: "overflow-hid
         ])
       }, [
         g("textarea", {
-          class: C(["rounded-lg p-2 grow bg-transparent outline-hidden max-w-full placeholder:text-secondary-text border-none", { "field-sizing-content": v.fieldSizingContent }]),
+          class: C(["rounded-lg p-2 flex-grow bg-transparent outline-none max-w-full placeholder:text-secondary-text border-none", { "field-sizing-content": v.fieldSizingContent }]),
           name: v.name,
           placeholder: v.placeholder,
           value: l.value,

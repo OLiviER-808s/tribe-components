@@ -12,6 +12,7 @@ interface Props {
     href?: string;
     hoverEffects?: boolean;
     textColor?: string;
+    padding?: string;
 }
 declare const _default: DefineComponent<Props, {}, {}, {}, {}, ComponentOptionsMixin, ComponentOptionsMixin, {
     click: (e: Event) => any;
@@ -19,6 +20,7 @@ declare const _default: DefineComponent<Props, {}, {}, {}, {}, ComponentOptionsM
     onClick?: ((e: Event) => any) | undefined;
 }>, {
     styles: string;
+    padding: string;
     type: "button" | "submit" | "reset";
     variant: "filled" | "light" | "outline" | "subtle" | "dashed";
     size: "2xs" | "xs" | "sm" | "lg" | "xl" | "2xl" | "1x" | "2x" | "3x" | "4x" | "5x" | "6x" | "7x" | "8x" | "9x" | "10x";

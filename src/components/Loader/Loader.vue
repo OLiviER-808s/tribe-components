@@ -9,7 +9,7 @@ const props = defineProps<Props>()
 <template>
     <div class="flex items-center justify-center">
         <div>
-            <div class="spinner"></div>
+            <div class="spinner border-4 border-base border-t-primary"></div>
 
             <p v-if="label" class="text-center font-medium mt-2">{{ label }}</p>
         </div>
@@ -18,7 +18,6 @@ const props = defineProps<Props>()
 
 <style scoped>
 .spinner {
-    @apply border-4 border-base border-t-primary;
     border-radius: 50%;
     width: 40px;
     height: 40px;

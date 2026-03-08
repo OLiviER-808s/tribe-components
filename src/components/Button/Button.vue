@@ -10,6 +10,7 @@ interface Props {
     href?: string
     hoverEffects?: boolean
     textColor?: string
+    padding?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -20,7 +21,8 @@ const props = withDefaults(defineProps<Props>(), {
     type: 'button',
     href: '',
     hoverEffects: true,
-    textColor: ''
+    textColor: '',
+    padding: 'px-6 py-2'
 })
 
 const emit = defineEmits<{
@@ -45,6 +47,7 @@ const classes = computed(() => {
     const result = [
         'btn', 
         props.styles,
+        props.padding,
         { pressed: isPressed }, 
         { 'disabled-btn': props.disabled },
         { 'cursor-default': !props.hoverEffects }

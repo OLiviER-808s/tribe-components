@@ -16,6 +16,7 @@ interface Props {
     href?: string
     hoverEffects?: boolean
     textColor?: string
+    padding?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -27,7 +28,8 @@ const props = withDefaults(defineProps<Props>(), {
     type: 'button',
     href: '',
     hoverEffects: true,
-    textColor: ''
+    textColor: '',
+    padding: 'p-0'
 })
 
 const emit = defineEmits<{
@@ -50,7 +52,8 @@ const btnSize = computed(() => {
 
 <template>
     <Button
-        :styles="`${styles} ${btnSize} flex justify-center items-center px-0! py-0!`"
+        :styles="`${styles} ${btnSize} flex justify-center items-center`"
+        :padding="padding"
         :href="href"
         :type="type"
         :color="color"

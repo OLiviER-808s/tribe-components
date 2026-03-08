@@ -21,8 +21,8 @@
         "registry": "https://npm.pkg.github.com/"
     },
     "scripts": {
-        "build:theme": "tailwindcss -i ./src/styles/theme.css -o ./dist/theme.css --minify",
-        "build:style": "tailwindcss -i ./src/styles/style.css -o ./dist/style.css --minify",
+        "build:theme": "npx @tailwindcss/cli -i ./src/styles/theme.css -o ./dist/theme.css --minify",
+        "build:style": "npx @tailwindcss/cli -i ./src/styles/style.css -o ./dist/style.css --minify",
         "build:css": "npm run build:theme && npm run build:style",
         "build": "vite build",
         "type-check": "vue-tsc --noEmit",
