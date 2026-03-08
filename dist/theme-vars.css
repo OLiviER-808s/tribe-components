@@ -4,45 +4,42 @@
   so the consumer's Tailwind compilation picks up these custom colors.
 */
 @theme {
-  --color-primary: 255, 133, 55;
-  --color-secondary: 3, 189, 206;
-  --color-accent: 170, 0, 250;
+  --color-primary: #565bf5;
+  --color-secondary: #1b5be0;
+  --color-accent: #b005ff;
 
-  --color-error: 255, 50, 50;
-  --color-success: 48, 197, 53;
+  --color-error: #ff3232;
+  --color-success: #30c535;
 
-  --color-base: 14, 14, 14;
-  --color-card: 35, 35, 35;
-  --color-card-accent: 75, 75, 75;
-  --color-border: 0, 0, 0, 0;
-  --color-dropdown: 252, 252, 252;
-  --color-dropdown-select: 237, 237, 237;
-  --color-quick-filter: 64, 64, 64;
-  --color-quick-filter-selected: 212, 212, 212;
-
-  --color-base-text: 255, 255, 255;
-  --color-secondary-text: 144, 144, 144;
-  --color-dropdown-text: 0, 0, 0;
+  --color-base: #ededed;
+  --color-card: #fcfcfc;
+  --color-card-accent: #c8c8c8;
+  --color-border: #e5e6eb;
+  --color-dropdown: #101010;
+  --color-dropdown-select: #282828;
+  --color-quick-filter: #dcdcdc;
+  --color-quick-filter-selected: #b4b4b4;
+  --color-base-text: #000000;
+  --color-secondary-text: #696969;
+  --color-dropdown-text: #ffffff;
 }
 
 @utility dark {
-  --color-primary: 255, 133, 55;
-  --color-secondary: 3, 189, 206;
-  --color-accent: 170, 0, 250;
+  --color-primary: #565bf5;
+  --color-secondary: #1a52c9;
+  --color-accent: #b005ff;
+  --color-error: #ff3232;
+  --color-success: #30c535;
 
-  --color-error: 255, 50, 50;
-  --color-success: 48, 197, 53;
-
-  --color-base: 14, 14, 14;
-  --color-card: 35, 35, 35;
-  --color-card-accent: 75, 75, 75;
-  --color-border: 0, 0, 0, 0;
-  --color-dropdown: 252, 252, 252;
-  --color-dropdown-select: 237, 237, 237;
-  --color-quick-filter: 64, 64, 64;
-  --color-quick-filter-selected: 212, 212, 212;
-
-  --color-base-text: 255, 255, 255;
-  --color-secondary-text: 144, 144, 144;
-  --color-dropdown-text: 0, 0, 0;
+  --color-base: #0e0e0e;
+  --color-card: #232323;
+  --color-card-accent: #4b4b4b;
+  --color-border: #525252;
+  --color-dropdown: #fcfcfc;
+  --color-dropdown-select: #ededed;
+  --color-quick-filter: #404040;
+  --color-quick-filter-selected: #d4d4d4;
+  --color-base-text: #ffffff;
+  --color-secondary-text: #909090;
+  --color-dropdown-text: #000000;
 }

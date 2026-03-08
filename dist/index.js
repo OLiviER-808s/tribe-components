@@ -2015,7 +2015,7 @@ const En = ["innerHTML"], Bn = /* @__PURE__ */ B({
         t.padding,
         { pressed: l },
         { "disabled-btn": t.disabled },
-        { "cursor-default": !t.hoverEffects }
+        { "cursor-pointer": t.hoverEffects }
       ];
       switch (t.variant) {
         case "light":
