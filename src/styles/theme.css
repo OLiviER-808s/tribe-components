@@ -1,8 +1,44 @@
+@import 'tailwindcss';
+
 @config "../../tailwind.config.js";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility dark {
+  --primary-color: 255, 133, 55;
+  --secondary-color: 3, 189, 206;
+  --accent-color: 170, 0, 250;
+
+  --base-bg-color: 14, 14, 14;
+  --card-color: 35, 35, 35;
+  --card-color-accent: 75, 75, 75;
+  --border-color: 0, 0, 0, 0;
+  --message-color: 66, 66, 66;
+  --dropdown-color: 252, 252, 252;
+  --dropdown-select-color: 237, 237, 237;
+  --quick-filter-bg-color: 64, 64, 64;
+  --quick-filter-selected-bg-color: 212, 212, 212;
+
+  --base-text-color: 255, 255, 255;
+  --secondary-text-color: 144, 144, 144;
+  --dropdown-text-color: 0, 0, 0;
+}
 
 @layer base {
   :root {
@@ -28,27 +64,5 @@
     --dropdown-text-color: 255, 255, 255;
 
     --swiper-navigation-color: var(--secondary-text-color);
-  }
-}
-
-@layer components {
-  .dark {
-    --primary-color: 255, 133, 55;
-    --secondary-color: 3, 189, 206;
-    --accent-color: 170, 0, 250;
-
-    --base-bg-color: 14, 14, 14;
-    --card-color: 35, 35, 35;
-    --card-color-accent: 75, 75, 75;
-    --border-color: 0, 0, 0, 0;
-    --message-color: 66, 66, 66;
-    --dropdown-color: 252, 252, 252;
-    --dropdown-select-color: 237, 237, 237;
-    --quick-filter-bg-color: 64, 64, 64;
-    --quick-filter-selected-bg-color: 212, 212, 212;
-
-    --base-text-color: 255, 255, 255;
-    --secondary-text-color: 144, 144, 144;
-    --dropdown-text-color: 0, 0, 0;
   }
 }

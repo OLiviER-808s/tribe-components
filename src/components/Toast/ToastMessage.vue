@@ -20,7 +20,7 @@ onMounted(() => {
 <template>
     <Transition name="slide-fade" appear>
         <div :class="`w-72 flex items-center gap-2 rounded-md p-2 bg-${message.color ?? 'success'}/${message.opacity ?? 60}`">
-            <div class="flex-grow">
+            <div class="grow">
                 <p class="text-sm font-medium">{{ message.title }}</p>
                 <p class="text-sm">{{ message.content }}</p>
             </div>

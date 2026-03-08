@@ -50,7 +50,7 @@ const formattedFiles = computed(() => formatFiles(files.value))
                             :icon="faPlus"
                             color="secondary"
                             variant="dashed"
-                            styles="!w-14 !h-14 !rounded-md"
+                            styles="w-14! h-14! rounded-md!"
                         />
                     </FileButton>
                 </template>

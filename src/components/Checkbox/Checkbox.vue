@@ -27,7 +27,7 @@ const handleToggle = (): void => {
             <button
                 @click="handleToggle()"
                 type="button"
-                class="rounded-sm cursor-pointer border-secondary border-2 w-4 h-4 flex items-center justify-center text-black"
+                class="rounded-xs cursor-pointer border-secondary border-2 w-4 h-4 flex items-center justify-center text-black"
                 :class="{ 'bg-secondary': checked, 'hover:bg-secondary/30': !checked }"
             >
                 <FontAwesomeIcon v-if="checked" :icon="faCheck" size="xs" />
