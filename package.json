@@ -35,6 +35,13 @@
         "@fortawesome/vue-fontawesome": "^3.0.6",
         "vue": "^3.2.0"
     },
+    "peerDependenciesMeta": {
+        "@fortawesome/fontawesome-svg-core": { "optional": true },
+        "@fortawesome/free-brands-svg-icons": { "optional": true },
+        "@fortawesome/free-regular-svg-icons": { "optional": true },
+        "@fortawesome/free-solid-svg-icons": { "optional": true },
+        "@fortawesome/vue-fontawesome": { "optional": true }
+    },
     "dependencies": {
         "@vuepic/vue-datepicker": "^8.6.0",
         "@vueuse/core": "^10.9.0",

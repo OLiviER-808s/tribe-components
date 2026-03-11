@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { faCheck } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
+import CheckIcon from '../icons/CheckIcon.vue'
+import TribeIcon from '../TribeIcon/TribeIcon.vue'
+import type { TribeIconType } from '@/types/icon'
 
 interface Step {
     value: string | number
     label: string
-    icon?: IconDefinition
+    icon?: TribeIconType
 }
 
 interface StepWithStatus extends Step {
@@ -87,7 +87,8 @@ const handleStepClick = (step: Step, idx: number): void => {
                         getCursorStyle(idx),
                     ]"
                 >
-                    <FontAwesomeIcon v-if="step.icon" :icon="step.status === 'completed' && !canMoveBackwards ? faCheck : step.icon" />
+                    <CheckIcon v-if="step.icon && step.status === 'completed' && !canMoveBackwards" class="w-4 h-4" />
+                    <TribeIcon v-else-if="step.icon" :icon="step.icon" />
                 </div>
 
                 <div

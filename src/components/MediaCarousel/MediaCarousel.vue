@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { faFile } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import FileIcon from '../icons/FileIcon.vue'
 import { useIsHandheld } from '../../composables/useIsHandheld'
 import { watch } from 'vue'
 import type { FormattedFile } from '../../types/file'
@@ -48,7 +47,9 @@ watch(selectedIdx, () => {
                     <audio :src="file.preview" controls />
                 </div>
                 <div v-else class="text-center">
-                    <FontAwesomeIcon :icon="faFile" size="xl" />
+                    <slot name="file-icon">
+                        <FileIcon class="w-6 h-6 mx-auto" />
+                    </slot>
                     <p class="text-lg mt-2">No preview available</p>
                 </div>
             </div>

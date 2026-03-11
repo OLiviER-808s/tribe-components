@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
+import TribeIcon from '../TribeIcon/TribeIcon.vue'
+import type { TribeIconType } from '@/types/icon'
 
 interface Props {
     label?: string
-    icon?: IconDefinition
+    icon?: TribeIconType
     placeholder?: string
     styles?: string
     error?: string
@@ -49,7 +49,7 @@ const isError = computed(() => {
 
         <div :class="['rounded-lg flex h-10 items-center', variantStyles, styles, { error: isError || error, 'px-2': !icon }]">
             <div v-if="icon" class="text-text-secondary flex justify-center items-center w-10 rounded-l-md">
-                <FontAwesomeIcon :icon="icon" size="1x" class="text-secondary-text" />
+                <TribeIcon :icon="icon" size="1x" class="text-secondary-text" />
             </div>
 
             <input

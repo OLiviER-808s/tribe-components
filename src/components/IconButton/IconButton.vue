@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import TribeIcon from '../TribeIcon/TribeIcon.vue'
 import Button from '../Button/Button.vue'
 import { computed } from 'vue'
-import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
-import { IconSize } from '@/types/icon'
+import type { TribeIconType, IconSize } from '@/types/icon'
 
 interface Props {
-    icon: IconDefinition
+    icon: TribeIconType
     size?: IconSize
     color?: string
     variant?: 'filled' | 'light' | 'outline' | 'subtle' | 'dashed'
@@ -63,6 +62,6 @@ const btnSize = computed(() => {
         :text-color="textColor"
         @click="e => emit('click', e)"
     >
-        <FontAwesomeIcon :size="size" :icon="icon" />
+        <TribeIcon :size="size" :icon="icon" />
     </Button>
 </template>

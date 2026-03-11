@@ -2,8 +2,7 @@
 import { computed, onBeforeUnmount, onMounted, ref, useSlots, watch } from 'vue'
 import Textbox from '../Textbox/Textbox.vue'
 import DropdownOptions from '../DropdownOptions/DropdownOptions.vue'
-import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
-import { IconSize } from '@/types/icon'
+import type { TribeIconType, IconSize } from '@/types/icon'
 
 interface Props {
     options?: any[]
@@ -11,7 +10,7 @@ interface Props {
     optionLabel?: string
     trackBy?: string
     searchable?: boolean
-    icon?: IconDefinition
+    icon?: TribeIconType
     error?: string | boolean
     placeholder?: string
     size?: IconSize

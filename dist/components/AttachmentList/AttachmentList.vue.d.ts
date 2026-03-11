@@ -12,6 +12,10 @@ declare function __VLS_template(): {
     attrs: Partial<{}>;
     slots: {
         'additional-items-before'?(_: {}): any;
+        'audio-icon'?(_: {}): any;
+        'video-icon'?(_: {}): any;
+        'file-icon'?(_: {}): any;
+        'remove-icon'?(_: {}): any;
         'additional-items-after'?(_: {}): any;
     };
     refs: {};

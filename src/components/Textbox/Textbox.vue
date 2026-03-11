@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
-import { IconSize } from '@/types/icon'
+import TribeIcon from '../TribeIcon/TribeIcon.vue'
+import type { TribeIconType, IconSize } from '@/types/icon'
 
 interface Props {
     name?: string
@@ -16,7 +15,7 @@ interface Props {
     color?: string
     styles?: string
     label?: string
-    icon?: IconDefinition
+    icon?: TribeIconType
     placeholder?: string
     labelStyles?: string
 }
@@ -79,7 +78,7 @@ const handleInput = (event: Event): void => {
             ]"
         >
             <div v-if="icon" class="flex justify-center items-center w-10 rounded-l-md">
-                <FontAwesomeIcon :icon="icon" :size="size" class="text-secondary-text" />
+                <TribeIcon :icon="icon" :size="size" class="text-secondary-text" />
             </div>
 
             <div class="flex-grow w-full flex items-center gap-1 flex-wrap p-2" :class="{ 'pl-0': icon }">

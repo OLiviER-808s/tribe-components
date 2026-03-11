@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faDownload, faFile, faXmark } from '@fortawesome/free-solid-svg-icons'
+import DownloadIcon from '../icons/DownloadIcon.vue'
+import FileIcon from '../icons/FileIcon.vue'
+import XMarkIcon from '../icons/XMarkIcon.vue'
 import IconButton from '../IconButton/IconButton.vue'
 import { FileInput } from '@/types/file'
 
@@ -23,14 +24,16 @@ const emit = defineEmits<{
         <div v-for="file in files" class="flex gap-2 items-center">
             <div v-if="showDownload">
                 <IconButton
-                    :icon="faDownload"
+                    :icon="DownloadIcon"
                     @click="emit('download', file)"
                     variant="light"
                     color="secondary"
                 />
             </div>
             <div v-else class="text-xl">
-                <FontAwesomeIcon :icon="faFile" />
+                <slot name="file-icon">
+                    <FileIcon class="w-5 h-5" />
+                </slot>
             </div>
 
             <p>{{ file.name }}</p>
@@ -39,7 +42,7 @@ const emit = defineEmits<{
 
             <div v-if="showDelete" class="text-sm">
                 <IconButton
-                    :icon="faXmark"
+                    :icon="XMarkIcon"
                     @click="emit('delete', file)"
                     color="error"
                     variant="light"

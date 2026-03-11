@@ -1,5 +1,4 @@
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { IconSize } from '../../types/icon';
+import { TribeIconType, IconSize } from '../../types/icon';
 import { DefineComponent, ComponentOptionsMixin, PublicProps, ComponentProvideOptions } from 'vue';
 interface Props {
     options?: any[];
@@ -8,7 +7,7 @@ interface Props {
     trackBy?: string;
     optionDescription?: string;
     searchable?: boolean;
-    icon?: IconDefinition;
+    icon?: TribeIconType;
     error?: string | boolean;
     placeholder?: string;
     size?: IconSize;

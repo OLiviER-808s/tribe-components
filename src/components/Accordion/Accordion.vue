@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import Card from '../Card/Card.vue'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import ChevronDownIcon from '../icons/ChevronDownIcon.vue'
 
 interface Props {
     title?: string
@@ -23,7 +22,9 @@ const open = defineModel<boolean>({ default: false })
 
                 <Transition name="rotate">
                     <div :class="{ rotated: open, 'not-rotated': !open }">
-                        <FontAwesomeIcon :icon="faChevronDown" size="lg" />
+                        <slot name="chevron">
+                            <ChevronDownIcon class="w-5 h-5" />
+                        </slot>
                     </div>
                 </Transition>
             </div>
@@ -43,7 +44,9 @@ const open = defineModel<boolean>({ default: false })
 
                 <Transition name="rotate">
                     <div :class="{ rotated: open, 'not-rotated': !open }">
-                        <FontAwesomeIcon :icon="faChevronDown" />
+                        <slot name="chevron">
+                            <ChevronDownIcon class="w-4 h-4" />
+                        </slot>
                     </div>
                 </Transition>
             </div>

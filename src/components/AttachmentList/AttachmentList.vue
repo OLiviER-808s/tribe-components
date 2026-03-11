@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { faFile, faHeadphones, faVideoCamera, faXmark } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import FileIcon from '../icons/FileIcon.vue'
+import HeadphonesIcon from '../icons/HeadphonesIcon.vue'
+import VideoCameraIcon from '../icons/VideoCameraIcon.vue'
+import XMarkIcon from '../icons/XMarkIcon.vue'
 import { computed, ref, watch } from 'vue'
 import Draggable from 'vuedraggable'
 import { useIsHandheld } from '../../composables/useIsHandheld'
@@ -81,9 +83,15 @@ watch(files, () => formattedFiles.value = formatFiles(files.value))
                             v-else
                             class="w-full h-full flex items-center justify-center text-secondary-text bg-card rounded-md"
                         >
-                            <FontAwesomeIcon v-if="file.type === 'audio'" :icon="faHeadphones" size="lg" />
-                            <FontAwesomeIcon v-else-if="file.type === 'video'" :icon="faVideoCamera" size="lg" />
-                            <FontAwesomeIcon v-else :icon="faFile" size="lg" />
+                            <slot v-if="file.type === 'audio'" name="audio-icon">
+                                <HeadphonesIcon class="w-5 h-5" />
+                            </slot>
+                            <slot v-else-if="file.type === 'video'" name="video-icon">
+                                <VideoCameraIcon class="w-5 h-5" />
+                            </slot>
+                            <slot v-else name="file-icon">
+                                <FileIcon class="w-5 h-5" />
+                            </slot>
                         </span>
                     </button>
 
@@ -92,7 +100,9 @@ watch(files, () => formattedFiles.value = formatFiles(files.value))
                         v-if="hoveredIdx === idx || isHandheld"
                         class="absolute cursor-pointer top-0 right-0 text-secondary-text bg-card/80 rounded-full w-5 h-5 flex justify-center items-center"
                     >
-                        <FontAwesomeIcon :icon="faXmark" size="xs" />
+                        <slot name="remove-icon">
+                            <XMarkIcon class="w-3 h-3" />
+                        </slot>
                     </button>
                 </div>
             </template>

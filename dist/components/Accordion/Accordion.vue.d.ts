@@ -10,6 +10,8 @@ type __VLS_PublicProps = {
 declare function __VLS_template(): {
     attrs: Partial<{}>;
     slots: {
+        chevron?(_: {}): any;
+        chevron?(_: {}): any;
         default?(_: {}): any;
         default?(_: {}): any;
     };

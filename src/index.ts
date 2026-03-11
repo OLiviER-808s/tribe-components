@@ -21,6 +21,7 @@ export { FileButton } from './components/FileButton/index.ts'
 export { FileList } from './components/FileList/index.ts'
 export { HoverBox } from './components/HoverBox/index.ts'
 export { IconButton } from './components/IconButton/index.ts'
+export { TribeIcon } from './components/TribeIcon/index.ts'
 export { Loader } from './components/Loader/index.ts'
 export { MediaCarousel } from './components/MediaCarousel/index.ts'
 export { MediaInput } from './components/MediaInput/index.ts'
@@ -47,6 +48,7 @@ export { useToast } from './composables/useToast.ts'
 // Export existing types
 export type { FormattedFile, FileInput } from './types/file'
 export type { ToastMessageInput as ToastMessage } from './types/toast'
+export type { TribeIconType, IconSize } from './types/icon'
 
 // Export component types
 export type { AccordionProps, AccordionSlots, AccordionEmits } from './components/Accordion'

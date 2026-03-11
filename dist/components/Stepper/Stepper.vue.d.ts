@@ -1,9 +1,9 @@
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { TribeIconType } from '../../types/icon';
 import { DefineComponent, ComponentOptionsMixin, PublicProps, ComponentProvideOptions } from 'vue';
 interface Step {
     value: string | number;
     label: string;
-    icon?: IconDefinition;
+    icon?: TribeIconType;
 }
 interface Props {
     steps: Step[];

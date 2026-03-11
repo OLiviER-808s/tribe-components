@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
+import TribeIcon from '../TribeIcon/TribeIcon.vue'
+import type { TribeIconType } from '@/types/icon'
 
 interface Props {
     activeColor?: string
     value?: boolean
-    icon?: IconDefinition
+    icon?: TribeIconType
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -50,7 +50,7 @@ onMounted(() => {
             :class="circleClass"
             class="bg-white dark:bg-gray-200 text-black text-sm  flex justify-center items-center w-6 h-6 rounded-full shadow-md transform transition-transform duration-300"
         >
-            <FontAwesomeIcon v-if="icon" :icon="icon" />
+            <TribeIcon v-if="icon" :icon="icon" />
         </div>
     </div>
 </template>

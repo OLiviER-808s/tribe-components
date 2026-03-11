@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { computed, nextTick, ref, useSlots, watch } from 'vue'
 import Textbox from '../Textbox/Textbox.vue'
-import { faSort, faXmark } from '@fortawesome/free-solid-svg-icons'
+import XMarkIcon from '../icons/XMarkIcon.vue'
+import SortIcon from '../icons/SortIcon.vue'
 import IconButton from '../IconButton/IconButton.vue'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import DropdownOptions from '../DropdownOptions/DropdownOptions.vue'
 import { useDropdown } from '../../composables/useDropdown'
-import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
-import { IconSize } from '@/types/icon'
+import type { TribeIconType, IconSize } from '@/types/icon'
 
 interface Props {
     options?: any[]
@@ -16,7 +15,7 @@ interface Props {
     trackBy?: string
     optionDescription?: string
     searchable?: boolean
-    icon?: IconDefinition
+    icon?: TribeIconType
     error?: string | boolean
     placeholder?: string
     size?: IconSize
@@ -119,7 +118,7 @@ watch(searchQuery, () => {
                     <template v-if="lockOnSelect && searchable && model" #right-section>
                         <div class="flex items-center pr-1">
                             <IconButton
-                                :icon="faXmark"
+                                :icon="XMarkIcon"
                                 @click="deselect()"
                                 variant="subtle"
                                 color="base"
@@ -129,7 +128,7 @@ watch(searchQuery, () => {
                     </template>
                     <template v-else-if="!searchable" #right-section>
                         <div class="flex items-center pr-2 text-secondary-text">
-                            <FontAwesomeIcon :icon="faSort" :size="size" />
+                            <SortIcon class="w-4 h-4" />
                         </div>
                     </template>
                 </Textbox>

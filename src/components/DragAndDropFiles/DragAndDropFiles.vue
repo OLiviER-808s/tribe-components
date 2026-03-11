@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import Dropzone from '../Dropzone/Dropzone.vue'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faUpload } from '@fortawesome/free-solid-svg-icons'
+import UploadIcon from '../icons/UploadIcon.vue'
 import FileButton from '../FileButton/FileButton.vue'
 import FileList from '../FileList/FileList.vue'
 import { isAcceptedFile } from '../../utils/utils'
@@ -69,7 +68,9 @@ const onChange = (event: Event): void => {
                         }"
                     >
                         <div v-if="withIcon" class="mb-2">
-                            <FontAwesomeIcon :icon="faUpload" size="lg" />
+                            <slot name="upload-icon">
+                                <UploadIcon class="w-5 h-5 mx-auto" />
+                            </slot>
                         </div>
                         <p class="font-medium">{{ dropText }}</p>
                     </div>

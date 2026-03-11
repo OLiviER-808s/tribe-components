@@ -1,11 +1,10 @@
-import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
-import type { IconSize } from '../../types/icon'
+import type { TribeIconType, IconSize } from '../../types/icon'
 
 export interface IconButtonProps {
     /**
-     * The FontAwesome icon to display
+     * The icon to display. Accepts a FontAwesome IconDefinition or any Vue component.
      */
-    icon: IconDefinition
+    icon: TribeIconType
     /**
      * The size of the icon
      */

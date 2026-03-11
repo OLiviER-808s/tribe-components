@@ -1,4 +1,4 @@
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { TribeIconType } from '../../types/icon';
 export interface Step {
     /**
      * The unique value for this step
@@ -9,9 +9,9 @@ export interface Step {
      */
     label: string;
     /**
-     * Optional icon to display for this step
+     * Optional icon to display for this step. Accepts a FontAwesome IconDefinition or any Vue component.
      */
-    icon?: IconDefinition;
+    icon?: TribeIconType;
 }
 export interface StepperProps {
     /**

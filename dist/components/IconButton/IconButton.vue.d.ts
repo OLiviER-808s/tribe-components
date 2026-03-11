@@ -1,8 +1,7 @@
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { IconSize } from '../../types/icon';
+import { TribeIconType, IconSize } from '../../types/icon';
 import { DefineComponent, ComponentOptionsMixin, PublicProps, ComponentProvideOptions } from 'vue';
 interface Props {
-    icon: IconDefinition;
+    icon: TribeIconType;
     size?: IconSize;
     color?: string;
     variant?: 'filled' | 'light' | 'outline' | 'subtle' | 'dashed';
@@ -23,7 +22,7 @@ declare const _default: DefineComponent<Props, {}, {}, {}, {}, ComponentOptionsM
     padding: string;
     type: "button" | "submit" | "reset";
     variant: "filled" | "light" | "outline" | "subtle" | "dashed";
-    size: "2xs" | "xs" | "sm" | "lg" | "xl" | "2xl" | "1x" | "2x" | "3x" | "4x" | "5x" | "6x" | "7x" | "8x" | "9x" | "10x";
+    size: "lg" | "xs" | "2xs" | "sm" | "xl" | "2xl" | "1x" | "2x" | "3x" | "4x" | "5x" | "6x" | "7x" | "8x" | "9x" | "10x";
     color: string;
     disabled: boolean;
     href: string;

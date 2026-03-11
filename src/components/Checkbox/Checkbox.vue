@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faCheck } from '@fortawesome/free-solid-svg-icons'
+import CheckIcon from '../icons/CheckIcon.vue'
 
 interface Props {
     name?: string
@@ -30,7 +29,7 @@ const handleToggle = (): void => {
                 class="rounded-xs cursor-pointer border-secondary border-2 w-4 h-4 flex items-center justify-center text-black"
                 :class="{ 'bg-secondary': checked, 'hover:bg-secondary/30': !checked }"
             >
-                <FontAwesomeIcon v-if="checked" :icon="faCheck" size="xs" />
+                <CheckIcon v-if="checked" class="w-3 h-3" />
             </button>
 
             <label :for="name">
