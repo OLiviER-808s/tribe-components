@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import DragAndDropFiles from '../DragAndDropFiles/DragAndDropFiles.vue'
+import PlusIcon from '../icons/PlusIcon.vue'
 import MediaCarousel from '../MediaCarousel/MediaCarousel.vue'
 import AttachmentList from '../AttachmentList/AttachmentList.vue'
 import FileButton from '../FileButton/FileButton.vue'
@@ -8,14 +8,18 @@ import IconButton from '../IconButton/IconButton.vue'
 import { computed, ref } from 'vue'
 import { useFiles } from '../../composables/useFiles'
 import type { FileInput } from '../../types/file'
+import type { TribeIconType } from '../../types/icon'
 
 interface Props {
     label?: string
     placeholder?: string
     error?: string
+    addIcon?: TribeIconType
 }
 
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+    addIcon: () => PlusIcon
+})
 
 const files = defineModel<FileInput[]>({ default: [] })
 
@@ -47,7 +51,7 @@ const formattedFiles = computed(() => formatFiles(files.value))
                 <template #additional-items-after>
                     <FileButton @change="addFiles" accept="image/*">
                         <IconButton
-                            :icon="faPlus"
+                            :icon="addIcon"
                             color="secondary"
                             variant="dashed"
                             styles="w-14! h-14! rounded-md!"

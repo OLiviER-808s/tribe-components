@@ -2,10 +2,10 @@
 import VueDatePicker from '@vuepic/vue-datepicker'
 import { computed, ref } from 'vue'
 import Textbox from '../Textbox/Textbox.vue'
-import { faCalendar } from '@fortawesome/free-solid-svg-icons'
 import { formatDate, formatDateRange, formatDateWithTime } from '../../utils/dateService'
+import CalendarIcon from '../icons/CalendarIcon.vue'
 import '@vuepic/vue-datepicker/dist/main.css'
-import { IconSize } from '@/types/icon'
+import { IconSize, TribeIconType } from '@/types/icon'
 
 interface Props {
     error?: string
@@ -20,13 +20,15 @@ interface Props {
     includeTime?: boolean
     disabled?: boolean
     styles?: string
+    icon?: TribeIconType
 }
 
 const props = withDefaults(defineProps<Props>(), {
     label: '',
     placeholder: '',
     variant: 'filled',
-    color: 'base'
+    color: 'base',
+    icon: () => CalendarIcon
 })
 
 const model = defineModel<Date | Date[] | null>()
@@ -63,7 +65,7 @@ const dateFormatter = computed(() => {
                 <Textbox
                     :placeholder="placeholder"
                     :value="value"
-                    :icon="faCalendar"
+                    :icon="icon"
                     :variant="variant"
                     :size="size"
                     :color="color"

@@ -1,17 +1,21 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { faCopy } from '@fortawesome/free-solid-svg-icons'
 import { useClipboard } from '@vueuse/core'
 import IconButton from '../IconButton/IconButton.vue'
 import HoverBox from '../HoverBox/HoverBox.vue'
+import CopyIcon from '../icons/CopyIcon.vue'
+import type { TribeIconType } from '../../types/icon'
 
 interface Props {
     snippet?: string
     allowCopy?: boolean
     styles?: string
+    copyIcon?: TribeIconType
 }
 
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+    copyIcon: () => CopyIcon
+})
 
 const hovering = ref<boolean>(false)
 
@@ -30,7 +34,7 @@ const copySnippet = async (): Promise<void> => {
             <p>{{ snippet }}</p>
 
             <div v-if="allowCopy && hovering" class="p-2 absolute top-0 right-0 text-sm">
-                <IconButton :icon="faCopy" color="card" @click="copySnippet()" />
+                <IconButton :icon="copyIcon" color="card" @click="copySnippet()" />
             </div>
         </div>
     </HoverBox>

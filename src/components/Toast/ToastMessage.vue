@@ -1,14 +1,18 @@
 <script setup lang="ts">
-import {faXmark} from "@fortawesome/free-solid-svg-icons";
 import {useToast} from "../../composables/useToast";
+import XMarkIcon from '../icons/XMarkIcon.vue'
 import {onMounted} from "vue";
 import { ToastMessage } from "@/types/toast";
+import type { TribeIconType } from '../../types/icon'
 
 interface Props {
     message: ToastMessage
+    closeIcon?: TribeIconType
 }
 
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+    closeIcon: () => XMarkIcon
+})
 
 const { closeToast } = useToast()
 
@@ -25,7 +29,7 @@ onMounted(() => {
                 <p class="text-sm">{{ message.content }}</p>
             </div>
 
-            <IconButton :icon="faXmark" color="base" variant="subtle" @click="closeToast(message.uuid)" />
+            <IconButton :icon="closeIcon" color="base" variant="subtle" @click="closeToast(message.uuid)" />
         </div>
     </Transition>
 </template>
