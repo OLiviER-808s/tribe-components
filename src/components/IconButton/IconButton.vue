@@ -3,15 +3,16 @@ import TribeIcon from '../TribeIcon/TribeIcon.vue'
 import Button from '../Button/Button.vue'
 import { computed } from 'vue'
 import type { TribeIconType, IconSize } from '@/types/icon'
+import type { ButtonVariant, ButtonType } from '@/types/button'
 
 interface Props {
     icon: TribeIconType
     size?: IconSize
     color?: string
-    variant?: 'filled' | 'light' | 'outline' | 'subtle' | 'dashed'
+    variant?: ButtonVariant
     styles?: string
     disabled?: boolean
-    type?: 'button' | 'submit' | 'reset'
+    type?: ButtonType
     href?: string
     hoverEffects?: boolean
     textColor?: string

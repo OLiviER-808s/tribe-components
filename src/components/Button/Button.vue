@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import type { ButtonVariant, ButtonType } from '@/types/button'
 
 interface Props {
     color?: string
-    variant?: 'filled' | 'light' | 'outline' | 'subtle' | 'dashed'
+    variant?: ButtonVariant
     styles?: string
     disabled?: boolean
-    type?: 'button' | 'submit' | 'reset'
+    type?: ButtonType
     href?: string
     hoverEffects?: boolean
     textColor?: string

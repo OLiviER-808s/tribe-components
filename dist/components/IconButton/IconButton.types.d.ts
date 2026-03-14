@@ -1,4 +1,5 @@
 import { TribeIconType, IconSize } from '../../types/icon';
+import { ButtonVariant, ButtonType } from '../../types/button';
 export interface IconButtonProps {
     /**
      * The icon to display. Accepts a FontAwesome IconDefinition or any Vue component.
@@ -17,7 +18,7 @@ export interface IconButtonProps {
      * The visual style variant
      * @default 'filled'
      */
-    variant?: 'filled' | 'light' | 'outline' | 'subtle' | 'dashed';
+    variant?: ButtonVariant;
     /**
      * Additional CSS classes
      * @default ''
@@ -32,7 +33,7 @@ export interface IconButtonProps {
      * The HTML button type
      * @default 'button'
      */
-    type?: 'button' | 'submit' | 'reset';
+    type?: ButtonType;
     /**
      * URL to open when clicked
      * @default ''

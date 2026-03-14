@@ -1,13 +1,14 @@
 import { TribeIconType, IconSize } from '../../types/icon';
+import { ButtonVariant, ButtonType } from '../../types/button';
 import { DefineComponent, ComponentOptionsMixin, PublicProps, ComponentProvideOptions } from 'vue';
 interface Props {
     icon: TribeIconType;
     size?: IconSize;
     color?: string;
-    variant?: 'filled' | 'light' | 'outline' | 'subtle' | 'dashed';
+    variant?: ButtonVariant;
     styles?: string;
     disabled?: boolean;
-    type?: 'button' | 'submit' | 'reset';
+    type?: ButtonType;
     href?: string;
     hoverEffects?: boolean;
     textColor?: string;
@@ -20,8 +21,8 @@ declare const _default: DefineComponent<Props, {}, {}, {}, {}, ComponentOptionsM
 }>, {
     styles: string;
     padding: string;
-    type: "button" | "submit" | "reset";
-    variant: "filled" | "light" | "outline" | "subtle" | "dashed";
+    type: ButtonType;
+    variant: ButtonVariant;
     size: "lg" | "xs" | "2xs" | "sm" | "xl" | "2xl" | "1x" | "2x" | "3x" | "4x" | "5x" | "6x" | "7x" | "8x" | "9x" | "10x";
     color: string;
     disabled: boolean;

@@ -45,6 +45,7 @@ export { useToast } from './composables/useToast.ts';
 export type { FormattedFile, FileInput } from './types/file';
 export type { ToastMessageInput as ToastMessage } from './types/toast';
 export type { TribeIconType, IconSize } from './types/icon';
+export type { ButtonVariant, ButtonType } from './types/button';
 export type { AccordionProps, AccordionSlots, AccordionEmits } from './components/Accordion';
 export type { AttachmentListProps, AttachmentListSlots, AttachmentListEmits } from './components/AttachmentList';
 export type { AvatarProps, AvatarSlots, AvatarEmits } from './components/Avatar';

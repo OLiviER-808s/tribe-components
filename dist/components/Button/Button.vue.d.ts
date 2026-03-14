@@ -1,10 +1,11 @@
+import { ButtonVariant, ButtonType } from '../../types/button';
 import { DefineComponent, ComponentOptionsMixin, PublicProps, ComponentProvideOptions } from 'vue';
 interface Props {
     color?: string;
-    variant?: 'filled' | 'light' | 'outline' | 'subtle' | 'dashed';
+    variant?: ButtonVariant;
     styles?: string;
     disabled?: boolean;
-    type?: 'button' | 'submit' | 'reset';
+    type?: ButtonType;
     href?: string;
     hoverEffects?: boolean;
     textColor?: string;
@@ -26,8 +27,8 @@ declare const __VLS_component: DefineComponent<Props, {}, {}, {}, {}, ComponentO
 }>, {
     styles: string;
     padding: string;
-    type: "button" | "submit" | "reset";
-    variant: "filled" | "light" | "outline" | "subtle" | "dashed";
+    type: ButtonType;
+    variant: ButtonVariant;
     color: string;
     disabled: boolean;
     href: string;

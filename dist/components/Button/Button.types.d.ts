@@ -1,3 +1,5 @@
+import { ButtonVariant, ButtonType } from '../../types/button';
+export type { ButtonVariant, ButtonType };
 export interface ButtonProps {
     /**
      * The color theme of the button
@@ -8,7 +10,7 @@ export interface ButtonProps {
      * The visual style variant
      * @default 'filled'
      */
-    variant?: 'filled' | 'light' | 'outline' | 'subtle' | 'dashed';
+    variant?: ButtonVariant;
     /**
      * Additional CSS classes
      * @default ''
@@ -23,7 +25,7 @@ export interface ButtonProps {
      * The HTML button type
      * @default 'button'
      */
-    type?: 'button' | 'submit' | 'reset';
+    type?: ButtonType;
     /**
      * URL to open when clicked
      * @default ''
