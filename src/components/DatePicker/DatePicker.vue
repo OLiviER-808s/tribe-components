@@ -4,7 +4,6 @@ import { computed, ref } from 'vue'
 import Textbox from '../Textbox/Textbox.vue'
 import { formatDate, formatDateRange, formatDateWithTime } from '../../utils/dateService'
 import CalendarIcon from '../icons/CalendarIcon.vue'
-import '@vuepic/vue-datepicker/dist/main.css'
 import { IconSize, TribeIconType } from '@/types/icon'
 
 interface Props {
