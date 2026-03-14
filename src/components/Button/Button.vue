@@ -10,6 +10,7 @@ interface Props {
     type?: ButtonType
     href?: string
     hoverEffects?: boolean
+    clickEffects?: boolean
     textColor?: string
     padding?: string
 }
@@ -22,6 +23,7 @@ const props = withDefaults(defineProps<Props>(), {
     type: 'button',
     href: '',
     hoverEffects: true,
+    clickEffects: true,
     textColor: '',
     padding: 'px-6 py-2'
 })
@@ -53,7 +55,7 @@ const classes = computed(() => {
         'btn', 
         props.styles,
         props.padding,
-        { 'pressed': isPressed }, 
+        { 'pressed': props.clickEffects && isPressed.value }, 
         { 'disabled-btn': props.disabled },
         { 'cursor-pointer': props.hoverEffects }
     ]
@@ -93,6 +95,8 @@ const classes = computed(() => {
         @click="handleClick"
         @mousedown="isPressed = true"
         @mouseup="isPressed = false"
+        @touchstart="isPressed = true"
+        @touchend="isPressed = false"
         :class="classes"
         :disabled="disabled"
         :type="type"

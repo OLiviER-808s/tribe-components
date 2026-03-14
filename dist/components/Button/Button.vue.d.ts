@@ -8,6 +8,7 @@ interface Props {
     type?: ButtonType;
     href?: string;
     hoverEffects?: boolean;
+    clickEffects?: boolean;
     textColor?: string;
     padding?: string;
 }
@@ -33,6 +34,7 @@ declare const __VLS_component: DefineComponent<Props, {}, {}, {}, {}, ComponentO
     disabled: boolean;
     href: string;
     hoverEffects: boolean;
+    clickEffects: boolean;
     textColor: string;
 }, {}, {}, {}, string, ComponentProvideOptions, false, {}, HTMLButtonElement>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, __VLS_TemplateResult["slots"]>;
