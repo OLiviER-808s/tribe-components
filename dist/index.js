@@ -2059,10 +2059,10 @@ const ot = /* @__PURE__ */ ne(An, [["render", Pn]]), Gt = (t = 800) => {
   },
   emits: ["click"],
   setup(t, { emit: e }) {
-    const o = t, n = e, a = x(!1), r = (i) => {
-      o.href && window.open(o.href), n("click", i);
-    }, l = I(() => o.color === "base" ? "secondary-text" : o.color), s = I(() => {
-      const i = [
+    const o = t, n = e, a = x(!1), r = (u) => {
+      o.href && window.open(o.href), n("click", u);
+    }, l = I(() => o.color === "base" ? "secondary-text" : o.color), s = I(() => o.textColor ? o.textColor : o.variant === "filled" ? "black" : l.value), i = I(() => {
+      const u = [
         "btn",
         o.styles,
         o.padding,
@@ -2072,32 +2072,32 @@ const ot = /* @__PURE__ */ ne(An, [["render", Pn]]), Gt = (t = 800) => {
       ];
       switch (o.variant) {
         case "light":
-          i.push(`bg-${l.value}/20 text-${l.value}`), o.hoverEffects && i.push(`hover:bg-${l.value}/35`);
+          u.push(`bg-${l.value}/20 text-${s.value}`), o.hoverEffects && u.push(`hover:bg-${l.value}/35`);
           break;
         case "outline":
-          i.push(`text-${o.textColor ?? l.value} border-${l.value} border-2`), o.hoverEffects && i.push(`hover:bg-${l.value}/10`);
+          u.push(`text-${s.value} border-${l.value} border-2`), o.hoverEffects && u.push(`hover:bg-${l.value}/10`);
           break;
         case "subtle":
-          i.push(`text-${o.textColor ?? l.value} bg-transparent`), o.hoverEffects && i.push(`hover:bg-${l.value}/10`);
+          u.push(`text-${s.value} bg-transparent`), o.hoverEffects && u.push(`hover:bg-${l.value}/10`);
           break;
         case "dashed":
-          i.push(`text-${o.textColor ?? l.value} border-${l.value} border-2 border-dashed`), o.hoverEffects && i.push(`hover:bg-${l.value}/10`);
+          u.push(`text-${s.value} border-${l.value} border-2 border-dashed`), o.hoverEffects && u.push(`hover:bg-${l.value}/10`);
           break;
         default:
-          i.push(`text-${o.textColor ?? "black"} bg-${l.value}`);
+          u.push(`text-${s.value} bg-${l.value}`);
           break;
       }
-      return i;
+      return u;
     });
-    return (i, u) => (c(), v("button", {
+    return (u, m) => (c(), v("button", {
       onClick: r,
-      onMousedown: u[0] || (u[0] = (m) => a.value = !0),
-      onMouseup: u[1] || (u[1] = (m) => a.value = !1),
-      class: k(s.value),
-      disabled: i.disabled,
-      type: i.type
+      onMousedown: m[0] || (m[0] = (d) => a.value = !0),
+      onMouseup: m[1] || (m[1] = (d) => a.value = !1),
+      class: k(i.value),
+      disabled: u.disabled,
+      type: u.type
     }, [
-      B(i.$slots, "default")
+      B(u.$slots, "default")
     ], 42, tl));
   }
 }), nl = {}, ll = {

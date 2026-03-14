@@ -43,6 +43,10 @@ const btnColor = computed(() => {
     return props.color === 'base' ? 'secondary-text' : props.color
 })
 
+const textColor = computed(() => {
+    return props.textColor ? props.textColor : (props.variant === 'filled' ? 'black' : btnColor.value)
+})
+
 const classes = computed(() => {
     const result = [
         'btn', 
@@ -55,27 +59,27 @@ const classes = computed(() => {
 
     switch (props.variant) {
         case 'light':
-            result.push(`bg-${btnColor.value}/20 text-${btnColor.value}`)
+            result.push(`bg-${btnColor.value}/20 text-${textColor.value}`)
             if (props.hoverEffects) result.push(`hover:bg-${btnColor.value}/35`)
 
             break
         case 'outline':
-            result.push(`text-${props.textColor ?? btnColor.value} border-${btnColor.value} border-2`)
+            result.push(`text-${textColor.value} border-${btnColor.value} border-2`)
             if (props.hoverEffects) result.push(`hover:bg-${btnColor.value}/10`)
 
             break    
         case 'subtle':
-            result.push(`text-${props.textColor ?? btnColor.value} bg-transparent`)
+            result.push(`text-${textColor.value} bg-transparent`)
             if (props.hoverEffects) result.push(`hover:bg-${btnColor.value}/10`)
 
             break
         case 'dashed':
-            result.push(`text-${props.textColor ?? btnColor.value} border-${btnColor.value} border-2 border-dashed`)
+            result.push(`text-${textColor.value} border-${btnColor.value} border-2 border-dashed`)
             if (props.hoverEffects) result.push(`hover:bg-${btnColor.value}/10`)
 
             break
         default:
-            result.push(`text-${props.textColor ?? 'black'} bg-${btnColor.value}`)
+            result.push(`text-${textColor.value} bg-${btnColor.value}`)
             break
     }
 

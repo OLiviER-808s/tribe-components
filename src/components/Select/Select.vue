@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, ref, useSlots, watch } from 'vue'
+import { computed, nextTick, useSlots, watch } from 'vue'
 import Textbox from '../Textbox/Textbox.vue'
 import XMarkIcon from '../icons/XMarkIcon.vue'
 import SortIcon from '../icons/SortIcon.vue'
