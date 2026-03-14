@@ -37,10 +37,6 @@ body {
     }
 }
 
-.v-dropdown-menu__container {
-    @apply rounded-md bg-dropdown text-dropdown-text border-none!;
-}
-
 .filter {
     @apply rounded-md duration-300 text-sm font-medium py-1 px-4 bg-quick-filter text-nowrap;
 }

@@ -43,7 +43,6 @@ export default defineConfig({
                 'dompurify',
                 'swiper',
                 'uuid',
-                'v-dropdown-menu',
                 'vuedraggable',
                 '@fortawesome/fontawesome-svg-core',
                 '@fortawesome/free-solid-svg-icons',
