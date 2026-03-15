@@ -1,6 +1,17 @@
 {
-    "name": "@OLiviER-808s/tribe-components",
+    "name": "@olivier-808s/tribe-components",
     "version": "4.1.0",
+    "description": "A Vue 3 component library with 30+ reusable, themeable UI components",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/OLiviER-808s/tribe-components.git"
+    },
+    "homepage": "https://github.com/OLiviER-808s/tribe-components#readme",
+    "bugs": {
+        "url": "https://github.com/OLiviER-808s/tribe-components/issues"
+    },
+    "keywords": ["vue", "vue3", "components", "ui", "component-library", "tailwind"],
     "main": "./dist/index.cjs",
     "module": "./dist/index.js",
     "types": "./dist/index.d.ts",
@@ -11,15 +22,14 @@
             "require": "./dist/index.cjs"
         },
         "./style.css": "./dist/style.css",
-        "./components.css": "./dist/components.css",
-        "./theme.css": "./dist/theme.css",
-        "./theme-vars.css": "./dist/theme-vars.css"
+        "./theme.css": "./dist/theme.css"
     },
     "files": [
         "dist"
     ],
     "publishConfig": {
-        "registry": "https://npm.pkg.github.com/"
+        "registry": "https://registry.npmjs.org/",
+        "access": "public"
     },
     "scripts": {
         "build:css": "npx @tailwindcss/cli -i ./src/styles/style.css -o ./dist/style.css --minify",
