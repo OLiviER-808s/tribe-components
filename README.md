@@ -8,11 +8,6 @@ A Vue 3 component library with 30+ reusable, themeable UI components.
 npm install @OLiviER-808s/tribe-components
 ```
 
-> This package is published to the GitHub Package Registry. Make sure your `.npmrc` is configured:
-> ```
-> @OLiviER-808s:registry=https://npm.pkg.github.com
-> ```
-
 ## Setup
 
 Register all components globally:
