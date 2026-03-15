@@ -5,7 +5,7 @@ A Vue 3 component library with 30+ reusable, themeable UI components.
 ## Installation
 
 ```bash
-npm install @OLiviER-808s/tribe-components
+npm install @olivier808s/tribe-components
 ```
 
 ## Setup
@@ -14,8 +14,8 @@ Register all components globally:
 
 ```ts
 import { createApp } from 'vue'
-import TribeComponents from '@OLiviER-808s/tribe-components'
-import '@OLiviER-808s/tribe-components/style.css'
+import TribeComponents from '@olivier808s/tribe-components'
+import '@olivier808s/tribe-components/style.css'
 
 const app = createApp(App)
 app.use(TribeComponents)
@@ -25,7 +25,7 @@ app.mount('#app')
 Or import components individually:
 
 ```ts
-import { Button, Card, Modal } from '@OLiviER-808s/tribe-components'
+import { Button, Card, Modal } from '@olivier808s/tribe-components'
 ```
 
 ## Components
@@ -70,7 +70,7 @@ import { Button, Card, Modal } from '@OLiviER-808s/tribe-components'
 ## Composables
 
 ```ts
-import { useToast, useFiles, useIsHandheld } from '@OLiviER-808s/tribe-components'
+import { useToast, useFiles, useIsHandheld } from '@olivier808s/tribe-components'
 ```
 
 - **`useToast()`** — show and dismiss toast notifications
@@ -117,7 +117,7 @@ Dark mode is supported via Tailwind's class strategy — add the `dark` class to
 Full TypeScript support is included. Props, emits, slots, and shared types are all exported:
 
 ```ts
-import type { ButtonVariant, TribeIconType } from '@OLiviER-808s/tribe-components'
+import type { ButtonVariant, TribeIconType } from '@olivier808s/tribe-components'
 ```
 
 ## Requirements
