@@ -7,6 +7,7 @@ import IconButton from '../IconButton/IconButton.vue'
 import DropdownOptions from '../DropdownOptions/DropdownOptions.vue'
 import { useDropdown } from '../../composables/useDropdown'
 import type { TribeIconType, IconSize } from '@/types/icon'
+import StopPropagation from '../StopPropagation/StopPropagation.vue'
 
 interface Props {
     options?: any[]
@@ -115,15 +116,17 @@ watch(searchQuery, () => {
                     @focus="e => emit('focus', e)"
                     @blur="e => emit('blur', e)"
                 >
-                    <template v-if="lockOnSelect && searchable && model" #right-section>
+                    <template v-if="(lockOnSelect && searchable && model) || (acceptsEmptySelection && model)" #right-section>
                         <div class="flex items-center pr-1">
-                            <IconButton
-                                :icon="XMarkIcon"
-                                @click="deselect()"
-                                variant="subtle"
-                                color="base"
-                                :size="size"
-                            />
+                            <StopPropagation>
+                                <IconButton
+                                    :icon="XMarkIcon"
+                                    @click="deselect()"
+                                    variant="subtle"
+                                    color="base"
+                                    :size="size"
+                                />
+                            </StopPropagation>
                         </div>
                     </template>
                     <template v-else-if="!searchable" #right-section>
