@@ -19,7 +19,7 @@ const containerToastMessages = computed(() => toastMessages.value.filter(message
     <div class="relative">
         <slot />
 
-        <div v-if="containerToastMessages.length > 0" class="absolute p-4 z-50 flex flex-col gap-2 overflow-hidden" :class="position">
+        <div v-if="containerToastMessages.length > 0" class="fixed p-4 z-50 flex flex-col gap-2 overflow-hidden" :class="position">
             <div v-for="message in containerToastMessages" :key="message.uuid">
                 <slot name="toast-content" :message="message">
                     <ToastMessage :message="message" />
