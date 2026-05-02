@@ -22,38 +22,18 @@ const containerToastMessages = computed(() =>
 const containerRef = ref(null)
 const toastStyles = ref({})
 
-let ticking = false
-
-const updatePosition = () => {
-    if (!ticking) {
-        requestAnimationFrame(() => {
-            if (!containerRef.value) return
-
-            const rect = containerRef.value.getBoundingClientRect()
-
-            toastStyles.value = {
-                top: `${rect.top + props.offset}px`,
-                left: `${rect.right - props.offset}px`,
-                transform: "translateX(-100%)",
-            }
-
-            ticking = false
-        })
-
-        ticking = true
-    }
-}
-
 onMounted(() => {
-    updatePosition()
+    requestAnimationFrame(() => {
+        if (!containerRef.value) return
 
-    window.addEventListener("scroll", updatePosition, true)
-    window.addEventListener("resize", updatePosition)
-})
+        const rect = containerRef.value.getBoundingClientRect()
 
-onUnmounted(() => {
-    window.removeEventListener("scroll", updatePosition, true)
-    window.removeEventListener("resize", updatePosition)
+        toastStyles.value = {
+            top: `${rect.top + props.offset}px`,
+            left: `${rect.right - props.offset}px`,
+            transform: "translateX(-100%)",
+        }
+    })
 })
 </script>
 
