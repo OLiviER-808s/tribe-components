@@ -22,27 +22,27 @@ const containerToastMessages = computed(() =>
 const containerRef = ref(null)
 const toastStyles = ref({})
 
-let ticking = false;
+let ticking = false
 
 const updatePosition = () => {
     if (!ticking) {
         requestAnimationFrame(() => {
-            if (!containerRef.value) return;
+            if (!containerRef.value) return
 
-            const rect = containerRef.value.getBoundingClientRect();
+            const rect = containerRef.value.getBoundingClientRect()
 
             toastStyles.value = {
                 top: `${rect.top + props.offset}px`,
                 left: `${rect.right - props.offset}px`,
                 transform: "translateX(-100%)",
-            };
+            }
 
-            ticking = false;
-        });
+            ticking = false
+        })
 
-        ticking = true;
+        ticking = true
     }
-};
+}
 
 onMounted(() => {
     updatePosition()
