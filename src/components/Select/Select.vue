@@ -15,6 +15,7 @@ interface Props {
     optionLabel?: string
     trackBy?: string
     optionDescription?: string
+    returnAttribute?: string
     searchable?: boolean
     icon?: TribeIconType
     error?: string | boolean
@@ -51,7 +52,8 @@ const slots = useSlots()
 const { dropdownOpen, dropdownContainer, open, close } = useDropdown()
 
 const select = (option: any): void => {
-    const result = props.formatResult(option)
+    let result = props.formatResult(option)
+    result = props.returnAttribute ? result[props.returnAttribute] : result
 
     model.value = result
     emit('select', result)
@@ -82,7 +84,10 @@ const toggle = (): void => {
 }
 
 const value = computed(() => {
-    if (model.value && props.optionLabel) return model.value[props.optionLabel]
+    if (model.value && props.optionLabel && props.returnAttribute) {
+        return props.options?.find(o => o[props.returnAttribute!] === model.value)[props.optionLabel]
+    }
+    else if (model.value && props.optionLabel) return model.value[props.optionLabel]
     else if (model.value) return model.value
     else return null
 })
