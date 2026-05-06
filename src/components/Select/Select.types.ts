@@ -78,6 +78,10 @@ export interface SelectProps {
      * Whether empty selection is accepted
      */
     acceptsEmptySelection?: boolean
+    /**
+     * Icon to display on the right of the input
+     */
+    toggleIcon?: TribeIconType
 }
 
 export interface SelectSlots {

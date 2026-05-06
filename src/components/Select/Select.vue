@@ -8,13 +8,15 @@ import DropdownOptions from '../DropdownOptions/DropdownOptions.vue'
 import { useDropdown } from '../../composables/useDropdown'
 import StopPropagation from '../StopPropagation/StopPropagation.vue'
 import type { SelectProps } from './Select.types'
+import TribeIcon from '../TribeIcon/TribeIcon.vue'
 
 const props = withDefaults(defineProps<SelectProps>(), {
     placeholder: 'Select an option...',
     variant: 'filled',
     color: 'base',
     lockOnSelect: true,
-    formatResult: (option: any) => option
+    formatResult: (option: any) => option,
+    toggleIcon: SortIcon,
 })
 
 const emit = defineEmits<{
@@ -115,7 +117,7 @@ watch(searchQuery, () => {
                     </template>
                     <template v-else-if="!searchable" #right-section>
                         <div class="flex items-center pr-2 text-secondary-text">
-                            <SortIcon class="w-4 h-4" />
+                            <TribeIcon :icon="toggleIcon" size="xs" />
                         </div>
                     </template>
                 </Textbox>

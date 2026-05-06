@@ -7,7 +7,7 @@ const props = withDefaults(defineProps<TextboxProps>(), {
     type: 'text',
     variant: 'filled',
     color: 'base',
-    labelStyles: 'font-medium'
+    labelStyles: 'font-medium',
 })
 
 const emit = defineEmits<{
