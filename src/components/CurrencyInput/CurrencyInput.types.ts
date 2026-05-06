@@ -1,3 +1,5 @@
+import { IconSize } from "@/types/icon"
+
 export interface CurrencyInputProps {
     /**
      * The currency symbol to display
@@ -12,7 +14,7 @@ export interface CurrencyInputProps {
     /**
      * The size of the input
      */
-    size?: string
+    size?: IconSize
     /**
      * The color theme
      * @default 'base'

@@ -40,7 +40,7 @@ const select = (option: any): void => {
 }
 
 const deselect = (idx: number): void => {
-    model.value = model.value.filter((o, i) => i !== idx)
+    model.value = model.value.filter((_, i) => i !== idx)
 }
 
 const open = (): void => {

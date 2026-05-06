@@ -30,7 +30,7 @@ const hoveredIdx = ref<number>(-1)
 const formattedFiles = ref<FormattedFile[]>(formatFiles(files.value))
 
 const removeFile = (idx: number): void => {
-    files.value = files.value.filter((file, i) => i !== idx)
+    files.value = files.value.filter((_, i) => i !== idx)
 
     if (selectedIdx.value > idx) selectedIdx.value -= 1
 }

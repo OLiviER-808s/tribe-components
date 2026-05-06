@@ -40,6 +40,8 @@ const handleInput = (event: Event): void => {
     modelValue.value = target.value
     emit('input', event)
 }
+
+const isBoolean = (val: any) => typeof val === 'boolean'
 </script>
 
 <template>
@@ -64,7 +66,7 @@ const handleInput = (event: Event): void => {
                 <TribeIcon :icon="icon" :size="size" class="text-secondary-text" />
             </div>
 
-            <div class="flex-grow w-full flex items-center gap-1 flex-wrap p-2" :class="{ 'pl-0': icon }">
+            <div class="grow w-full flex items-center gap-1 flex-wrap p-2" :class="{ 'pl-0': icon }">
                 <slot name="left-section" />
 
                 <div v-if="disabled" :class="{ 'pl-0': icon, 'text-sm': size === 'sm' }" class="flex-grow overflow-hidden whitespace-nowrap">
@@ -84,17 +86,17 @@ const handleInput = (event: Event): void => {
                     @focus="handleFocus"
                     @blur="handleBlur"
                     :class="{ 'placeholder:text-sm': size === 'sm' }"
-                    class="p-0 flex-grow border-none outline-none rounded-lg bg-transparent placeholder:text-secondary-text"
+                    class="p-0 grow border-none outline-none rounded-lg bg-transparent placeholder:text-secondary-text"
                 />
             </div>
 
             <slot name="right-section" />
         </div>
 
-        <p v-if="error && typeof error !== 'boolean'" class="text-error text-sm">
+        <p v-if="error && !isBoolean(error)" class="text-error text-sm">
             {{ error }}
         </p>
-        <p v-else-if="success && typeof error !== 'boolean'" class="text-success text-sm">
+        <p v-else-if="success && !isBoolean(error)" class="text-success text-sm">
             {{ success }}
         </p>
     </div>

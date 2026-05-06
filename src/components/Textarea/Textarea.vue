@@ -44,6 +44,8 @@ const handleInput = (event: Event): void => {
     emit('input', event)
 }
 
+const isBoolean = (val: any) => typeof val === 'boolean'
+
 watch(
     () => props.modelValue,
     (newVal) => {
@@ -75,7 +77,7 @@ watch(
             ]"
         >
             <textarea
-                class="rounded-lg p-2 flex-grow bg-transparent outline-none max-w-full placeholder:text-secondary-text border-none"
+                class="rounded-lg p-2 grow bg-transparent outline-none max-w-full placeholder:text-secondary-text border-none"
                 :class="{ 'field-sizing-content': fieldSizingContent }"
                 :name="name"
                 :placeholder="placeholder"
@@ -91,10 +93,10 @@ watch(
             ></textarea>
         </div>
 
-        <p v-if="error && typeof error !== 'boolean'" class="text-error text-sm">
+        <p v-if="error && !isBoolean(error)" class="text-error text-sm">
             {{ error }}
         </p>
-        <p v-else-if="success && typeof error !== 'boolean'" class="text-success text-sm">
+        <p v-else-if="success && !isBoolean(error)" class="text-success text-sm">
             {{ success }}
         </p>
     </div>
