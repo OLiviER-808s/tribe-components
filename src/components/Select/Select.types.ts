@@ -1,5 +1,4 @@
-import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
-import type { IconSize } from '../../types/icon'
+import type { IconSize, TribeIconType } from '../../types/icon'
 
 export interface SelectProps {
     /**
@@ -23,13 +22,17 @@ export interface SelectProps {
      */
     optionDescription?: string
     /**
+     * The property name to read from the selected option as the model value
+     */
+    returnAttribute?: string
+    /**
      * Whether the input is searchable
      */
     searchable?: boolean
     /**
      * Icon to display in the input
      */
-    icon?: IconDefinition
+    icon?: TribeIconType
     /**
      * Error message to display
      */

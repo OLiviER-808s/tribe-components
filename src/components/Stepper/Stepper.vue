@@ -2,27 +2,13 @@
 import { computed } from 'vue'
 import CheckIcon from '../icons/CheckIcon.vue'
 import TribeIcon from '../TribeIcon/TribeIcon.vue'
-import type { TribeIconType } from '@/types/icon'
-
-interface Step {
-    value: string | number
-    label: string
-    icon?: TribeIconType
-}
+import type { Step, StepperProps } from './Stepper.types'
 
 interface StepWithStatus extends Step {
     status: 'completed' | 'in-progress' | 'uncompleted'
 }
 
-interface Props {
-    steps: Step[]
-    color?: string
-    variant?: 'classic' | 'minimalist'
-    canMoveForwards?: boolean
-    canMoveBackwards?: boolean
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<StepperProps>(), {
     color: 'primary',
     variant: 'classic'
 })

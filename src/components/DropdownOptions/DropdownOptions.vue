@@ -1,20 +1,9 @@
 <script setup lang="ts">
 import { nextTick, ref, useSlots, watch } from 'vue'
 import { onKeyStroke } from '@vueuse/core'
+import type { DropdownOptionsProps } from './DropdownOptions.types'
 
-interface Props {
-    container?: HTMLElement|null
-    options?: any[]
-    optionLabel?: string
-    trackBy?: string
-    optionDescription?: string
-    width?: string
-    direction?: string
-    open?: boolean
-    acceptsEmptySelection?: boolean
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<DropdownOptionsProps>(), {
     width: 'w-full',
     direction: 'left'
 })

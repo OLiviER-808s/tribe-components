@@ -1,27 +1,7 @@
 <script setup lang="ts">
-interface Cell {
-    content?: string
-    width?: number | string
-    height?: number | string
-    align?: 'left' | 'center' | 'right'
-    class?: string
-    colspan?: number
-    rowspan?: number
-}
+import type { Cell, Row, TableCardProps } from './TableCard.types'
 
-interface Row {
-    cells?: Cell[]
-    class?: string
-    onClick?: (row: Row, index: number) => void
-}
-
-interface Props {
-    rows: Row[] | Cell[][]
-    headerClasses?: string
-    onRowClick?: (row: Row | Cell[], index: number) => void
-}
-
-const props = defineProps<Props>()
+const props = defineProps<TableCardProps>()
 
 const getCellStyles = (cell: Cell): { width?: string; height?: string } => ({
     width: cell.width ? (typeof cell.width === 'number' ? `${cell.width}px` : cell.width) : undefined,

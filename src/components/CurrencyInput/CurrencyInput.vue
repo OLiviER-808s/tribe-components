@@ -2,17 +2,9 @@
 import Textbox from '../Textbox/Textbox.vue'
 import { computed } from 'vue'
 import { countDecimals } from '../../utils/utils'
+import type { CurrencyInputProps } from './CurrencyInput.types'
 
-interface Props {
-    currencySymbol?: string
-    variant?: string
-    size?: string
-    color?: string
-    label?: string
-    error?: string
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<CurrencyInputProps>(), {
     currencySymbol: '$',
     variant: 'filled',
     color: 'base'

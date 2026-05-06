@@ -2,14 +2,9 @@
 import FileIcon from '../icons/FileIcon.vue'
 import { useIsHandheld } from '../../composables/useIsHandheld'
 import { watch } from 'vue'
-import type { FormattedFile } from '../../types/file'
+import type { MediaCarouselProps } from './MediaCarousel.types'
 
-interface Props {
-    files?: FormattedFile[]
-    maxMediaHeight?: string
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<MediaCarouselProps>(), {
     maxMediaHeight: 'max-h-72'
 })
 

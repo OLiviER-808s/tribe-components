@@ -1,14 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import type { RadioProps } from './Radio.types'
 
-interface Props {
-    value?: string | boolean
-    label?: string
-    name?: string
-    modelValue?: string
-}
-
-const props = defineProps<Props>()
+const props = defineProps<RadioProps>()
 
 const emit = defineEmits<{
     select: [e: Event]

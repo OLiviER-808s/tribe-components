@@ -8,16 +8,9 @@ import IconButton from '../IconButton/IconButton.vue'
 import { computed, ref } from 'vue'
 import { useFiles } from '../../composables/useFiles'
 import type { FileInput } from '../../types/file'
-import type { TribeIconType } from '../../types/icon'
+import type { MediaInputProps } from './MediaInput.types'
 
-interface Props {
-    label?: string
-    placeholder?: string
-    error?: string
-    addIcon?: TribeIconType
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<MediaInputProps>(), {
     addIcon: () => PlusIcon
 })
 

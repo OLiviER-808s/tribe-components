@@ -1,17 +1,7 @@
 <script setup lang="ts">
-interface Tab {
-    name: string
-    label: string
-    error?: boolean
-}
+import type { TabsProps } from './Tabs.types'
 
-interface Props {
-    tabs?: Tab[]
-    stretch?: boolean
-    size?: string
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<TabsProps>(), {
     size: 'lg'
 })
 

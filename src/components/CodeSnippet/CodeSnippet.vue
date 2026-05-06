@@ -4,16 +4,9 @@ import { useClipboard } from '@vueuse/core'
 import IconButton from '../IconButton/IconButton.vue'
 import HoverBox from '../HoverBox/HoverBox.vue'
 import CopyIcon from '../icons/CopyIcon.vue'
-import type { TribeIconType } from '../../types/icon'
+import type { CodeSnippetProps } from './CodeSnippet.types'
 
-interface Props {
-    snippet?: string
-    allowCopy?: boolean
-    styles?: string
-    copyIcon?: TribeIconType
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<CodeSnippetProps>(), {
     copyIcon: () => CopyIcon
 })
 

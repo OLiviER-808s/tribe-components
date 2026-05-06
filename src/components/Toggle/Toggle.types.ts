@@ -1,4 +1,4 @@
-import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
+import type { TribeIconType } from '../../types/icon'
 
 export interface ToggleProps {
     /**
@@ -14,7 +14,7 @@ export interface ToggleProps {
     /**
      * Icon to display inside the toggle circle
      */
-    icon?: IconDefinition
+    icon?: TribeIconType
 }
 
 export interface ToggleSlots {}

@@ -5,19 +5,9 @@ import FileButton from '../FileButton/FileButton.vue'
 import FileList from '../FileList/FileList.vue'
 import { isAcceptedFile } from '../../utils/utils'
 import { FileInput } from '@/types/file'
+import type { DragAndDropFilesProps } from './DragAndDropFiles.types'
 
-interface Props {
-    label?: string
-    dropText?: string
-    error?: string
-    withIcon?: boolean
-    limit?: number
-    accept?: string
-    showFileList?: boolean
-    disabled?: boolean
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<DragAndDropFilesProps>(), {
     dropText: 'Drag and drop files here, or click to select files'
 })
 

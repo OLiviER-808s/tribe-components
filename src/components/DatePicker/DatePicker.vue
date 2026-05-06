@@ -4,25 +4,9 @@ import { computed, ref } from 'vue'
 import Textbox from '../Textbox/Textbox.vue'
 import { formatDate, formatDateRange, formatDateWithTime } from '../../utils/dateService'
 import CalendarIcon from '../icons/CalendarIcon.vue'
-import { IconSize, TribeIconType } from '@/types/icon'
+import type { DatePickerProps } from './DatePicker.types'
 
-interface Props {
-    error?: string
-    label?: string
-    placeholder?: string
-    variant?: string
-    size?: IconSize
-    color?: string
-    range?: boolean
-    maxDate?: Date
-    minDate?: Date
-    includeTime?: boolean
-    disabled?: boolean
-    styles?: string
-    icon?: TribeIconType
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<DatePickerProps>(), {
     label: '',
     placeholder: '',
     variant: 'filled',

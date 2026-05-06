@@ -1,12 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import type { TooltipProps } from './Tooltip.types'
 
-interface Props {
-    text: string
-    position?: string
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<TooltipProps>(), {
     position: 'top'
 })
 

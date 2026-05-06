@@ -1,4 +1,5 @@
 import type { FileInput } from '../../types/file'
+import type { TribeIconType } from '../../types/icon'
 
 export interface MediaInputProps {
     /**
@@ -13,6 +14,11 @@ export interface MediaInputProps {
      * Error message to display
      */
     error?: string
+    /**
+     * Icon shown on the add-files button
+     * @default PlusIcon
+     */
+    addIcon?: TribeIconType
 }
 
 export interface MediaInputSlots {}

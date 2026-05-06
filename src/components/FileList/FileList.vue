@@ -4,14 +4,9 @@ import FileIcon from '../icons/FileIcon.vue'
 import XMarkIcon from '../icons/XMarkIcon.vue'
 import IconButton from '../IconButton/IconButton.vue'
 import { FileInput } from '@/types/file'
+import type { FileListProps } from './FileList.types'
 
-interface Props {
-    files?: File[]|FileInput[]
-    showDownload?: boolean
-    showDelete?: boolean
-}
-
-const props = defineProps<Props>()
+const props = defineProps<FileListProps>()
 
 const emit = defineEmits<{
     download: [file: File|FileInput]

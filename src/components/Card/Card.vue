@@ -1,13 +1,7 @@
 <script setup lang="ts">
-interface Props {
-    styles?: string
-    padding?: string
-    flat?: boolean
-    boxed?: boolean
-    border?: string
-}
+import type { CardProps } from './Card.types'
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<CardProps>(), {
     styles: '',
     padding: 'p-4',
     flat: false,

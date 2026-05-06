@@ -1,15 +1,9 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
 import TribeIcon from '../TribeIcon/TribeIcon.vue'
-import type { TribeIconType } from '@/types/icon'
+import type { ToggleProps } from './Toggle.types'
 
-interface Props {
-    activeColor?: string
-    value?: boolean
-    icon?: TribeIconType
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<ToggleProps>(), {
     activeColor: 'secondary',
     value: false
 })

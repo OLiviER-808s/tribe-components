@@ -2,14 +2,9 @@
 import { useSlots, watch } from 'vue'
 import { ModalsContainer, useModal } from 'vue-final-modal'
 import ModalContent from './ModalContent.vue'
+import type { ModalProps } from './Modal.types'
 
-interface Props {
-    contentClass?: string
-    clickToClose?: boolean
-    escToClose?: boolean
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<ModalProps>(), {
     contentClass: 'w-full max-w-xl p-2',
     clickToClose: true,
     escToClose: true

@@ -1,21 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import type { ButtonVariant, ButtonType } from '@/types/button'
+import type { ButtonProps } from './Button.types'
 
-interface Props {
-    color?: string
-    variant?: ButtonVariant
-    styles?: string
-    disabled?: boolean
-    type?: ButtonType
-    href?: string
-    hoverEffects?: boolean
-    clickEffects?: boolean
-    textColor?: string
-    padding?: string
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<ButtonProps>(), {
     color: 'primary',
     variant: 'filled',
     styles: '',

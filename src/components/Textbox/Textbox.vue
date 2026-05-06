@@ -1,26 +1,9 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import TribeIcon from '../TribeIcon/TribeIcon.vue'
-import type { TribeIconType, IconSize } from '@/types/icon'
+import type { TextboxProps } from './Textbox.types'
 
-interface Props {
-    name?: string
-    value?: string
-    type?: string
-    disabled?: boolean
-    error?: string | boolean
-    success?: string | boolean
-    variant?: string
-    size?: IconSize
-    color?: string
-    styles?: string
-    label?: string
-    icon?: TribeIconType
-    placeholder?: string
-    labelStyles?: string
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<TextboxProps>(), {
     type: 'text',
     variant: 'filled',
     color: 'base',

@@ -2,24 +2,9 @@
 import TribeIcon from '../TribeIcon/TribeIcon.vue'
 import Button from '../Button/Button.vue'
 import { computed } from 'vue'
-import type { TribeIconType, IconSize } from '@/types/icon'
-import type { ButtonVariant, ButtonType } from '@/types/button'
+import type { IconButtonProps } from './IconButton.types'
 
-interface Props {
-    icon: TribeIconType
-    size?: IconSize
-    color?: string
-    variant?: ButtonVariant
-    styles?: string
-    disabled?: boolean
-    type?: ButtonType
-    href?: string
-    hoverEffects?: boolean
-    textColor?: string
-    padding?: string
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<IconButtonProps>(), {
     size: undefined,
     color: 'primary',
     variant: 'filled',

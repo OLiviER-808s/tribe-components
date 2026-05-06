@@ -1,4 +1,4 @@
-import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
+import type { TribeIconType } from '../../types/icon'
 
 export interface NumberInputProps {
     /**
@@ -8,7 +8,7 @@ export interface NumberInputProps {
     /**
      * Icon to display in the input
      */
-    icon?: IconDefinition
+    icon?: TribeIconType
     /**
      * The placeholder text
      */

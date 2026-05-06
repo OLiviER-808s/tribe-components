@@ -1,13 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import type { FileButtonProps } from './FileButton.types'
 
-interface Props {
-    multiple?: boolean
-    disabled?: boolean
-    accept?: string
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<FileButtonProps>(), {
     multiple: true
 })
 

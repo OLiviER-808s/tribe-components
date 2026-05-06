@@ -1,23 +1,8 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
+import type { TextareaProps } from './Textarea.types'
 
-interface Props {
-    name?: string
-    disabled?: boolean
-    error?: string | boolean
-    success?: string | boolean
-    label?: string
-    placeholder?: string
-    modelValue?: string
-    maxlength?: number
-    styles?: string
-    variant?: string
-    color?: string
-    rows?: number
-    fieldSizingContent?: boolean
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<TextareaProps>(), {
     variant: 'filled',
     color: 'base',
     rows: 4,

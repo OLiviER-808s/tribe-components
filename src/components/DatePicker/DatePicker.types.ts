@@ -1,4 +1,4 @@
-import type { IconSize } from '../../types/icon'
+import type { IconSize, TribeIconType } from '../../types/icon'
 
 export interface DatePickerProps {
     /**
@@ -53,6 +53,11 @@ export interface DatePickerProps {
      * Additional CSS classes
      */
     styles?: string
+    /**
+     * The icon component shown in the input
+     * @default CalendarIcon
+     */
+    icon?: TribeIconType
 }
 
 export interface DatePickerSlots {}

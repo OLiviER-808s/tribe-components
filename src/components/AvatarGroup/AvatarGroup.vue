@@ -1,11 +1,7 @@
 <script setup lang="ts">
-interface Props {
-    avatars?: string[]
-    width?: string
-    overlap?: number
-}
+import type { AvatarGroupProps } from './AvatarGroup.types'
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<AvatarGroupProps>(), {
     width: 'w-6',
     overlap: 12
 })

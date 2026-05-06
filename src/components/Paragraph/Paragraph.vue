@@ -1,14 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import type { ParagraphProps } from './Paragraph.types'
 
-interface Props {
-    text?: string
-    styles?: string
-    limit?: number
-    includeWhitespace?: boolean
-}
-
-const props = defineProps<Props>()
+const props = defineProps<ParagraphProps>()
 
 const formatedText = computed(() => {
     if (props.text && props.limit) {

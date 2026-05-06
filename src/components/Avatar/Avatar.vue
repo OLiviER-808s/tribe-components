@@ -1,10 +1,7 @@
 <script setup lang="ts">
-interface Props {
-    src?: string
-    styles?: string
-}
+import type { AvatarProps } from './Avatar.types'
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<AvatarProps>(), {
     styles: ''
 })
 </script>

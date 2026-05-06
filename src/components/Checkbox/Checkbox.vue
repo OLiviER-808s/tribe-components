@@ -1,12 +1,8 @@
 <script setup lang="ts">
 import CheckIcon from '../icons/CheckIcon.vue'
+import type { CheckboxProps } from './Checkbox.types'
 
-interface Props {
-    name?: string
-    error?: string
-}
-
-const props = defineProps<Props>()
+const props = defineProps<CheckboxProps>()
 
 const checked = defineModel<boolean>({ default: false })
 

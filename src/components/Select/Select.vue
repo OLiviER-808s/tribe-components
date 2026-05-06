@@ -6,31 +6,10 @@ import SortIcon from '../icons/SortIcon.vue'
 import IconButton from '../IconButton/IconButton.vue'
 import DropdownOptions from '../DropdownOptions/DropdownOptions.vue'
 import { useDropdown } from '../../composables/useDropdown'
-import type { TribeIconType, IconSize } from '@/types/icon'
 import StopPropagation from '../StopPropagation/StopPropagation.vue'
+import type { SelectProps } from './Select.types'
 
-interface Props {
-    options?: any[]
-    label?: string
-    optionLabel?: string
-    trackBy?: string
-    optionDescription?: string
-    returnAttribute?: string
-    searchable?: boolean
-    icon?: TribeIconType
-    error?: string | boolean
-    placeholder?: string
-    size?: IconSize
-    variant?: string
-    color?: string
-    lockOnSelect?: boolean
-    formatResult?: (option: any) => any
-    styles?: string
-    textboxStyles?: string
-    acceptsEmptySelection?: boolean
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<SelectProps>(), {
     placeholder: 'Select an option...',
     variant: 'filled',
     color: 'base',

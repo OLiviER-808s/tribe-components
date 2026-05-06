@@ -1,14 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import type { ClickableTagProps } from './ClickableTag.types'
 
-interface Props {
-    color?: string
-    size?: string
-    rounded?: string
-    styles?: string
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<ClickableTagProps>(), {
     color: 'secondary',
     size: 'md',
     rounded: 'full',

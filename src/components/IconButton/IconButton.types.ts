@@ -50,6 +50,11 @@ export interface IconButtonProps {
      * @default ''
      */
     textColor?: string
+    /**
+     * Padding CSS classes
+     * @default 'p-0'
+     */
+    padding?: string
 }
 
 export interface IconButtonSlots {}

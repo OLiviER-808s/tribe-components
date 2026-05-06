@@ -1,9 +1,7 @@
 <script setup lang="ts">
-interface Props {
-    label?: string
-}
+import type { LoaderProps } from './Loader.types'
 
-const props = defineProps<Props>()
+const props = defineProps<LoaderProps>()
 </script>
 
 <template>

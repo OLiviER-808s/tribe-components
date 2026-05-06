@@ -1,12 +1,7 @@
 <script setup lang="ts">
-interface Props {
-    color?: string
-    size?: string
-    styles?: string
-    rounded?: string
-}
+import type { TagProps } from './Tag.types'
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<TagProps>(), {
     color: 'secondary',
     size: 'md',
     styles: '',

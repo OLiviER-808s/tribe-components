@@ -1,12 +1,7 @@
 <script setup lang="ts">
-interface Props {
-    content?: string | number | null
-    color?: string
-    size?: string
-    styles?: string
-}
+import type { BadgeProps } from './Badge.types'
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<BadgeProps>(), {
     color: 'primary',
     size: 'xs'
 })

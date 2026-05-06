@@ -1,19 +1,8 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
+import type { CompactGridProps, ResponsiveCols } from './CompactGrid.types'
 
-interface ResponsiveCols {
-    default?: number
-    sm?: number
-    md?: number
-    lg?: number
-    xl?: number
-    '2xl'?: number
-}
-
-const props = withDefaults(defineProps<{
-    cols?: number | ResponsiveCols
-    gap?: number | string
-}>(), {
+const props = withDefaults(defineProps<CompactGridProps>(), {
     cols: (): ResponsiveCols => ({ default: 1, sm: 2, lg: 3 }),
     gap: 16,
 })

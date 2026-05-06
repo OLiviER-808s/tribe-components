@@ -1,23 +1,9 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import TribeIcon from '../TribeIcon/TribeIcon.vue'
-import type { TribeIconType } from '@/types/icon'
+import type { NumberInputProps } from './NumberInput.types'
 
-interface Props {
-    label?: string
-    icon?: TribeIconType
-    placeholder?: string
-    styles?: string
-    error?: string
-    min?: number
-    max?: number
-    variant?: string
-    size?: string
-    color?: string
-    disabled?: boolean
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<NumberInputProps>(), {
     min: 0,
     max: 10000,
     variant: 'filled',

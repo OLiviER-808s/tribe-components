@@ -2,15 +2,9 @@
 import { useSlots } from 'vue'
 import { useDropdown } from '../../composables/useDropdown'
 import DropdownOptions from '../DropdownOptions/DropdownOptions.vue'
+import type { DropdownMenuProps } from './DropdownMenu.types'
 
-interface Props {
-    options?: any[]
-    label?: string
-    trackBy?: string
-    direction?: string
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<DropdownMenuProps>(), {
     label: 'label',
     trackBy: 'value',
     direction: 'left'

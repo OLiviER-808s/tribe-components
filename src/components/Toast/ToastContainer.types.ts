@@ -8,6 +8,11 @@ export interface ToastContainerProps {
      * @default 'top-0 right-0'
      */
     position?: string
+    /**
+     * Padding from the container edges in pixels
+     * @default 16
+     */
+    offset?: number
 }
 
 export interface ToastContainerSlots {

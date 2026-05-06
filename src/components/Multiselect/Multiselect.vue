@@ -2,28 +2,9 @@
 import { computed, onBeforeUnmount, onMounted, ref, useSlots, watch } from 'vue'
 import Textbox from '../Textbox/Textbox.vue'
 import DropdownOptions from '../DropdownOptions/DropdownOptions.vue'
-import type { TribeIconType, IconSize } from '@/types/icon'
+import type { MultiselectProps } from './Multiselect.types'
 
-interface Props {
-    options?: any[]
-    label?: string
-    optionLabel?: string
-    trackBy?: string
-    searchable?: boolean
-    icon?: TribeIconType
-    error?: string | boolean
-    placeholder?: string
-    size?: IconSize
-    variant?: string
-    color?: string
-    formatResult?: (option: any) => any
-    styles?: string
-    textboxStyles?: string
-    acceptsEmptySelection?: boolean
-    acceptsDuplicates?: boolean
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<MultiselectProps>(), {
     placeholder: 'Select an option...',
     variant: 'filled',
     color: 'base',

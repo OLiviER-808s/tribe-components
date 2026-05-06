@@ -9,10 +9,7 @@ import { useIsHandheld } from '../../composables/useIsHandheld'
 import { useFiles } from '../../composables/useFiles'
 import { reorderElementInArray } from '../../utils/utils'
 import type { FileInput, FormattedFile } from '../../types/file'
-
-interface Props {
-    size?: 'lg' | 'md'
-}
+import type { AttachmentListProps } from './AttachmentList.types'
 
 interface DragChangeEvent {
     moved: {
@@ -21,7 +18,7 @@ interface DragChangeEvent {
     }
 }
 
-const props = defineProps<Props>()
+const props = defineProps<AttachmentListProps>()
 
 const files = defineModel<FileInput[]>('files', { required: true })
 const selectedIdx = defineModel<number>('selectedIdx', { default: 0 })

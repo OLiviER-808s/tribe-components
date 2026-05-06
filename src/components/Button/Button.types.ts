@@ -39,10 +39,20 @@ export interface ButtonProps {
      */
     hoverEffects?: boolean
     /**
+     * Whether to show click (pressed) effects
+     * @default true
+     */
+    clickEffects?: boolean
+    /**
      * Custom text color
      * @default ''
      */
     textColor?: string
+    /**
+     * Padding CSS classes
+     * @default 'px-6 py-2'
+     */
+    padding?: string
 }
 
 export interface ButtonSlots {

@@ -1,13 +1,9 @@
 <script setup lang="ts">
 import Card from '../Card/Card.vue'
 import ChevronDownIcon from '../icons/ChevronDownIcon.vue'
+import type { AccordionProps } from './Accordion.types'
 
-interface Props {
-    title?: string
-    variant?: 'card' | 'minimal'
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<AccordionProps>(), {
     variant: 'card'
 })
 
